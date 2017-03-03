@@ -1,0 +1,23 @@
+<div class="flex-container" fxLayout="row" fxLayoutAlign="center">
+    <md-card>
+        <md-card-header>
+            <md-card-title>Recover Your Password</md-card-title>
+        </md-card-header>
+        <md-card-content>
+            <form [formGroup]="recoverForm" #f="ngForm" (ngSubmit)="recover()">
+                <md-input-container>
+                    <input mdInput formControlName="email" type="email" placeholder="Email">
+                </md-input-container>
+                <button md-raised-button type="submit" aria-label="Recover">Recover</button>
+            </form>
+            <div [hidden]="error==''">
+                <md-toolbar [hidden]="error==''">
+                    <p>{{error}}</p>
+                </md-toolbar>
+            </div>
+        </md-card-content>
+        <md-card-actions>
+            <a md-button [routerLink]="['/login']">Remember your password?</a>
+        </md-card-actions>
+    </md-card>
+</div>

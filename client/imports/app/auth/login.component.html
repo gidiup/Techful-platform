@@ -1,0 +1,28 @@
+<div class="flex-container" fxLayout="row" fxLayoutAlign="center">
+        <md-card>
+            <md-card-header>
+                <md-card-title>Sign in</md-card-title>
+                <md-card-subtitle>Sign in with your email</md-card-subtitle>
+            </md-card-header>
+            <md-card-content>
+                <form [formGroup]="loginForm" #f="ngForm" (ngSubmit)="login()">
+                    <md-input-container>
+                        <input mdInput formControlName="email" type="email" placeholder="Email">
+                    </md-input-container>
+                    <md-input-container>
+                        <input mdInput formControlName="password" type="password" placeholder="Password">
+                    </md-input-container>
+                    <button md-raised-button type="submit" aria-label="login">Sign In</button>
+                </form>
+                <div [hidden]="error==''">
+                    <md-toolbar [hidden]="error==''">
+                        <p>{{error}}</p>
+                    </md-toolbar>
+                </div>
+            </md-card-content>
+            <md-card-actions>
+                <a md-button [routerLink]="['/signup']">Need an account?</a>
+                <a md-button [routerLink]="['/recover']">Forgot password?</a>
+            </md-card-actions>
+        </md-card>
+</div>

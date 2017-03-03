@@ -1,0 +1,16 @@
+ServiceConfiguration.configurations.remove({
+    service:'facebook'
+});
+ServiceConfiguration.configurations.insert({
+    service:"facebook",
+    appId:"236099600186303",
+    secret:"1a969ea313f2b8d8b839b52a9f610da4"
+});
+ServiceConfiguration.configurations.remove({
+    service:'google'
+});
+ServiceConfiguration.configurations.insert({
+    service:"google",
+    clientId:"54393167580-f8tupq6spk5b03jjb5iqqhki3q475717.apps.googleusercontent.com",
+    secret:"q4egiIsTGGIY3fMubNN7OGL-"
+});

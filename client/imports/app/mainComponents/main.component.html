@@ -1,0 +1,7 @@
+<h1>There will be main Tech-Customer page</h1>
+<button md-raised-button type="button" (click)="save();">SAVE LOCATION</button>
+<md-card>
+    <sebm-google-map [latitude]="lat_" [longitude]="lng_" [zoom]="zoom" (mapClick)="mapClicked($event)">
+        <sebm-google-map-marker [latitude]="lat_" [longitude]="lng_"></sebm-google-map-marker>
+    </sebm-google-map>
+</md-card>

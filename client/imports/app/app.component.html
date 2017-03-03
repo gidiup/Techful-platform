@@ -1,0 +1,19 @@
+<md-toolbar color="warn">
+  <a routerLink="/" class="toolbar-title">Techful Customer</a>
+  <span class="fill-remaining-space"></span>
+  <div [hidden]="user">
+      <button md-icon-button mdTooltip="Facebook login" (click)="facebook();">
+          <i class="fa fa-facebook fa-2x" aria-hidden="true"></i>
+      </button>
+      <button md-icon-button mdTooltip="Google login" (click)="google();">
+          <i class="fa fa-google fa-2x" aria-hidden="true"></i>
+      </button>
+      <a md-button [routerLink]="['/login']" >Login</a>
+      <a md-button [routerLink]="['/signup']">Sign up</a>
+  </div>
+  <div [hidden]="!user">
+    <span>{{user | displayName}}</span>
+    <button md-button (click)="logout()">Logout</button>
+  </div>
+</md-toolbar>
+<router-outlet></router-outlet>
