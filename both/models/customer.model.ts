@@ -1,9 +1,15 @@
 import {CollectionObject} from './collection-object.model';
 export interface Customer extends CollectionObject{
-    location:Location;
+    addresses?:Location[];
+    homeLocation?:Location;
 }
 interface Location{
-    name?:string;
-    lat:number;
-    lng:number;
+    name:string;
+    address1:string;
+    address2?:string;
+    city:string;
+    state:string;
+    index_:string;
+    lat?:number;
+    lng?:number;
 }

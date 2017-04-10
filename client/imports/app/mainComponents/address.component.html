@@ -1,0 +1,153 @@
+<div *ngIf="addressList" class="width100" [ngStyle]="{'height':height+'px'}" class="scroll">
+    <button md-button (click)="back();" class="backButton">
+        <i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i> <b>Back</b>
+    </button>
+    <md-list>
+        <md-list-item>
+            <h1 md-line fxLayoutAlign="center" class="aqua" (click)="newAddress_('Home','','','','',null)">Use New Address</h1>
+        </md-list-item>
+        <md-divider></md-divider>
+        <div *ngFor="let adrs of customer.addresses">
+                <md-list-item>
+                    <h1 md-line fxLayoutAlign="center"
+                        (click)="newAddress_(adrs.name,adrs.address1,adrs.address2,adrs.city,adrs.state,adrs.index_)">
+                        {{adrs.name}}
+                    </h1>
+                </md-list-item>
+                <md-divider></md-divider>
+        </div>
+    </md-list>
+</div>
+<div *ngIf="newAddress" [ngStyle]="{'height':height+'px'}" class="scroll">
+    <button md-button (click)="saveAddress=false;when=false;newAddress=false;whenDate=false;photosNotes=false;pay=false;submitPay=false;addressList=true;" class="backButton z_index">
+        <i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i> <b>Back</b>
+    </button>
+    <div fxLayout="column">
+        <h1 *ngIf="!when" fxLayoutAlign="center" class="font-normal aqua textCenter">{{choosedParentCategory}}</h1>
+        <h3 fxLayoutAlign="center" class="font-normal grey">{{choosedCategory}}</h3>
+        <h2 fxLayoutAlign="center" class="font-normal">{{choosedPrice}}</h2>
+        <h4 fxLayoutAlign="center" class="font-normal darkgrey">A 8% service fee is added to every job</h4>
+        <h2 *ngIf="!when" fxLayoutAlign="center" class="font-normal" style="color:dimgray;">What address is being serviced?</h2>
+        <div *ngIf="when" fxLayout="row" fxLayoutAlign="center">
+            <div fxLayout="column" fxFlex="90%">
+                <md-divider></md-divider>
+                <h3 fxLayoutAlign="center" class="font-normal aqua textCenter">{{addressForm.value.address1}}, {{addressForm.value.city}}, {{addressForm.value.state}}, {{addressForm.value.index_}}</h3>
+                <md-divider></md-divider>
+                <h3 *ngIf="whenDate" fxLayoutAlign="center" class="font-normal" style="color:dimgray;">When do you need your chore completed?</h3>
+                <button *ngIf="whenDate" md-raised-button class="when" (click)="openDialog();">
+                            <i fxShow="true" fxShow.sm="false" fxShow.xs="false" class="fa fa-bolt fa-4x" aria-hidden="true" style="padding-left:46%;"></i>
+                            <i fxShow="false" fxShow.sm="true" class="fa fa-bolt fa-4x" aria-hidden="true" style="padding-left:40%;"></i>
+                            <i fxShow="false" fxShow.xs="true" class="fa fa-bolt fa-4x" aria-hidden="true" style="padding-left:34%;"></i>
+                            <h1 class="startText">&nbsp;&nbsp;Now</h1>
+                </button>
+                <br *ngIf="whenDate">
+                <button *ngIf="whenDate" md-raised-button class="when">
+                            <i fxShow="true" fxShow.sm="false" fxShow.xs="false" class="fa fa-calendar fa-4x" aria-hidden="true" style="padding-left:43%;"></i>
+                            <i fxShow="false" fxShow.sm="true" class="fa fa-calendar fa-4x" aria-hidden="true" style="padding-left:35%;"></i>
+                            <i fxShow="false" fxShow.xs="true" class="fa fa-calendar fa-4x" aria-hidden="true" style="padding-left:23%;"></i>
+                            <h1 class="startText">&nbsp;&nbsp;Schedule</h1>
+                </button>
+                <div *ngIf="photosNotes" fxLayout="column">
+                    <br>
+                    <swiper [config]="config" style="height:135px;">
+                        <div class="swiper-wrapper">
+                            <div *ngFor="let url of thumbs;let i=index" class="swiper-slide" fxLayoutAlign="center center">
+                                <i class="fa fa-window-close fa-2x closeButton" aria-hidden="true" (click)="thumbs.splice(index,1);"></i>
+                                <img [src]="url">
+                            </div>
+                            <div class="swiper-slide" fxLayoutAlign="center center"
+                                 fileDrop [ngClass]="{'file-is-over':fileIsOver,'file-uploading':uploading}" (fileOver)="fileOver($event)" (onFileDrop)="onFileDrop($event)">
+                                <i class="fa fa-camera fa-5x" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </swiper>
+                    <h3 fxLayoutAlign="center" class="font-normal grey">We suggest you take one or two detailed photos of the job.</h3>
+                    <md-input-container>
+                        <textarea md-autosize [maxRows]="9" mdInput placeholder="Add notes to your job" class="aquaBorder" ([ngModel])="description"></textarea>
+                    </md-input-container>
+                    <button md-raised-button aria-label="next" color="primary" (click)="photosNotes=false;pay=true;">NEXT</button>
+                </div>
+                <br>
+                <br>
+                <br>
+                <form *ngIf="pay" fxLayout="column" [formGroup]="payForm" #f="ngForm" (ngSubmit)="nextPay()">
+                    <md-input-container>
+                        <input mdInput formControlName="name" placeholder="Card Holder Name">
+                    </md-input-container>
+                    <md-input-container>
+                        <input mdInput maxlength="16" minlength="16" formControlName="cardN" placeholder="Card Number">
+                    </md-input-container>
+                    <div fxLayout="row" fxLayoutAlign="space-between">
+                        <div>
+                            <md-input-container align="end" class="max46">
+                                <input mdInput maxlength="2" minlength="2" formControlName="exp">
+                                <md-hint align="end">Exp</md-hint>
+                            </md-input-container>
+                            /
+                            <md-input-container class="max46">
+                                <input mdInput maxlength="2" minlength="2" formControlName="date">
+                                <md-hint>Date</md-hint>
+                            </md-input-container>
+                        </div>
+                        <md-input-container>
+                            <input mdInput maxlength="3" minlength="3" formControlName="cvv" placeholder="CVV">
+                        </md-input-container>
+                    </div>
+                    <button md-raised-button type="submit" aria-label="next" color="primary">NEXT</button>
+                </form>
+                <form *ngIf="submitPay" fxLayout="column"
+                      (ngSubmit)="successfulSubmit()">
+                    <md-select placeholder="Choose Promo Code" [(ngModel)]="selectedPromo" name="promo" class="aquaBorder">
+                        <md-option *ngFor="let promo of promoCodes" [value]="promo.value">
+                            {{promo.viewValue}}
+                        </md-option>
+                    </md-select>
+                    <br>
+                    <br>
+                    <md-toolbar>
+                        <h1 class="font-normal aqua">Job fee</h1>
+                        <span class="fill-remaining-space"></span>
+                        <h1 class="font-normal aqua">{{choosedPrice}}</h1>
+                        <md-toolbar-row>
+                            <span class="font-normal aqua" style="font-size:2.3em;padding-top:30px;">SUBTOTAL {{choosedPrice}}</span>
+                        </md-toolbar-row>
+                    </md-toolbar>
+                    <br>
+                    <br>
+                    <button md-raised-button type="submit" aria-label="next" color="primary">SUBMIT</button>
+                    <h4 fxLayoutAlign="center" class="font-normal grey textCenter">Once submitted, we'll find you up to 3 background checked providers to choose from.</h4>
+                </form>
+            </div>
+        </div>
+        <div *ngIf="!when" fxLayout="row" fxLayoutAlign="center">
+            <form fxLayout="column" fxFlex="90%" [formGroup]="addressForm" #f="ngForm" (ngSubmit)="next()">
+                <md-input-container>
+                            <input mdInput formControlName="address1" placeholder="Street Address 1">
+                </md-input-container>
+                <md-input-container>
+                            <input mdInput formControlName="address2" placeholder="Street Address 2">
+                </md-input-container>
+                <md-input-container>
+                            <input mdInput formControlName="city" placeholder="City">
+                </md-input-container>
+                <md-input-container>
+                            <input mdInput formControlName="state" placeholder="State">
+                </md-input-container>
+                <md-input-container>
+                            <input mdInput formControlName="index_" placeholder="Index" type="number">
+                </md-input-container>
+                <div fxLayout="row" fxLayoutAlign="center">
+                    <md-slide-toggle [labelPosition]="'before'" [color]="'warn'" (change)="saveAddress==true ? saveAddress=false : saveAddress=true">Save this Address</md-slide-toggle>
+                </div>
+                <md-input-container *ngIf="saveAddress">
+                    <input mdInput formControlName="name" placeholder="Address Name">
+                </md-input-container>
+                <div *ngIf="saveAddress" fxLayout="row" fxLayoutAlign="center">
+                    <md-slide-toggle [checked]="homeAddress" [color]="'warn'" (change)="homeAddress==true ? homeAddress=false : homeAddress=true">Set as Home Address</md-slide-toggle>
+                </div>
+                <button md-raised-button type="submit" aria-label="next" color="primary">NEXT</button>
+                <br>
+            </form>
+        </div>
+    </div>
+</div>

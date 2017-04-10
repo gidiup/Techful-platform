@@ -4,32 +4,26 @@
 /// <reference types="@types/chai" />
 /// <reference types="@types/mocha" />
 /// <reference types="@types/node" />
-
 declare module "*.html" {
   const template: string;
   export default template;
 }
-
 declare module "*.scss" {
   const style: string;
   export default style;
 }
-
 declare module "*.less" {
   const style: string;
   export default style;
 }
-
 declare module "*.css" {
   const style: string;
   export default style;
 }
-
 declare module "*.sass" {
   const style: string;
   export default style;
 }
-
 declare module 'meteor/tmeasday:publish-counts'{
   import {Mongo} from 'meteor/mongo';
   interface CountsObject{
@@ -39,40 +33,31 @@ declare module 'meteor/tmeasday:publish-counts'{
   }
   export const Counts:CountsObject;
 }
-
 declare module "meteor/hwillson:stub-collections" {
   import { Mongo } from "meteor/mongo";
-
   interface IStubCollections {
     stub(collection: Mongo.Collection);
     restore();
   }
-
   const StubCollections: IStubCollections;
-
   export default StubCollections;
 }
-
 declare module "chai-spies" {
   const chaiSpies: (chai: any, utils: any) => void;
 
   export = chaiSpies;
 }
-
 interface SpyCalledWith extends Chai.Assertion {
   (...args: any[]): void;
   exactly(...args: any[]): void;
 }
-
 interface SpyCalledAlways extends Chai.Assertion {
   with: SpyCalledWith;
 }
-
 interface SpyCalledAt {
   most(n: number): void;
   least(n: number): void;
 }
-
 interface SpyCalled {
   (n?: number): void;
   /**
@@ -127,14 +112,18 @@ interface SpyCalled {
    */
   lt(n: number): void;
 }
-
 declare namespace Chai {
   interface ChaiStatic {
     spy(): any;
   }
-
   interface Assertion {
     called: SpyCalled;
     always: SpyCalledAlways;
+  }
+}
+declare module 'meteor/accounts-base' {
+  module Accounts {
+    function requestPhoneVerification(phoneNumber: string, callback?: Function): void;
+    function verifyPhone(phoneNumber: string, code: string, callback?: Function): void;
   }
 }

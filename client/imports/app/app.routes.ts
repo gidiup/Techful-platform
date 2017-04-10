@@ -18,8 +18,8 @@ export class checkUser implements CanActivate{
   }
 }
 export const routes:Route[]=[
-  { path:'',component:MainComponent,canActivate:[checkUser]},
-  { path:'login',component:LoginComponent},
-  { path:'signup',component:SignupComponent},
-  { path:'recover',component:RecoverComponent}
+  {path:'',component:MainComponent,canActivate:[checkUser]},
+  {path:'login',component:LoginComponent},
+  {path:'signup',component:SignupComponent},
+  {path:'recover',component:RecoverComponent}
 ];

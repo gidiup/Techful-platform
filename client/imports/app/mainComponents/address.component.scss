@@ -1,0 +1,35 @@
+h1{
+  cursor:pointer;
+}
+.backButton{
+  position:absolute;
+  margin-top:-50px;
+  color:white;
+}
+@media(max-width:972px){
+  .backButton{
+    margin-top:-46px !important;
+  }
+}
+.fa-bolt,.fa-calendar{
+  color:aqua;
+  font-weight:100;
+}
+.fa-bolt,.fa-calendar{
+  float:left;
+  padding-top:7px;
+}
+.when{
+  height:99px !important;
+}
+.swiper-slide{
+  width:135px;
+  background-color:rgba(0,0,0,0.12);
+  border:3px darkgrey solid;
+}
+.fa-camera{
+  color:white;
+}
+/deep/ .mat-select-trigger{
+  height:60px !important;
+}

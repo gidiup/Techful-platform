@@ -14,6 +14,18 @@
                     </md-input-container>
                     <button md-raised-button type="submit" aria-label="login">Sign In</button>
                 </form>
+                <form *ngIf="!isStepTwo" [formGroup]="phoneForm" #f="ngForm" (ngSubmit)="send()">
+                    <md-input-container>
+                        <input mdInput formControlName="phone" type="text" placeholder="Phone">
+                    </md-input-container>
+                    <button md-raised-button aria-label="send " type="submit">Send SMS</button>
+                </form>
+                <form *ngIf="isStepTwo" [formGroup]="verifyForm" #f="ngForm" (ngSubmit)="verify()">
+                    <md-input-container>
+                        <input mdInput formControlName="code" type="text" placeholder="Code">
+                    </md-input-container>
+                    <button md-raised-button aria-label="verify" type="submit">Verify code</button>
+                </form>
                 <div [hidden]="error==''">
                     <md-toolbar [hidden]="error==''">
                         <p>{{error}}</p>

@@ -1,7 +1,155 @@
-<h1>There will be main Tech-Customer page</h1>
-<button md-raised-button type="button" (click)="save();">SAVE LOCATION</button>
-<md-card>
-    <sebm-google-map [latitude]="lat_" [longitude]="lng_" [zoom]="zoom" (mapClick)="mapClicked($event)">
-        <sebm-google-map-marker [latitude]="lat_" [longitude]="lng_"></sebm-google-map-marker>
-    </sebm-google-map>
-</md-card>
+<md-tab-group *ngIf="!thanksPage" headerPosition="below" selectedIndex="2" (focusChange)="activateJob($event)">
+    <md-tab>
+        <div [ngStyle]="{'height':height+'px'}" class="scroll">
+            <h1 fxLayoutAlign="center">Favorites</h1>
+        </div>
+        <ng-template md-tab-label>
+            <i class="fa fa-heart-o fa-2x " aria-hidden="true" style="color:#f44336;"><br><div class="font20">Favorites</div></i>
+        </ng-template>
+    </md-tab>
+    <md-tab>
+        <ng-template md-tab-label>
+            <i class="fa fa-wrench fa-2x" aria-hidden="true"><br><div class="font20">Jobs</div></i>
+        </ng-template>
+        <div [ngStyle]="{'height':height+'px'}" class="scroll">
+            <md-tab-group [selectedIndex]="jobIndex">
+                <md-tab>
+                    <ng-template md-tab-label>
+                        <h1 [ngStyle]="{'width':width/2+'px'}">CURRENT</h1>
+                    </ng-template>
+                    <md-divider></md-divider>
+                    <div fxLayout="column" fxFlex="90%" class="marginAuto padding20">
+                        <md-card fxLayout="row">
+                            <div fxFlex="90%">
+                                <h3>SET UP 4 HOME ENTERTAINMENT SYSTEM</h3>
+                                <h3>SET UP 4 HOME ENTERTAINMENT SYSTEM</h3>
+                                <h3>SET UP 4 HOME ENTERTAINMENT SYSTEM</h3>
+                            </div>
+                            <i fxFlex="10%" class="fa fa-angle-right fa-3x" aria-hidden="true" fxLayoutAlign="end center"></i>
+                        </md-card>
+                    </div>
+                </md-tab>
+                <md-tab>
+                    <ng-template md-tab-label>
+                        <h1 [ngStyle]="{'width':width/2+'px'}">PAST</h1>
+                    </ng-template>
+                    <md-divider></md-divider>
+                    Content 2
+                </md-tab>
+            </md-tab-group>
+        </div>
+    </md-tab>
+    <md-tab style="max-width:100% !important;">
+        <div *ngIf="firstPage" [ngStyle]="{'height':height+'px'}" class="scroll">
+            <div [hidden]="hideFixedBar" class="fixedTop z_index" style="top:0;">
+                <h3 fxLayoutAlign="center">Greater Nashville Area &nbsp;<i class="fa fa-times-circle fa-lg" aria-hidden="true" style="color:#f44336;" (click)="hideFixedBar=true;"></i></h3>
+            </div>
+            <div fxLayout="column" fxFlex="95%" class="marginAuto">
+                <h1 fxLayoutAlign="center" style="padding-top:50px;">TECHFUL</h1>
+                <div fxLayout="row" fxLayoutAlign="space-between">
+                    <md-input-container fxFlex="97%" dividerColor="primary">
+                        <input mdInput placeholder="HOW CAN WE HELP?" #searchtext>
+                    </md-input-container>
+                    <button md-mini-fab (click)="search(searchtext.value)"><i class="fa fa-search fa-2x" aria-hidden="true"></i></button>
+                </div>
+                <h2 class="relative" style="color:grey;">FEATURED</h2>
+                <swiper [config]="config" [ngStyle]="{'height':height/3+'px'}">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <md-card>
+                                <md-card-header>
+                                    <md-card-title>YOUR CUSTOM JOB</md-card-title>
+                                </md-card-header>
+                                <img md-card-image src="img/appsee4.png">
+                            </md-card>
+                        </div>
+                        <div class="swiper-slide">
+                            <md-card>
+                                <md-card-header>
+                                    <md-card-title>REFILL PRINTER</md-card-title>
+                                </md-card-header>
+                                <img md-card-image src="img/appsee4.png">
+                            </md-card>
+                        </div>
+                        <div class="swiper-slide">
+                            <md-card>
+                                <md-card-header>
+                                    <md-card-title>TECH WORK</md-card-title>
+                                </md-card-header>
+                                <img md-card-image src="img/appsee4.png">
+                            </md-card>
+                        </div>
+                        <div class="swiper-slide">
+                            <md-card>
+                                <md-card-header>
+                                    <md-card-title>TECH WORK2</md-card-title>
+                                </md-card-header>
+                                <img md-card-image src="img/appsee4.png">
+                            </md-card>
+                        </div>
+                        <div class="swiper-slide">
+                            <md-card>
+                                <md-card-header>
+                                    <md-card-title>TECH WORK 3</md-card-title>
+                                </md-card-header>
+                                <img md-card-image src="img/appsee4.png">
+                            </md-card>
+                        </div>
+                        <div class="swiper-slide">
+                            <md-card>
+                                <md-card-header>
+                                    <md-card-title>TECH WORK 4</md-card-title>
+                                </md-card-header>
+                                <img md-card-image src="img/appsee4.png">
+                            </md-card>
+                        </div>
+                    </div>
+                </swiper>
+                <button md-raised-button color="warn" class="margin50"><h2>EARN TECHFUL CASH</h2></button>
+                <button md-raised-button style="margin-top:10px;" (click)="firstPage=false;categoriesPage=true;"><h2>ALL CATEGORIES</h2></button>
+                <br>
+            </div>
+        </div>
+        <categories *ngIf="categoriesPage" (onBack)="categoriesPage=false;firstPage=true;" (onSubmit)="submitParameters=$event;thanksPage=true;"></categories>
+        <ng-template md-tab-label>
+            <i class="fa fa-home fa-2x" aria-hidden="true" style="color:green;"><br><div class="font20">Home</div></i>
+        </ng-template>
+    </md-tab>
+    <md-tab>
+        <div [ngStyle]="{'height':height+'px'}" class="scroll">
+            <h1 fxLayoutAlign="center">Share</h1>
+        </div>
+        <ng-template md-tab-label>
+            <i class="fa fa-share-alt fa-2x" aria-hidden="true" style="color:blue;"><br><div class="font20">Share</div></i>
+        </ng-template>
+    </md-tab>
+    <md-tab>
+        <div [ngStyle]="{'height':height+'px'}" class="scroll">
+            <h1 fxLayoutAlign="center">Settings</h1>
+        </div>
+        <ng-template md-tab-label>
+            <i class="fa fa-cogs fa-2x" aria-hidden="true" style="color:grey;"><br><div class="font20">Settings</div></i>
+        </ng-template>
+    </md-tab>
+</md-tab-group>
+<div *ngIf="thanksPage" fxLayout="row" fxLayoutAlign="center">
+    <div fxLayout="column" fxFlex="90%">
+        <i class="fa fa-times fa-3x closeButton" aria-hidden="true" style="top:60px;right:5%;" (click)="categoriesPage=false;firstPage=true;thanksPage=false;"></i>
+        <i fxLayoutAlign="center" class="fa fa-check-circle fa-5x aqua" aria-hidden="true"></i>
+        <h3 fxLayoutAlign="center" class="font-normal grey textCenter">Your chore request has been received!</h3>
+        <h3 fxLayoutAlign="center" class="font-normal grey textCenter">We'll get back to you soon with a selection of providers!</h3>
+        <md-card>
+            <h1 fxLayoutAlign="center" class="font-normal aqua textCenter">{{submitParameters[1]}}</h1>
+            <h3 fxLayoutAlign="center" class="font-normal grey textCenter">{{submitParameters[2]}}</h3>
+            <h2 fxLayoutAlign="center" class="font-normal">{{submitParameters[3]}}</h2>
+            <h4 fxLayoutAlign="center" class="font-normal darkgrey">A 8% service fee is added to every job</h4>
+            <md-divider></md-divider>
+            <h3 fxLayoutAlign="center" class="font-normal aqua textCenter">{{submitParameters[4]}}</h3>
+            <md-divider></md-divider>
+            <h3 fxLayoutAlign="center" class="font-normal aqua">Credit card ending with {{submitParameters[0]}}</h3>
+        </md-card>
+        <h1 fxLayoutAlign="center" class="font-normal grey">THANK YOU</h1>
+        <button md-raised-button aria-label="new_chore" color="primary" (click)="categoriesPage=false;firstPage=true;thanksPage=false;">Add Another Chore</button>
+        <br>
+    </div>
+</div>

@@ -1,0 +1,7 @@
+{
+    "twilio":{
+      "FROM":"+17862071776",
+      "ACCOUNT_SID":"AC2eb5ba4f10766652254e98f39edfb94a",
+      "AUTH_TOKEN":"12d2a562e3086135de08a2708e81df15"
+    }
+}

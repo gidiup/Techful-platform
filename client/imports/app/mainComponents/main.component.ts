@@ -1,62 +1,62 @@
 import {Component,OnInit,OnDestroy} from '@angular/core';
-import {MouseEvent} from "angular2-google-maps/core";
 import {Subscription} from 'rxjs/Subscription';
 import {MeteorObservable} from 'meteor-rxjs';
 import {Customers} from '../../../../both/collections/customers.collection';
 import {Customer} from '../../../../both/models/customer.model';
+import {Tech} from '../../../../both/models/tech.model';
 import template from './main.component.html';
 import style from './main.component.scss';
-const DEFAULT_ZOOM=8;
-const DEFAULT_LAT=51.678418;
-const DEFAULT_LNG=7.809007;
 @Component({
   selector:'main',
   template,
   styles:[style]
 })
 export class MainComponent implements OnInit,OnDestroy{
-  tech:Customer;
+  config:Object={
+    slidesPerView:'auto',
+    spaceBetween:30
+  };
+  jobIndex:number=1;
+  height:number=0;
+  width:number=0;
+  techs:Tech[];
+  customer:Customer;
   techSub:Subscription;
-  lat_:number=DEFAULT_LAT;
-  lng_:number=DEFAULT_LNG;
-  zoom:number=DEFAULT_ZOOM;
+  customerSub:Subscription;
+  markers:{lat_:number,lng_:number}[]=[];
+  hideFixedBar:boolean=false;
+  firstPage:boolean=true;
+  categoriesPage:boolean=false;
+  submitParameters:string[]=[];
+  thanksPage:boolean=false;
   constructor(){}
   ngOnInit(){
-    if(this.techSub){
-      this.techSub.unsubscribe();
-    }
-    this.techSub=MeteorObservable.subscribe('techs',Meteor.userId()).subscribe(()=>{
+    this.height=window.innerHeight-125;
+    let correctingWidth=0;
+    if(window.innerWidth>666){
+      correctingWidth=48;
+    };
+    this.width=window.innerWidth-correctingWidth;
+    if(this.customerSub){
+      this.customerSub.unsubscribe();
+    };
+    this.customerSub=MeteorObservable.subscribe('user',Meteor.userId()).subscribe(()=>{
       MeteorObservable.autorun().subscribe(()=>{
-        this.tech=Customers.findOne();
-        if(this.tech){
-          this.lat_=this.tech.location.lat;
-          this.lng_=this.tech.location.lng;
-        }else{
+        this.customer=Customers.findOne();
+        if(!this.customer){
           Customers.insert({
-            _id:Meteor.userId(),
-            location:{
-              lat:this.lat_,
-              lng:this.lng_
-            }
+            _id:Meteor.userId()
           });
         }
       });
-    });
+    })
   }
-  save(){
-    Customers.update(Meteor.userId(),{
-      $set:{
-        location:this.tech.location
-      }
-    });
-  }
-  mapClicked($event:MouseEvent){
-    this.tech.location.lat=$event.coords.lat;
-    this.tech.location.lng=$event.coords.lng;
-    this.lat_=$event.coords.lat;
-    this.lng_=$event.coords.lng;
+  activateJob(event_){
+    if(event_.index==1){
+      this.jobIndex=0;
+    }
   }
   ngOnDestroy(){
-    this.techSub.unsubscribe();
+    this.customerSub.unsubscribe();
   }
 }

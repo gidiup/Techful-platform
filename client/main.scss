@@ -1,3 +1,4 @@
+//@import '../node_modules/@angular/material/theming';
 @import '../node_modules/@angular/material/core/theming/all-theme';
 @include mat-core();
 $app-primary:mat-palette($mat-light-blue,500,100,700);
@@ -20,4 +21,126 @@ body.web {
 }
 .mat-whiteframe-z2 {
   box-shadow:0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+}
+.mat-input-placeholder{
+  color:black;
+}
+.mat-tab-label{
+  min-width:20% !important;
+  height:100% !important;
+  box-shadow:0 0 0 0 rgba(0,0,0,0),0px 4px 5px 0px rgba(0,0,0,0.2);
+}
+.mat-tab-body-wrapper{
+  height:100%;
+}
+.marginAuto{
+  margin:auto;
+  margin-top:0;
+}
+.padding75{
+  padding-top:75px;
+}
+.padding20{
+  padding-top:20px;
+}
+.floatLeft{
+  float:left;
+}
+.floatRight{
+  float:right;
+}
+.mat-tab-body-wrapper,.mat-tab-body{
+  overflow:inherit !important;
+  max-width:100% !important;
+}
+.red{
+  color:red;
+  margin-bottom:12px;
+}
+.fixedTop{
+  position:fixed;
+  width:100%;
+  background-color:white;
+  box-shadow:0px 2px 4px -1px rgba(0, 0, 0, 0.2),0px 4px 5px 0px rgba(0, 0, 0, 0.14),0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+}
+md-divider{
+  display:block;
+  border-top-style:solid;
+  border-top-width:1px;
+}
+.width100{
+  width:100%;
+}
+.font-normal{
+  font-style:normal;
+}
+.startText{
+  text-align:start;
+}
+.grey{
+  color:grey;
+}
+.scroll{
+  overflow-y:auto;
+}
+.file-uploading{
+  opacity:0.3;
+}
+.file-is-over{
+  opacity:0.7;
+}
+.aquaBorder{
+  border:2px aqua solid !important;
+}
+.darkgrey{
+  color:darkgrey;
+}
+.aqua{
+  color:aqua;
+}
+md-tab-header{
+  height:60px;
+}
+.mat-tab-header-pagination{
+  display:none !important;
+}
+.preloader{
+  margin-top:75%;
+  margin-left:30%;
+}
+@media(max-width:1366px) and (min-width:421px){
+  .preloader{
+    margin-top:33%;
+    margin-left:45%;
+  }
+}
+@media(min-width:1367px){
+  .preloader{
+    margin-top:21%;
+    margin-left:43%;
+  }
+}
+@media(max-width:420px){
+  .font20{
+    font-size:20px;
+  }
+  .mat-tab-label{
+    padding:0 !important;
+  }
+}
+.z_index{
+  z-index:9;
+}
+.max46{
+  max-width:46%;
+}
+.textCenter{
+  text-align:center;
+}
+.closeButton{
+  position:absolute;
+  top:0;
+  right:0;
+  opacity:0.3;
+  cursor:pointer;
 }

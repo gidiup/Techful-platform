@@ -16,12 +16,11 @@ export const ThumbsStore = new UploadFS.store.GridFS({
     remove:loggedIn
   }),
   transformWrite(from,to,fileId,file){
-    // Resize to 32x32
     const gm = require('gm');
     gm(from, file.name)
-      .resize(32, 32)
+      .resize(129,129)
       .gravity('Center')
-      .extent(32, 32)
+      .extent(129,129)
       .quality(75)
       .stream()
       .pipe(to);

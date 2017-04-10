@@ -1,0 +1,2558 @@
+<address #addreSS [hidden]="!addressPage" (onBack)="addressPage=false;categoriesPage=true;" (onSubmit)="onSubmit.emit($event);"></address>
+<div *ngIf="categoriesPage" class="scroll" [ngStyle]="{'height':height+'px'}">
+    <button md-button (click)="back();" class="backButton">
+        <i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i> <b>Back</b>
+    </button>
+    <div fxLayout="column" fxFlex="90%" class="marginAuto padding20">
+        <button md-raised-button class="category" (click)="categoriesPage=false;ELECTRONICSpage=true;">
+            <i class="fa fa-laptop fa-3x floatLeft" aria-hidden="true"></i>
+            <h2 fxShow="true" fxShow.xs="false" class="floatLeft">ELECTRONICS & TECH</h2>
+            <h4 fxShow="false" fxShow.xs="true" class="floatLeft">ELECTRONICS & TECH</h4>
+            <i class="fa fa-chevron-right fa-3x floatRight" aria-hidden="true"></i>
+        </button>
+        <button md-raised-button class="category" (click)="categoriesPage=false;NETWORKpage=true;">
+            <i class="fa fa-server fa-3x floatLeft" aria-hidden="true"></i>
+            <h2 fxShow="true" fxShow.xs="false" class="floatLeft">NETWORK ENGINEER</h2>
+            <h4 fxShow="false" fxShow.xs="true" class="floatLeft">NETWORK ENGINEER</h4>
+            <i class="fa fa-chevron-right fa-3x floatRight" aria-hidden="true"></i>
+        </button>
+    </div>
+</div>
+
+<div *ngIf="ELECTRONICSpage" [ngStyle]="{'height':height+'px'}" class="scroll">
+    <button md-button (click)="ELECTRONICSpage=false;categoriesPage=true;" class="backButton">
+        <i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i> <b>Back</b>
+    </button>
+    <div fxLayout="column" fxFlex="90%" class="marginAuto padding20">
+        <button md-raised-button class="category" (click)="ELECTRONICSpage=false;AVpage=true;">
+            <h2 fxShow="true" fxShow.xs="false" class="floatLeft">AUDIO & VIDEO</h2>
+            <h4 fxShow="false" fxShow.xs="true" class="floatLeft">AUDIO & VIDEO</h4>
+            <i class="fa fa-chevron-right fa-3x floatRight" aria-hidden="true"></i>
+        </button>
+        <button md-raised-button class="category" (click)="ELECTRONICSpage=false;SECURITYpage=true;">
+            <h2 fxShow="true" fxShow.xs="false" class="floatLeft">HOME CONTROLS/SECURITY</h2>
+            <h4 fxShow="false" fxShow.xs="true" class="floatLeft">HOME CONTROLS/SECURITY</h4>
+            <i class="fa fa-chevron-right fa-3x floatRight" aria-hidden="true"></i>
+        </button>
+        <button md-raised-button class="category" (click)="ELECTRONICSpage=false;INSTRUCTIONpage=true;">
+            <h2 fxShow="true" fxShow.xs="false" class="floatLeft">INSTRUCTION</h2>
+            <h4 fxShow="false" fxShow.xs="true" class="floatLeft">INSTRUCTION</h4>
+            <i class="fa fa-chevron-right fa-3x floatRight" aria-hidden="true"></i>
+        </button>
+    </div>
+</div>
+<div *ngIf="NETWORKpage" class="scroll" [ngStyle]="{'height':height+'px'}">
+    <button md-button (click)="NETWORKpage=false;categoriesPage=true;" class="backButton">
+        <i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i> <b>Back</b>
+    </button>
+    <div fxLayout="column" fxFlex="90%" class="marginAuto padding20">
+        <button md-raised-button class="category" (click)="NETWORKpage=false;COMPUTERpage=true;">
+            <h2 fxShow="true" fxShow.xs="false" class="floatLeft">COMPUTER</h2>
+            <h4 fxShow="false" fxShow.xs="true" class="floatLeft">COMPUTER</h4>
+            <i class="fa fa-chevron-right fa-3x floatRight" aria-hidden="true"></i>
+        </button>
+        <button md-raised-button class="category" (click)="NETWORKpage=false;OTHER_WORKSpage=true;">
+            <h2 fxShow="true" fxShow.xs="false" class="floatLeft">OTHER WORKS</h2>
+            <h4 fxShow="false" fxShow.xs="true" class="floatLeft">OTHER WORKS</h4>
+            <i class="fa fa-chevron-right fa-3x floatRight" aria-hidden="true"></i>
+        </button>
+    </div>
+</div>
+
+<div *ngIf="AVpage" class="scroll" [ngStyle]="{'height':height+'px'}">
+    <button md-button (click)="AVpage=false;ELECTRONICSpage=true;" class="backButton">
+        <i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i> <b>Back</b>
+    </button>
+    <div fxLayout="column" fxFlex="90%" class="marginAuto padding20">
+        <button md-raised-button class="category" (click)="AVpage=false;TVpage=true;">
+            <h2 fxShow="true" fxShow.xs="false" class="floatLeft">MOUNT FLAT SCREEN TV</h2>
+            <h5 fxShow="false" fxShow.xs="true" class="floatLeft">MOUNT FLAT SCREEN TV</h5>
+            <i class="fa fa-chevron-right fa-3x floatRight" aria-hidden="true"></i>
+        </button>
+        <button md-raised-button class="category" (click)="AVpage=false;SOUNDpage=true;">
+            <h2 fxShow="true" fxShow.xs="false" class="floatLeft">SOUND BAR INSTALATION</h2>
+            <h5 fxShow="false" fxShow.xs="true" class="floatLeft">SOUND BAR INSTALATION</h5>
+            <i class="fa fa-chevron-right fa-3x floatRight" aria-hidden="true"></i>
+        </button>
+        <button md-raised-button class="category" (click)="AVpage=false;ENTERTAINMENTpage=true;">
+            <h2 fxShow="true" fxShow.xs="false" class="floatLeft">SET UP HOME ENTERTAINMENT SYSTEM</h2>
+            <h5 fxShow="false" fxShow.xs="true" class="floatLeft">SET UP HOME ENTERTAINMENT SYSTEM</h5>
+            <i class="fa fa-chevron-right fa-3x floatRight" aria-hidden="true"></i>
+        </button>
+    </div>
+</div>
+<div *ngIf="SECURITYpage" class="scroll" [ngStyle]="{'height':height+'px'}">
+    <button md-button (click)="SECURITYpage=false;ELECTRONICSpage=true;" class="backButton">
+        <i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i> <b>Back</b>
+    </button>
+    <div fxLayout="column" fxFlex="90%" class="marginAuto padding20">
+        <button md-raised-button class="category" (click)="SECURITYpage=false;SECURITY_SYSTEMpage=true;">
+            <h2 fxShow="true" fxShow.xs="false" class="floatLeft">INSTALL HOME SECURITY SYSTEM</h2>
+            <h5 fxShow="false" fxShow.xs="true" class="floatLeft">INSTALL HOME SECURITY SYSTEM</h5>
+            <i class="fa fa-chevron-right fa-3x floatRight" aria-hidden="true"></i>
+        </button>
+        <button md-raised-button class="category" (click)="SECURITYpage=false;THERMOSTATpage=true;">
+            <h2 fxShow="true" fxShow.xs="false" class="floatLeft">REPLACE THERMOSTAT</h2>
+            <h5 fxShow="false" fxShow.xs="true" class="floatLeft">REPLACE THERMOSTAT</h5>
+            <i class="fa fa-chevron-right fa-3x floatRight" aria-hidden="true"></i>
+        </button>
+        <button md-raised-button class="category" (click)="SECURITYpage=false;SMOKEpage=true;">
+            <h2 fxShow="true" fxShow.xs="false" class="floatLeft">INSTALL/REPLACE SMOKE ALARM</h2>
+            <h5 fxShow="false" fxShow.xs="true" class="floatLeft">INSTALL/REPLACE SMOKE ALARM</h5>
+            <i class="fa fa-chevron-right fa-3x floatRight" aria-hidden="true"></i>
+        </button>
+    </div>
+</div>
+<div *ngIf="INSTRUCTIONpage" class="scroll" [ngStyle]="{'height':height+'px'}">
+    <button md-button (click)="INSTRUCTIONpage=false;ELECTRONICSpage=true;" class="backButton">
+        <i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i> <b>Back</b>
+    </button>
+    <div fxLayout="column" fxFlex="90%" class="marginAuto padding20">
+        <button md-raised-button class="category" (click)="INSTRUCTIONpage=false;APPLEpage=true;">
+            <h2 fxShow="true" fxShow.xs="false" class="floatLeft">APPLE SOFTWARE TRAINING</h2>
+            <h5 fxShow="false" fxShow.xs="true" class="floatLeft">APPLE SOFTWARE TRAINING</h5>
+            <i class="fa fa-chevron-right fa-3x floatRight" aria-hidden="true"></i>
+        </button>
+        <button md-raised-button class="category" (click)="INSTRUCTIONpage=false;MICROSOFTpage=true;">
+            <h2 fxShow="true" fxShow.xs="false" class="floatLeft">MICROSOFT SOFTWARE TRAINING</h2>
+            <h5 fxShow="false" fxShow.xs="true" class="floatLeft">MICROSOFT SOFTWARE TRAINING</h5>
+            <i class="fa fa-chevron-right fa-3x floatRight" aria-hidden="true"></i>
+        </button>
+        <button md-raised-button class="category" (click)="INSTRUCTIONpage=false;EXCELpage=true;">
+            <h2 fxShow="true" fxShow.xs="false" class="floatLeft">SPECIALIZED EXCEL TRAINING</h2>
+            <h5 fxShow="false" fxShow.xs="true" class="floatLeft">SPECIALIZED EXCEL TRAINING</h5>
+            <i class="fa fa-chevron-right fa-3x floatRight" aria-hidden="true"></i>
+        </button>
+        <button md-raised-button class="category" (click)="INSTRUCTIONpage=false;GOOGLEpage=true;">
+            <h2 fxShow="true" fxShow.xs="false" class="floatLeft">GOOGLE APPLICATIONS</h2>
+            <h5 fxShow="false" fxShow.xs="true" class="floatLeft">GOOGLE APPLICATIONS</h5>
+            <i class="fa fa-chevron-right fa-3x floatRight" aria-hidden="true"></i>
+        </button>
+        <button md-raised-button class="category" (click)="INSTRUCTIONpage=false;SMARTPHONEpage=true;">
+            <h2 fxShow="true" fxShow.xs="false" class="floatLeft">SMARTPHONE AND WATCH TRAINING</h2>
+            <h5 fxShow="false" fxShow.xs="true" class="floatLeft">SMARTPHONE AND WATCH TRAINING</h5>
+            <i class="fa fa-chevron-right fa-3x floatRight" aria-hidden="true"></i>
+        </button>
+        <button md-raised-button class="category" (click)="INSTRUCTIONpage=false;WINDOWSpage=true;">
+            <h2 fxShow="true" fxShow.xs="false" class="floatLeft">WINDOWS TRAINING</h2>
+            <h5 fxShow="false" fxShow.xs="true" class="floatLeft">WINDOWS TRAINING</h5>
+            <i class="fa fa-chevron-right fa-3x floatRight" aria-hidden="true"></i>
+        </button>
+        <button md-raised-button class="category" (click)="INSTRUCTIONpage=false;MACpage=true;">
+            <h2 fxShow="true" fxShow.xs="false" class="floatLeft">MAC OS TRAINING</h2>
+            <h5 fxShow="false" fxShow.xs="true" class="floatLeft">MAC OS TRAINING</h5>
+            <i class="fa fa-chevron-right fa-3x floatRight" aria-hidden="true"></i>
+        </button>
+    </div>
+</div>
+<div *ngIf="COMPUTERpage" class="scroll" [ngStyle]="{'height':height+'px'}">
+    <button md-button (click)="COMPUTERpage=false;NETWORKpage=true;" class="backButton">
+        <i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i> <b>Back</b>
+    </button>
+    <div fxLayout="column" fxFlex="90%" class="marginAuto padding20">
+        <button md-raised-button class="category" (click)="COMPUTERpage=false;BACKUPpage=true;">
+            <h2 fxShow="true" fxShow.xs="false" class="floatLeft">BACKUP DATA TO EXTERNAL DRIVE</h2>
+            <h5 fxShow="false" fxShow.xs="true" class="floatLeft">BACKUP DATA TO EXTERNAL DRIVE</h5>
+            <i class="fa fa-chevron-right fa-3x floatRight" aria-hidden="true"></i>
+        </button>
+        <button md-raised-button class="category" (click)="COMPUTERpage=false;MIGRATEpage=true;">
+            <h2 fxShow="true" fxShow.xs="false" class="floatLeft">MIGRATE DATA</h2>
+            <h5 fxShow="false" fxShow.xs="true" class="floatLeft">MIGRATE DATA</h5>
+            <i class="fa fa-chevron-right fa-3x floatRight" aria-hidden="true"></i>
+        </button>
+        <button md-raised-button class="category" (click)="COMPUTERpage=false;VIRUSpage=true;">
+            <h2 fxShow="true" fxShow.xs="false" class="floatLeft">VIRUS, SPYWARE, & MALWARE REMOVAL</h2>
+            <h5 fxShow="false" fxShow.xs="true" class="floatLeft">VIRUS, SPYWARE, & MALWARE REMOVAL</h5>
+            <i class="fa fa-chevron-right fa-3x floatRight" aria-hidden="true"></i>
+        </button>
+        <button md-raised-button class="category" (click)="COMPUTERpage=false;SERVICEpage=true;">
+            <h2 fxShow="true" fxShow.xs="false" class="floatLeft">COMPUTER SERVICE</h2>
+            <h5 fxShow="false" fxShow.xs="true" class="floatLeft">COMPUTER SERVICE</h5>
+            <i class="fa fa-chevron-right fa-3x floatRight" aria-hidden="true"></i>
+        </button>
+        <button md-raised-button class="category" (click)="COMPUTERpage=false;PRINTERpage=true;">
+            <h2 fxShow="true" fxShow.xs="false" class="floatLeft">SETUP ONE PRINTER</h2>
+            <h5 fxShow="false" fxShow.xs="true" class="floatLeft">SETUP ONE PRINTER</h5>
+            <i class="fa fa-chevron-right fa-3x floatRight" aria-hidden="true"></i>
+        </button>
+        <button md-raised-button class="category" (click)="COMPUTERpage=false;WIRELESSpage=true;">
+            <h2 fxShow="true" fxShow.xs="false" class="floatLeft">WIRELESS NETWORK SETUP</h2>
+            <h5 fxShow="false" fxShow.xs="true" class="floatLeft">WIRELESS NETWORK SETUP</h5>
+            <i class="fa fa-chevron-right fa-3x floatRight" aria-hidden="true"></i>
+        </button>
+    </div>
+</div>
+<div *ngIf="OTHER_WORKSpage" class="scroll" [ngStyle]="{'height':height+'px'}">
+    <button md-button (click)="OTHER_WORKSpage=false;NETWORKpage=true;" class="backButton">
+        <i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i> <b>Back</b>
+    </button>
+    <div fxLayout="column" fxFlex="90%" class="marginAuto padding20">
+        <button md-raised-button class="category" (click)="OTHER_WORKSpage=false;OTHERpage=true;">
+            <h2 fxShow="true" fxShow.xs="false" class="floatLeft">OTHER</h2>
+            <h5 fxShow="false" fxShow.xs="true" class="floatLeft">OTHER</h5>
+            <i class="fa fa-chevron-right fa-3x floatRight" aria-hidden="true"></i>
+        </button>
+    </div>
+</div>
+
+<div *ngIf="OTHERpage" class="scroll" [ngStyle]="{'height':height+'px'}">
+    <button md-button (click)="OTHERpage=false;OTHER_WORKSpage=true;" class="backButton">
+        <i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i> <b>Back</b>
+    </button>
+    <div class="fixedTop z_index">
+        <h4 fxLayoutAlign="center" class="red">A 8% service fee is added to every job</h4>
+    </div>
+    <div fxLayout="column" fxFlex="90%" class="marginAuto padding75">
+        <md-card>
+            <md-card-header (click)="hideOTHER1==true ? hideOTHER1=false : hideOTHER1=true">
+                <h3 fxShow="true" fxShow.xs="false">OTHER 1</h3>
+                <h6 fxShow="false" fxShow.xs="true">OTHER 1</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>10$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideOTHER1">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='10$';addreSS.choosedParentCategory='OTHER';addreSS.choosedCategory='OTHER 1';OTHERpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-header (click)="hideOTHER2==true ? hideOTHER2=false : hideOTHER2=true">
+                <h3 fxShow="true" fxShow.xs="false">OTHER 2</h3>
+                <h6 fxShow="false" fxShow.xs="true">OTHER 2</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>20$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideOTHER2">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='20$';addreSS.choosedParentCategory='OTHER';addreSS.choosedCategory='OTHER 2';OTHERpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-header (click)="hideOTHER3==true ? hideOTHER3=false : hideOTHER3=true">
+                <h3 fxShow="true" fxShow.xs="false">OTHER 3</h3>
+                <h6 fxShow="false" fxShow.xs="true">OTHER 3</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>30$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideOTHER3">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='30$';addreSS.choosedParentCategory='OTHER';addreSS.choosedCategory='OTHER 3';OTHERpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-header (click)="hideOTHER4==true ? hideOTHER4=false : hideOTHER4=true">
+                <h3 fxShow="true" fxShow.xs="false">OTHER 4</h3>
+                <h6 fxShow="false" fxShow.xs="true">OTHER 4</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>40$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideOTHER4">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='40$';addreSS.choosedParentCategory='OTHER';addreSS.choosedCategory='OTHER 4';OTHERpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+    </div>
+</div>
+<div *ngIf="WIRELESSpage" class="scroll" [ngStyle]="{'height':height+'px'}">
+    <button md-button (click)="WIRELESSpage=false;COMPUTERpage=true;" class="backButton">
+        <i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i> <b>Back</b>
+    </button>
+    <div class="fixedTop z_index">
+        <h4 fxLayoutAlign="center" class="red">A 8% service fee is added to every job</h4>
+    </div>
+    <div fxLayout="column" fxFlex="90%" class="marginAuto padding75">
+        <md-card>
+            <md-card-header (click)="hideWIRELESS1==true ? hideWIRELESS1=false : hideWIRELESS1=true">
+                <h3 fxShow="true" fxShow.xs="false">WIRELESS NETWORK SETUP 1</h3>
+                <h6 fxShow="false" fxShow.xs="true">WIRELESS NETWORK SETUP 1</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>10$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideWIRELESS1">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='10$';addreSS.choosedParentCategory='WIRELESS NETWORK SETUP';addreSS.choosedCategory='WIRELESS NETWORK SETUP 1';WIRELESSpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-header (click)="hideWIRELESS2==true ? hideWIRELESS2=false : hideWIRELESS2=true">
+                <h3 fxShow="true" fxShow.xs="false">WIRELESS NETWORK SETUP 2</h3>
+                <h6 fxShow="false" fxShow.xs="true">WIRELESS NETWORK SETUP 2</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>20$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideWIRELESS2">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='20$';addreSS.choosedParentCategory='WIRELESS NETWORK SETUP';addreSS.choosedCategory='WIRELESS NETWORK SETUP 2';WIRELESSpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-header (click)="hideWIRELESS3==true ? hideWIRELESS3=false : hideWIRELESS3=true">
+                <h3 fxShow="true" fxShow.xs="false">WIRELESS NETWORK SETUP 3</h3>
+                <h6 fxShow="false" fxShow.xs="true">WIRELESS NETWORK SETUP 3</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>30$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideWIRELESS3">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='30$';addreSS.choosedParentCategory='WIRELESS NETWORK SETUP';addreSS.choosedCategory='WIRELESS NETWORK SETUP 3';WIRELESSpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-header (click)="hideWIRELESS4==true ? hideWIRELESS4=false : hideWIRELESS4=true">
+                <h3 fxShow="true" fxShow.xs="false">WIRELESS NETWORK SETUP 4</h3>
+                <h6 fxShow="false" fxShow.xs="true">WIRELESS NETWORK SETUP 4</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>40$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideWIRELESS4">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='40$';addreSS.choosedParentCategory='WIRELESS NETWORK SETUP';addreSS.choosedCategory='WIRELESS NETWORK SETUP 4';WIRELESSpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+    </div>
+</div>
+<div *ngIf="PRINTERpage" class="scroll" [ngStyle]="{'height':height+'px'}">
+    <button md-button (click)="PRINTERpage=false;COMPUTERpage=true;" class="backButton">
+        <i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i> <b>Back</b>
+    </button>
+    <div class="fixedTop z_index">
+        <h4 fxLayoutAlign="center" class="red">A 8% service fee is added to every job</h4>
+    </div>
+    <div fxLayout="column" fxFlex="90%" class="marginAuto padding75">
+        <md-card>
+            <md-card-header (click)="hidePRINTER1==true ? hidePRINTER1=false : hidePRINTER1=true">
+                <h3 fxShow="true" fxShow.xs="false">SETUP 1 ONE PRINTER</h3>
+                <h6 fxShow="false" fxShow.xs="true">SETUP 1 ONE PRINTER</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>10$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hidePRINTER1">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='10$';addreSS.choosedParentCategory='SETUP ONE PRINTER';addreSS.choosedCategory='SETUP 1 ONE PRINTER';PRINTERpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-header (click)="hidePRINTER2==true ? hidePRINTER2=false : hidePRINTER2=true">
+                <h3 fxShow="true" fxShow.xs="false">SETUP 2 ONE PRINTER</h3>
+                <h6 fxShow="false" fxShow.xs="true">SETUP 2 ONE PRINTER</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>20$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hidePRINTER2">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='20$';addreSS.choosedParentCategory='SETUP ONE PRINTER';addreSS.choosedCategory='SETUP 2 ONE PRINTER';PRINTERpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-header (click)="hidePRINTER3==true ? hidePRINTER3=false : hidePRINTER3=true">
+                <h3 fxShow="true" fxShow.xs="false">SETUP 3 ONE PRINTER</h3>
+                <h6 fxShow="false" fxShow.xs="true">SETUP 3 ONE PRINTER</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>30$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hidePRINTER3">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='30$';addreSS.choosedParentCategory='SETUP ONE PRINTER';addreSS.choosedCategory='SETUP 3 ONE PRINTER';PRINTERpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-header (click)="hidePRINTER4==true ? hidePRINTER4=false : hidePRINTER4=true">
+                <h3 fxShow="true" fxShow.xs="false">SETUP 4 ONE PRINTER</h3>
+                <h6 fxShow="false" fxShow.xs="true">SETUP 4 ONE PRINTER</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>40$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hidePRINTER4">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='40$';addreSS.choosedParentCategory='SETUP ONE PRINTER';addreSS.choosedCategory='SETUP 4 ONE PRINTER';PRINTERpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+    </div>
+</div>
+<div *ngIf="SERVICEpage" class="scroll" [ngStyle]="{'height':height+'px'}">
+    <button md-button (click)="SERVICEpage=false;COMPUTERpage=true;" class="backButton">
+        <i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i> <b>Back</b>
+    </button>
+    <div class="fixedTop z_index">
+        <h4 fxLayoutAlign="center" class="red">A 8% service fee is added to every job</h4>
+    </div>
+    <div fxLayout="column" fxFlex="90%" class="marginAuto padding75">
+        <md-card>
+            <md-card-header (click)="hideSERVICE1==true ? hideSERVICE1=false : hideSERVICE1=true">
+                <h3 fxShow="true" fxShow.xs="false">COMPUTER SERVICE 1</h3>
+                <h6 fxShow="false" fxShow.xs="true">COMPUTER SERVICE 1</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>10$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideSERVICE1">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='10$';addreSS.choosedParentCategory='COMPUTER SERVICE';addreSS.choosedCategory='COMPUTER SERVICE 1';SERVICEpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-header (click)="hideSERVICE2==true ? hideSERVICE2=false : hideSERVICE2=true">
+                <h3 fxShow="true" fxShow.xs="false">COMPUTER SERVICE 2</h3>
+                <h6 fxShow="false" fxShow.xs="true">COMPUTER SERVICE 2</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>20$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideSERVICE2">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='20$';addreSS.choosedParentCategory='COMPUTER SERVICE';addreSS.choosedCategory='COMPUTER SERVICE 2';SERVICEpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-header (click)="hideSERVICE3==true ? hideSERVICE3=false : hideSERVICE3=true">
+                <h3 fxShow="true" fxShow.xs="false">COMPUTER SERVICE 3</h3>
+                <h6 fxShow="false" fxShow.xs="true">COMPUTER SERVICE 3</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>30$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideSERVICE3">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='30$';addreSS.choosedParentCategory='COMPUTER SERVICE';addreSS.choosedCategory='COMPUTER SERVICE 3';SERVICEpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-header (click)="hideSERVICE4==true ? hideSERVICE4=false : hideSERVICE4=true">
+                <h3 fxShow="true" fxShow.xs="false">COMPUTER SERVICE 4</h3>
+                <h6 fxShow="false" fxShow.xs="true">COMPUTER SERVICE 4</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>40$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideSERVICE4">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='40$';addreSS.choosedParentCategory='COMPUTER SERVICE';addreSS.choosedCategory='COMPUTER SERVICE 4';SERVICEpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+    </div>
+</div>
+<div *ngIf="VIRUSpage" class="scroll" [ngStyle]="{'height':height+'px'}">
+    <button md-button (click)="VIRUSpage=false;COMPUTERpage=true;" class="backButton">
+        <i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i> <b>Back</b>
+    </button>
+    <div class="fixedTop z_index">
+        <h4 fxLayoutAlign="center" class="red">A 8% service fee is added to every job</h4>
+    </div>
+    <div fxLayout="column" fxFlex="90%" class="marginAuto padding75">
+        <md-card>
+            <md-card-header (click)="hideVIRUS1==true ? hideVIRUS1=false : hideVIRUS1=true">
+                <h3 fxShow="true" fxShow.xs="false">VIRUS, SPYWARE, & MALWARE REMOVAL 1</h3>
+                <h6 fxShow="false" fxShow.xs="true">VIRUS, SPYWARE, & MALWARE REMOVAL 1</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>10$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideVIRUS1">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='10$';addreSS.choosedParentCategory='VIRUS, SPYWARE, & MALWARE REMOVAL';addreSS.choosedCategory='VIRUS, SPYWARE, & MALWARE REMOVAL 1';VIRUSpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-header (click)="hideVIRUS2==true ? hideVIRUS2=false : hideVIRUS2=true">
+                <h3 fxShow="true" fxShow.xs="false">VIRUS, SPYWARE, & MALWARE REMOVAL 2</h3>
+                <h6 fxShow="false" fxShow.xs="true">VIRUS, SPYWARE, & MALWARE REMOVAL 2</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>20$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideVIRUS2">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='20$';addreSS.choosedParentCategory='VIRUS, SPYWARE, & MALWARE REMOVAL';addreSS.choosedCategory='VIRUS, SPYWARE, & MALWARE REMOVAL 2';VIRUSpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-header (click)="hideVIRUS3==true ? hideVIRUS3=false : hideVIRUS3=true">
+                <h3 fxShow="true" fxShow.xs="false">VIRUS, SPYWARE, & MALWARE REMOVAL 3</h3>
+                <h6 fxShow="false" fxShow.xs="true">VIRUS, SPYWARE, & MALWARE REMOVAL 3</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>30$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideVIRUS3">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='30$';addreSS.choosedParentCategory='VIRUS, SPYWARE, & MALWARE REMOVAL';addreSS.choosedCategory='VIRUS, SPYWARE, & MALWARE REMOVAL 3';VIRUSpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-header (click)="hideVIRUS4==true ? hideVIRUS4=false : hideVIRUS4=true">
+                <h3 fxShow="true" fxShow.xs="false">VIRUS, SPYWARE, & MALWARE REMOVAL 4</h3>
+                <h6 fxShow="false" fxShow.xs="true">VIRUS, SPYWARE, & MALWARE REMOVAL 4</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>40$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideVIRUS4">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='40$';addreSS.choosedParentCategory='VIRUS, SPYWARE, & MALWARE REMOVAL';addreSS.choosedCategory='VIRUS, SPYWARE, & MALWARE REMOVAL 4';VIRUSpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+    </div>
+</div>
+<div *ngIf="MIGRATEpage" class="scroll" [ngStyle]="{'height':height+'px'}">
+    <button md-button (click)="MIGRATEpage=false;COMPUTERpage=true;" class="backButton">
+        <i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i> <b>Back</b>
+    </button>
+    <div class="fixedTop z_index">
+        <h4 fxLayoutAlign="center" class="red">A 8% service fee is added to every job</h4>
+    </div>
+    <div fxLayout="column" fxFlex="90%" class="marginAuto padding75">
+        <md-card>
+            <md-card-header (click)="hideMIGRATE1==true ? hideMIGRATE1=false : hideMIGRATE1=true">
+                <h3 fxShow="true" fxShow.xs="false">MIGRATE 1 DATA</h3>
+                <h6 fxShow="false" fxShow.xs="true">MIGRATE 1 DATA</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>10$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideMIGRATE1">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='10$';addreSS.choosedParentCategory='MIGRATE DATA';addreSS.choosedCategory='MIGRATE 1 DATA';MIGRATEpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-header (click)="hideMIGRATE2==true ? hideMIGRATE2=false : hideMIGRATE2=true">
+                <h3 fxShow="true" fxShow.xs="false">MIGRATE 2 DATA</h3>
+                <h6 fxShow="false" fxShow.xs="true">MIGRATE 2 DATA</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>20$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideMIGRATE2">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='20$';addreSS.choosedParentCategory='MIGRATE DATA';addreSS.choosedCategory='MIGRATE 2 DATA';MIGRATEpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-header (click)="hideMIGRATE3==true ? hideMIGRATE3=false : hideMIGRATE3=true">
+                <h3 fxShow="true" fxShow.xs="false">MIGRATE 3 DATA</h3>
+                <h6 fxShow="false" fxShow.xs="true">MIGRATE 3 DATA</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>30$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideMIGRATE3">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='30$';addreSS.choosedParentCategory='MIGRATE DATA';addreSS.choosedCategory='MIGRATE 3 DATA';MIGRATEpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-header (click)="hideMIGRATE4==true ? hideMIGRATE4=false : hideMIGRATE4=true">
+                <h3 fxShow="true" fxShow.xs="false">MIGRATE 4 DATA</h3>
+                <h6 fxShow="false" fxShow.xs="true">MIGRATE 4 DATA</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>40$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideMIGRATE4">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='40$';addreSS.choosedParentCategory='MIGRATE DATA';addreSS.choosedCategory='MIGRATE 4 DATA';MIGRATEpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+    </div>
+</div>
+<div *ngIf="BACKUPpage" class="scroll" [ngStyle]="{'height':height+'px'}">
+    <button md-button (click)="BACKUPpage=false;COMPUTERpage=true;" class="backButton">
+        <i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i> <b>Back</b>
+    </button>
+    <div class="fixedTop z_index">
+        <h4 fxLayoutAlign="center" class="red">A 8% service fee is added to every job</h4>
+    </div>
+    <div fxLayout="column" fxFlex="90%" class="marginAuto padding75">
+        <md-card>
+            <md-card-header (click)="hideBACKUP1==true ? hideBACKUP1=false : hideBACKUP1=true">
+                <h3 fxShow="true" fxShow.xs="false">BACKUP 1 DATA TO EXTERNAL DRIVE</h3>
+                <h6 fxShow="false" fxShow.xs="true">BACKUP 1 DATA TO EXTERNAL DRIVE</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>10$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideBACKUP1">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='10$';addreSS.choosedParentCategory='BACKUP DATA TO EXTERNAL DRIVE';addreSS.choosedCategory='BACKUP 1 DATA TO EXTERNAL DRIVE';BACKUPpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-header (click)="hideBACKUP2==true ? hideBACKUP2=false : hideBACKUP2=true">
+                <h3 fxShow="true" fxShow.xs="false">BACKUP 2 DATA TO EXTERNAL DRIVE</h3>
+                <h6 fxShow="false" fxShow.xs="true">BACKUP 2 DATA TO EXTERNAL DRIVE</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>20$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideBACKUP2">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='20$';addreSS.choosedParentCategory='BACKUP DATA TO EXTERNAL DRIVE';addreSS.choosedCategory='BACKUP 2 DATA TO EXTERNAL DRIVE';BACKUPpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-header (click)="hideBACKUP3==true ? hideBACKUP3=false : hideBACKUP3=true">
+                <h3 fxShow="true" fxShow.xs="false">BACKUP 3 DATA TO EXTERNAL DRIVE</h3>
+                <h6 fxShow="false" fxShow.xs="true">BACKUP 3 DATA TO EXTERNAL DRIVE</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>30$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideBACKUP3">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='30$';addreSS.choosedParentCategory='BACKUP DATA TO EXTERNAL DRIVE';addreSS.choosedCategory='BACKUP 3 DATA TO EXTERNAL DRIVE';BACKUPpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-header (click)="hideBACKUP4==true ? hideBACKUP4=false : hideBACKUP4=true">
+                <h3 fxShow="true" fxShow.xs="false">BACKUP 4 DATA TO EXTERNAL DRIVE</h3>
+                <h6 fxShow="false" fxShow.xs="true">BACKUP 4 DATA TO EXTERNAL DRIVE</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>40$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideBACKUP4">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='40$';addreSS.choosedParentCategory='BACKUP DATA TO EXTERNAL DRIVE';addreSS.choosedCategory='BACKUP 4 DATA TO EXTERNAL DRIVE';BACKUPpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+    </div>
+</div>
+
+<div *ngIf="MACpage" class="scroll" [ngStyle]="{'height':height+'px'}">
+    <button md-button (click)="MACpage=false;INSTRUCTIONpage=true;" class="backButton">
+        <i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i> <b>Back</b>
+    </button>
+    <div class="fixedTop z_index">
+        <h4 fxLayoutAlign="center" class="red">A 8% service fee is added to every job</h4>
+    </div>
+    <div fxLayout="column" fxFlex="90%" class="marginAuto padding75">
+        <md-card>
+            <md-card-header (click)="hideMAC1==true ? hideMAC1=false : hideMAC1=true">
+                <h3 fxShow="true" fxShow.xs="false">MAC OS TRAINING 1</h3>
+                <h6 fxShow="false" fxShow.xs="true">MAC OS TRAINING 1</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>10$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideMAC1">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='10$';addreSS.choosedParentCategory='MAC OS TRAINING';addreSS.choosedCategory='MAC OS TRAINING 1';MACpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-header (click)="hideMAC2==true ? hideMAC2=false : hideMAC2=true">
+                <h3 fxShow="true" fxShow.xs="false">MAC OS TRAINING 2</h3>
+                <h6 fxShow="false" fxShow.xs="true">MAC OS TRAINING 2</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>20$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideMAC2">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='20$';addreSS.choosedParentCategory='MAC OS TRAINING';addreSS.choosedCategory='MAC OS TRAINING 2';MACpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-header (click)="hideMAC3==true ? hideMAC3=false : hideMAC3=true">
+                <h3 fxShow="true" fxShow.xs="false">MAC OS TRAINING 3</h3>
+                <h6 fxShow="false" fxShow.xs="true">MAC OS TRAINING 3</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>30$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideMAC3">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='30$';addreSS.choosedParentCategory='MAC OS TRAINING';addreSS.choosedCategory='MAC OS TRAINING 3';MACpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-header (click)="hideMAC4==true ? hideMAC4=false : hideMAC4=true">
+                <h3 fxShow="true" fxShow.xs="false">MAC OS TRAINING 4</h3>
+                <h6 fxShow="false" fxShow.xs="true">MAC OS TRAINING 4</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>40$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideMAC4">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='40$';addreSS.choosedParentCategory='MAC OS TRAINING';addreSS.choosedCategory='MAC OS TRAINING 4';MACpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+    </div>
+</div>
+<div *ngIf="WINDOWSpage" class="scroll" [ngStyle]="{'height':height+'px'}">
+    <button md-button (click)="WINDOWSpage=false;INSTRUCTIONpage=true;" class="backButton">
+        <i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i> <b>Back</b>
+    </button>
+    <div class="fixedTop z_index">
+        <h4 fxLayoutAlign="center" class="red">A 8% service fee is added to every job</h4>
+    </div>
+    <div fxLayout="column" fxFlex="90%" class="marginAuto padding75">
+        <md-card>
+            <md-card-header (click)="hideWINDOWS1==true ? hideWINDOWS1=false : hideWINDOWS1=true">
+                <h3 fxShow="true" fxShow.xs="false">WINDOWS TRAINING 1</h3>
+                <h6 fxShow="false" fxShow.xs="true">WINDOWS TRAINING 1</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>10$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideWINDOWS1">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='10$';addreSS.choosedParentCategory='WINDOWS TRAINING';addreSS.choosedCategory='WINDOWS TRAINING 1';WINDOWSpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-header (click)="hideWINDOWS2==true ? hideWINDOWS2=false : hideWINDOWS2=true">
+                <h3 fxShow="true" fxShow.xs="false">WINDOWS TRAINING 2</h3>
+                <h6 fxShow="false" fxShow.xs="true">WINDOWS TRAINING 2</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>20$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideWINDOWS2">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='20$';addreSS.choosedParentCategory='WINDOWS TRAINING';addreSS.choosedCategory='WINDOWS TRAINING 2';WINDOWSpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-header (click)="hideWINDOWS3==true ? hideWINDOWS3=false : hideWINDOWS3=true">
+                <h3 fxShow="true" fxShow.xs="false">WINDOWS TRAINING 3</h3>
+                <h6 fxShow="false" fxShow.xs="true">WINDOWS TRAINING 3</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>30$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideWINDOWS3">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='30$';addreSS.choosedParentCategory='WINDOWS TRAINING';addreSS.choosedCategory='WINDOWS TRAINING 3';WINDOWSpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-header (click)="hideWINDOWS4==true ? hideWINDOWS4=false : hideWINDOWS4=true">
+                <h3 fxShow="true" fxShow.xs="false">WINDOWS TRAINING 4</h3>
+                <h6 fxShow="false" fxShow.xs="true">WINDOWS TRAINING 4</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>40$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideWINDOWS4">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='40$';addreSS.choosedParentCategory='WINDOWS TRAINING';addreSS.choosedCategory='WINDOWS TRAINING 4';WINDOWSpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+    </div>
+</div>
+<div *ngIf="SMARTPHONEpage" class="scroll" [ngStyle]="{'height':height+'px'}">
+    <button md-button (click)="SMARTPHONEpage=false;INSTRUCTIONpage=true;" class="backButton">
+        <i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i> <b>Back</b>
+    </button>
+    <div class="fixedTop z_index">
+        <h4 fxLayoutAlign="center" class="red">A 8% service fee is added to every job</h4>
+    </div>
+    <div fxLayout="column" fxFlex="90%" class="marginAuto padding75">
+        <md-card>
+            <md-card-header (click)="hideSMARTPHONE1==true ? hideSMARTPHONE1=false : hideSMARTPHONE1=true">
+                <h3 fxShow="true" fxShow.xs="false">SMARTPHONE AND WATCH TRAINING 1</h3>
+                <h6 fxShow="false" fxShow.xs="true">SMARTPHONE AND WATCH TRAINING 1</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>10$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideSMARTPHONE1">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='10$';addreSS.choosedParentCategory='SMARTPHONE AND WATCH TRAINING';addreSS.choosedCategory='SMARTPHONE AND WATCH TRAINING 1';SMARTPHONEpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-header (click)="hideSMARTPHONE2==true ? hideSMARTPHONE2=false : hideSMARTPHONE2=true">
+                <h3 fxShow="true" fxShow.xs="false">SMARTPHONE AND WATCH TRAINING 2</h3>
+                <h6 fxShow="false" fxShow.xs="true">SMARTPHONE AND WATCH TRAINING 2</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>20$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideSMARTPHONE2">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='20$';addreSS.choosedParentCategory='SMARTPHONE AND WATCH TRAINING';addreSS.choosedCategory='SMARTPHONE AND WATCH TRAINING 2';SMARTPHONEpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-header (click)="hideSMARTPHONE3==true ? hideSMARTPHONE3=false : hideSMARTPHONE3=true">
+                <h3 fxShow="true" fxShow.xs="false">SMARTPHONE AND WATCH TRAINING 3</h3>
+                <h6 fxShow="false" fxShow.xs="true">SMARTPHONE AND WATCH TRAINING 3</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>30$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideSMARTPHONE3">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='30$';addreSS.choosedParentCategory='SMARTPHONE AND WATCH TRAINING';addreSS.choosedCategory='SMARTPHONE AND WATCH TRAINING 3';SMARTPHONEpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-header (click)="hideSMARTPHONE4==true ? hideSMARTPHONE4=false : hideSMARTPHONE4=true">
+                <h3 fxShow="true" fxShow.xs="false">SMARTPHONE AND WATCH TRAINING 4</h3>
+                <h6 fxShow="false" fxShow.xs="true">SMARTPHONE AND WATCH TRAINING 4</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>40$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideSMARTPHONE4">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='40$';addreSS.choosedParentCategory='SMARTPHONE AND WATCH TRAINING';addreSS.choosedCategory='SMARTPHONE AND WATCH TRAINING 4';SMARTPHONEpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+    </div>
+</div>
+<div *ngIf="GOOGLEpage" class="scroll" [ngStyle]="{'height':height+'px'}">
+    <button md-button (click)="GOOGLEpage=false;INSTRUCTIONpage=true;" class="backButton">
+        <i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i> <b>Back</b>
+    </button>
+    <div class="fixedTop z_index">
+        <h4 fxLayoutAlign="center" class="red">A 8% service fee is added to every job</h4>
+    </div>
+    <div fxLayout="column" fxFlex="90%" class="marginAuto padding75">
+        <md-card>
+            <md-card-header (click)="hideGOOGLE1==true ? hideGOOGLE1=false : hideGOOGLE1=true">
+                <h3 fxShow="true" fxShow.xs="false">GOOGLE APPLICATIONS 1</h3>
+                <h6 fxShow="false" fxShow.xs="true">GOOGLE APPLICATIONS 1</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>10$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideGOOGLE1">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='10$';addreSS.choosedParentCategory='GOOGLE APPLICATIONS';addreSS.choosedCategory='GOOGLE APPLICATIONS 1';GOOGLEpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-header (click)="hideGOOGLE2==true ? hideGOOGLE2=false : hideGOOGLE2=true">
+                <h3 fxShow="true" fxShow.xs="false">GOOGLE APPLICATIONS 2</h3>
+                <h6 fxShow="false" fxShow.xs="true">GOOGLE APPLICATIONS 2</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>20$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideGOOGLE2">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='20$';addreSS.choosedParentCategory='GOOGLE APPLICATIONS';addreSS.choosedCategory='GOOGLE APPLICATIONS 2';GOOGLEpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-header (click)="hideGOOGLE3==true ? hideGOOGLE3=false : hideGOOGLE3=true">
+                <h3 fxShow="true" fxShow.xs="false">GOOGLE APPLICATIONS 3</h3>
+                <h6 fxShow="false" fxShow.xs="true">GOOGLE APPLICATIONS 3</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>30$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideGOOGLE3">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='30$';addreSS.choosedParentCategory='GOOGLE APPLICATIONS';addreSS.choosedCategory='GOOGLE APPLICATIONS 3';GOOGLEpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-header (click)="hideGOOGLE4==true ? hideGOOGLE4=false : hideGOOGLE4=true">
+                <h3 fxShow="true" fxShow.xs="false">GOOGLE APPLICATIONS 4</h3>
+                <h6 fxShow="false" fxShow.xs="true">GOOGLE APPLICATIONS 4</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>40$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideGOOGLE4">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='40$';addreSS.choosedParentCategory='GOOGLE APPLICATIONS';addreSS.choosedCategory='GOOGLE APPLICATIONS 4';GOOGLEpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+    </div>
+</div>
+<div *ngIf="EXCELpage" class="scroll" [ngStyle]="{'height':height+'px'}">
+    <button md-button (click)="EXCELpage=false;INSTRUCTIONpage=true;" class="backButton">
+        <i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i> <b>Back</b>
+    </button>
+    <div class="fixedTop z_index">
+        <h4 fxLayoutAlign="center" class="red">A 8% service fee is added to every job</h4>
+    </div>
+    <div fxLayout="column" fxFlex="90%" class="marginAuto padding75">
+        <md-card>
+            <md-card-header (click)="hideEXCEL1==true ? hideEXCEL1=false : hideEXCEL1=true">
+                <h3 fxShow="true" fxShow.xs="false">SPECIALIZED EXCEL 1 TRAINING</h3>
+                <h6 fxShow="false" fxShow.xs="true">SPECIALIZED EXCEL 1 TRAINING</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>10$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideEXCEL1">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='10$';addreSS.choosedParentCategory='SPECIALIZED EXCEL TRAINING';addreSS.choosedCategory='SPECIALIZED EXCEL 1 TRAINING';EXCELpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-header (click)="hideEXCEL2==true ? hideEXCEL2=false : hideEXCEL2=true">
+                <h3 fxShow="true" fxShow.xs="false">SPECIALIZED EXCEL 2 TRAINING</h3>
+                <h6 fxShow="false" fxShow.xs="true">SPECIALIZED EXCEL 2 TRAINING</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>20$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideEXCEL2">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='20$';addreSS.choosedParentCategory='SPECIALIZED EXCEL TRAINING';addreSS.choosedCategory='SPECIALIZED EXCEL 2 TRAINING';EXCELpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-header (click)="hideEXCEL3==true ? hideEXCEL3=false : hideEXCEL3=true">
+                <h3 fxShow="true" fxShow.xs="false">SPECIALIZED EXCEL 3 TRAINING</h3>
+                <h6 fxShow="false" fxShow.xs="true">SPECIALIZED EXCEL 3 TRAINING</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>30$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideEXCEL3">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='30$';addreSS.choosedParentCategory='SPECIALIZED EXCEL TRAINING';addreSS.choosedCategory='SPECIALIZED EXCEL 3 TRAINING';EXCELpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-header (click)="hideEXCEL4==true ? hideEXCEL4=false : hideEXCEL4=true">
+                <h3 fxShow="true" fxShow.xs="false">SPECIALIZED EXCEL 4 TRAINING</h3>
+                <h6 fxShow="false" fxShow.xs="true">SPECIALIZED EXCEL 4 TRAINING</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>40$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideEXCEL4">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='40$';addreSS.choosedParentCategory='SPECIALIZED EXCEL TRAINING';addreSS.choosedCategory='SPECIALIZED EXCEL 4 TRAINING';EXCELpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+    </div>
+</div>
+<div *ngIf="MICROSOFTpage" class="scroll" [ngStyle]="{'height':height+'px'}">
+    <button md-button (click)="MICROSOFTpage=false;INSTRUCTIONpage=true;" class="backButton">
+        <i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i> <b>Back</b>
+    </button>
+    <div class="fixedTop z_index">
+        <h4 fxLayoutAlign="center" class="red">A 8% service fee is added to every job</h4>
+    </div>
+    <div fxLayout="column" fxFlex="90%" class="marginAuto padding75">
+        <md-card>
+            <md-card-header (click)="hideMICROSOFT1==true ? hideMICROSOFT1=false : hideMICROSOFT1=true">
+                <h3 fxShow="true" fxShow.xs="false">MICROSOFT SOFTWARE 1 TRAINING</h3>
+                <h6 fxShow="false" fxShow.xs="true">MICROSOFT SOFTWARE 1 TRAINING</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>10$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideMICROSOFT1">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='10$';addreSS.choosedParentCategory='MICROSOFT SOFTWARE TRAINING';addreSS.choosedCategory='MICROSOFT SOFTWARE 1 TRAINING';MICROSOFTpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-header (click)="hideMICROSOFT2==true ? hideMICROSOFT2=false : hideMICROSOFT2=true">
+                <h3 fxShow="true" fxShow.xs="false">MICROSOFT SOFTWARE 2 TRAINING</h3>
+                <h6 fxShow="false" fxShow.xs="true">MICROSOFT SOFTWARE 2 TRAINING</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>20$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideMICROSOFT2">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='20$';addreSS.choosedParentCategory='MICROSOFT SOFTWARE TRAINING';addreSS.choosedCategory='MICROSOFT SOFTWARE 2 TRAINING';MICROSOFTpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-header (click)="hideMICROSOFT3==true ? hideMICROSOFT3=false : hideMICROSOFT3=true">
+                <h3 fxShow="true" fxShow.xs="false">MICROSOFT SOFTWARE 3 TRAINING</h3>
+                <h6 fxShow="false" fxShow.xs="true">MICROSOFT SOFTWARE 3 TRAINING</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>30$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideMICROSOFT3">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='30$';addreSS.choosedParentCategory='MICROSOFT SOFTWARE TRAINING';addreSS.choosedCategory='MICROSOFT SOFTWARE 3 TRAINING';MICROSOFTpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-header (click)="hideMICROSOFT4==true ? hideMICROSOFT4=false : hideMICROSOFT4=true">
+                <h3 fxShow="true" fxShow.xs="false">MICROSOFT SOFTWARE 4 TRAINING</h3>
+                <h6 fxShow="false" fxShow.xs="true">MICROSOFT SOFTWARE 4 TRAINING</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>40$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideMICROSOFT4">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='40$';addreSS.choosedParentCategory='MICROSOFT SOFTWARE TRAINING';addreSS.choosedCategory='MICROSOFT SOFTWARE 4 TRAINING';MICROSOFTpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+    </div>
+</div>
+<div *ngIf="APPLEpage" class="scroll" [ngStyle]="{'height':height+'px'}">
+    <button md-button (click)="APPLEpage=false;INSTRUCTIONpage=true;" class="backButton">
+        <i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i> <b>Back</b>
+    </button>
+    <div class="fixedTop z_index">
+        <h4 fxLayoutAlign="center" class="red">A 8% service fee is added to every job</h4>
+    </div>
+    <div fxLayout="column" fxFlex="90%" class="marginAuto padding75">
+        <md-card>
+            <md-card-header (click)="hideAPPLE1==true ? hideAPPLE1=false : hideAPPLE1=true">
+                <h3 fxShow="true" fxShow.xs="false">APPLE SOFTWARE 1 TRAINING</h3>
+                <h6 fxShow="false" fxShow.xs="true">APPLE SOFTWARE 1 TRAINING</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>10$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideAPPLE1">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='10$';addreSS.choosedParentCategory='APPLE SOFTWARE TRAINING';addreSS.choosedCategory='APPLE SOFTWARE 1 TRAINING';APPLEpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-header (click)="hideAPPLE2==true ? hideAPPLE2=false : hideAPPLE2=true">
+                <h3 fxShow="true" fxShow.xs="false">APPLE SOFTWARE 2 TRAINING</h3>
+                <h6 fxShow="false" fxShow.xs="true">APPLE SOFTWARE 2 TRAINING</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>20$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideAPPLE2">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='20$';addreSS.choosedParentCategory='APPLE SOFTWARE TRAINING';addreSS.choosedCategory='APPLE SOFTWARE 2 TRAINING';APPLEpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-header (click)="hideAPPLE3==true ? hideAPPLE3=false : hideAPPLE3=true">
+                <h3 fxShow="true" fxShow.xs="false">APPLE SOFTWARE 3 TRAINING</h3>
+                <h6 fxShow="false" fxShow.xs="true">APPLE SOFTWARE 3 TRAINING</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>30$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideAPPLE3">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='30$';addreSS.choosedParentCategory='APPLE SOFTWARE TRAINING';addreSS.choosedCategory='APPLE SOFTWARE 3 TRAINING';APPLEpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-header (click)="hideAPPLE4==true ? hideAPPLE4=false : hideAPPLE4=true">
+                <h3 fxShow="true" fxShow.xs="false">APPLE SOFTWARE 4 TRAINING</h3>
+                <h6 fxShow="false" fxShow.xs="true">APPLE SOFTWARE 4 TRAINING</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>40$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideAPPLE4">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='40$';addreSS.choosedParentCategory='APPLE SOFTWARE TRAINING';addreSS.choosedCategory='APPLE SOFTWARE 4 TRAINING';APPLEpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+    </div>
+</div>
+<div *ngIf="SMOKEpage" class="scroll" [ngStyle]="{'height':height+'px'}">
+    <button md-button (click)="SMOKEpage=false;SECURITYpage=true;" class="backButton">
+        <i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i> <b>Back</b>
+    </button>
+    <div class="fixedTop z_index">
+        <h4 fxLayoutAlign="center" class="red">A 8% service fee is added to every job</h4>
+    </div>
+    <div fxLayout="column" fxFlex="90%" class="marginAuto padding75">
+        <md-card>
+            <md-card-header (click)="hideSMOKE1==true ? hideSMOKE1=false : hideSMOKE1=true">
+                <h3 fxShow="true" fxShow.xs="false">INSTALL/REPLACE 1 SMOKE ALARM</h3>
+                <h6 fxShow="false" fxShow.xs="true">INSTALL/REPLACE 1 SMOKE ALARM</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>10$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideSMOKE1">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='10$';addreSS.choosedParentCategory='INSTALL/REPLACE SMOKE ALARM';addreSS.choosedCategory='INSTALL/REPLACE 1 SMOKE ALARM';SMOKEpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-header (click)="hideSMOKE2==true ? hideSMOKE2=false : hideSMOKE2=true">
+                <h3 fxShow="true" fxShow.xs="false">INSTALL/REPLACE 2 SMOKE ALARM</h3>
+                <h6 fxShow="false" fxShow.xs="true">INSTALL/REPLACE 2 SMOKE ALARM</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>20$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideSMOKE2">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='20$';addreSS.choosedParentCategory='INSTALL/REPLACE SMOKE ALARM';addreSS.choosedCategory='INSTALL/REPLACE 2 SMOKE ALARM';SMOKEpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-header (click)="hideSMOKE3==true ? hideSMOKE3=false : hideSMOKE3=true">
+                <h3 fxShow="true" fxShow.xs="false">INSTALL/REPLACE 3 SMOKE ALARM</h3>
+                <h6 fxShow="false" fxShow.xs="true">INSTALL/REPLACE 3 SMOKE ALARM</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>30$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideSMOKE3">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='30$';addreSS.choosedParentCategory='INSTALL/REPLACE SMOKE ALARM';addreSS.choosedCategory='INSTALL/REPLACE 3 SMOKE ALARM';SMOKEpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-header (click)="hideSMOKE4==true ? hideSMOKE4=false : hideSMOKE4=true">
+                <h3 fxShow="true" fxShow.xs="false">INSTALL/REPLACE 4 SMOKE ALARM</h3>
+                <h6 fxShow="false" fxShow.xs="true">INSTALL/REPLACE 4 SMOKE ALARM</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>40$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideSMOKE4">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='40$';addreSS.choosedParentCategory='INSTALL/REPLACE SMOKE ALARM';addreSS.choosedCategory='INSTALL/REPLACE 4 SMOKE ALARM';SMOKEpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+    </div>
+</div>
+<div *ngIf="THERMOSTATpage" class="scroll" [ngStyle]="{'height':height+'px'}">
+    <button md-button (click)="THERMOSTATpage=false;SECURITYpage=true;" class="backButton">
+        <i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i> <b>Back</b>
+    </button>
+    <div class="fixedTop z_index">
+        <h4 fxLayoutAlign="center" class="red">A 8% service fee is added to every job</h4>
+    </div>
+    <div fxLayout="column" fxFlex="90%" class="marginAuto padding75">
+        <md-card>
+            <md-card-header (click)="hideTHERMOSTAT1==true ? hideTHERMOSTAT1=false : hideTHERMOSTAT1=true">
+                <h3 fxShow="true" fxShow.xs="false">REPLACE 1 THERMOSTAT</h3>
+                <h6 fxShow="false" fxShow.xs="true">REPLACE 1 THERMOSTAT</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>10$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideTHERMOSTAT1">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='10$';addreSS.choosedParentCategory='REPLACE THERMOSTAT';addreSS.choosedCategory='REPLACE 1 THERMOSTAT';THERMOSTATpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-header (click)="hideTHERMOSTAT2==true ? hideTHERMOSTAT2=false : hideTHERMOSTAT2=true">
+                <h3 fxShow="true" fxShow.xs="false">REPLACE 2 THERMOSTAT</h3>
+                <h6 fxShow="false" fxShow.xs="true">REPLACE 2 THERMOSTAT</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>20$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideTHERMOSTAT2">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='20$';addreSS.choosedParentCategory='REPLACE THERMOSTAT';addreSS.choosedCategory='REPLACE 2 THERMOSTAT';THERMOSTATpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-header (click)="hideTHERMOSTAT3==true ? hideTHERMOSTAT3=false : hideTHERMOSTAT3=true">
+                <h3 fxShow="true" fxShow.xs="false">REPLACE 3 THERMOSTAT</h3>
+                <h6 fxShow="false" fxShow.xs="true">REPLACE 3 THERMOSTAT</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>30$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideTHERMOSTAT3">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='30$';addreSS.choosedParentCategory='REPLACE THERMOSTAT';addreSS.choosedCategory='REPLACE 3 THERMOSTAT';THERMOSTATpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-header (click)="hideTHERMOSTAT4==true ? hideTHERMOSTAT4=false : hideTHERMOSTAT4=true">
+                <h3 fxShow="true" fxShow.xs="false">REPLACE 4 THERMOSTAT</h3>
+                <h6 fxShow="false" fxShow.xs="true">REPLACE 4 THERMOSTAT</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>40$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideTHERMOSTAT4">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='40$';addreSS.choosedParentCategory='REPLACE THERMOSTAT';addreSS.choosedCategory='REPLACE 4 THERMOSTAT';THERMOSTATpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+    </div>
+</div>
+<div *ngIf="SECURITY_SYSTEMpage" class="scroll" [ngStyle]="{'height':height+'px'}">
+    <button md-button (click)="SECURITY_SYSTEMpage=false;SECURITYpage=true;" class="backButton">
+        <i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i> <b>Back</b>
+    </button>
+    <div class="fixedTop z_index">
+        <h4 fxLayoutAlign="center" class="red">A 8% service fee is added to every job</h4>
+    </div>
+    <div fxLayout="column" fxFlex="90%" class="marginAuto padding75">
+        <md-card>
+            <md-card-header (click)="hideSECURITY1==true ? hideSECURITY1=false : hideSECURITY1=true">
+                <h3 fxShow="true" fxShow.xs="false">INSTALL 1 HOME SECURITY SYSTEM</h3>
+                <h6 fxShow="false" fxShow.xs="true">INSTALL 1 HOME SECURITY SYSTEM</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>10$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideSECURITY1">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='10$';addreSS.choosedParentCategory='INSTALL HOME SECURITY SYSTEM';addreSS.choosedCategory='INSTALL 1 HOME SECURITY SYSTEM';SECURITY_SYSTEMpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-header (click)="hideSECURITY2==true ? hideSECURITY2=false : hideSECURITY2=true">
+                <h3 fxShow="true" fxShow.xs="false">INSTALL 2 HOME SECURITY SYSTEM</h3>
+                <h6 fxShow="false" fxShow.xs="true">INSTALL 2 HOME SECURITY SYSTEM</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>20$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideSECURITY2">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='20$';addreSS.choosedParentCategory='INSTALL HOME SECURITY SYSTEM';addreSS.choosedCategory='INSTALL 2 HOME SECURITY SYSTEM';SECURITY_SYSTEMpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-header (click)="hideSECURITY3==true ? hideSECURITY3=false : hideSECURITY3=true">
+                <h3 fxShow="true" fxShow.xs="false">INSTALL 3 HOME SECURITY SYSTEM</h3>
+                <h6 fxShow="false" fxShow.xs="true">INSTALL 3 HOME SECURITY SYSTEM</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>30$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideSECURITY3">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='30$';addreSS.choosedParentCategory='INSTALL HOME SECURITY SYSTEM';addreSS.choosedCategory='INSTALL 3 HOME SECURITY SYSTEM';SECURITY_SYSTEMpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-header (click)="hideSECURITY4==true ? hideSECURITY4=false : hideSECURITY4=true">
+                <h3 fxShow="true" fxShow.xs="false">INSTALL 4 HOME SECURITY SYSTEM</h3>
+                <h6 fxShow="false" fxShow.xs="true">INSTALL 4 HOME SECURITY SYSTEM</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>40$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideSECURITY4">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='40$';addreSS.choosedParentCategory='INSTALL HOME SECURITY SYSTEM';addreSS.choosedCategory='INSTALL 4 HOME SECURITY SYSTEM';SECURITY_SYSTEMpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+    </div>
+</div>
+<div *ngIf="TVpage" class="scroll" [ngStyle]="{'height':height+'px'}">
+    <button md-button (click)="TVpage=false;AVpage=true;" class="backButton">
+        <i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i> <b>Back</b>
+    </button>
+    <div class="fixedTop z_index">
+        <h4 fxLayoutAlign="center" class="red">A 8% service fee is added to every job</h4>
+    </div>
+    <div fxLayout="column" fxFlex="90%" class="marginAuto padding75">
+        <md-card>
+            <md-card-header (click)="hideSCREEN1==true ? hideSCREEN1=false : hideSCREEN1=true">
+                <h3 fxShow="true" fxShow.xs="false">MOUNT 1 FLAT SCREEN TV</h3>
+                <h6 fxShow="false" fxShow.xs="true">MOUNT 1 FLAT SCREEN TV</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>10$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideSCREEN1">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='10$';addreSS.choosedParentCategory='MOUNT FLAT SCREEN TV';addreSS.choosedCategory='MOUNT 1 FLAT SCREEN TV';TVpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-header (click)="hideSCREEN2==true ? hideSCREEN2=false : hideSCREEN2=true">
+                <h3 fxShow="true" fxShow.xs="false">MOUNT 2 FLAT SCREEN TV</h3>
+                <h6 fxShow="false" fxShow.xs="true">MOUNT 2 FLAT SCREEN TV</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>20$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideSCREEN2">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='20$';addreSS.choosedParentCategory='MOUNT FLAT SCREEN TV';addreSS.choosedCategory='MOUNT 2 FLAT SCREEN TV';TVpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-header (click)="hideSCREEN3==true ? hideSCREEN3=false : hideSCREEN3=true">
+                <h3 fxShow="true" fxShow.xs="false">MOUNT 3 FLAT SCREEN TV</h3>
+                <h6 fxShow="false" fxShow.xs="true">MOUNT 3 FLAT SCREEN TV</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>30$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideSCREEN3">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='30$';addreSS.choosedParentCategory='MOUNT FLAT SCREEN TV';addreSS.choosedCategory='MOUNT 3 FLAT SCREEN TV';TVpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-header (click)="hideSCREEN4==true ? hideSCREEN4=false : hideSCREEN4=true">
+                <h3 fxShow="true" fxShow.xs="false">MOUNT 4 FLAT SCREEN TV</h3>
+                <h6 fxShow="false" fxShow.xs="true">MOUNT 4 FLAT SCREEN TV</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>40$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideSCREEN4">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='40$';addreSS.choosedParentCategory='MOUNT FLAT SCREEN TV';addreSS.choosedCategory='MOUNT 4 FLAT SCREEN TV';TVpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+    </div>
+</div>
+<div *ngIf="SOUNDpage" class="scroll" [ngStyle]="{'height':height+'px'}">
+    <button md-button (click)="SOUNDpage=false;AVpage=true;" class="backButton">
+        <i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i> <b>Back</b>
+    </button>
+    <div class="fixedTop z_index">
+        <h4 fxLayoutAlign="center" class="red">A 8% service fee is added to every job</h4>
+    </div>
+    <div fxLayout="column" fxFlex="90%" class="marginAuto padding75">
+        <md-card>
+            <md-card-header (click)="hideSOUND1==true ? hideSOUND1=false : hideSOUND1=true">
+                <h3 fxShow="true" fxShow.xs="false">SOUND BAR INSTALATION 1</h3>
+                <h6 fxShow="false" fxShow.xs="true">SOUND BAR INSTALATION 1</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>10$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideSOUND1">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='10$';addreSS.choosedParentCategory='SOUND BAR INSTALATION';addreSS.choosedCategory='SOUND BAR INSTALATION 1';SOUNDpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-header (click)="hideSOUND2==true ? hideSOUND2=false : hideSOUND2=true">
+                <h3 fxShow="true" fxShow.xs="false">SOUND BAR INSTALATION 2</h3>
+                <h6 fxShow="false" fxShow.xs="true">SOUND BAR INSTALATION 2</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>20$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideSOUND2">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='20$';addreSS.choosedParentCategory='SOUND BAR INSTALATION';addreSS.choosedCategory='SOUND BAR INSTALATION 2';SOUNDpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-header (click)="hideSOUND3==true ? hideSOUND3=false : hideSOUND3=true">
+                <h3 fxShow="true" fxShow.xs="false">SOUND BAR INSTALATION 3</h3>
+                <h6 fxShow="false" fxShow.xs="true">SOUND BAR INSTALATION 3</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>30$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideSOUND3">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='30$';addreSS.choosedParentCategory='SOUND BAR INSTALATION';addreSS.choosedCategory='SOUND BAR INSTALATION 3';SOUNDpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-header (click)="hideSOUND4==true ? hideSOUND4=false : hideSOUND4=true">
+                <h3 fxShow="true" fxShow.xs="false">SOUND BAR INSTALATION 4</h3>
+                <h6 fxShow="false" fxShow.xs="true">SOUND BAR INSTALATION 4</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>40$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideSOUND4">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='40$';addreSS.choosedParentCategory='SOUND BAR INSTALATION';addreSS.choosedCategory='SOUND BAR INSTALATION 4';SOUNDpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+    </div>
+</div>
+<div *ngIf="ENTERTAINMENTpage" class="scroll" [ngStyle]="{'height':height+'px'}">
+    <button md-button (click)="ENTERTAINMENTpage=false;AVpage=true;" class="backButton">
+        <i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i> <b>Back</b>
+    </button>
+    <div class="fixedTop z_index">
+        <h4 fxLayoutAlign="center" class="red">A 8% service fee is added to every job</h4>
+    </div>
+    <div fxLayout="column" fxFlex="90%" class="marginAuto padding75">
+        <md-card>
+            <md-card-header (click)="hideENTERTAINMENT1==true ? hideENTERTAINMENT1=false : hideENTERTAINMENT1=true">
+                <h3 fxShow="true" fxShow.xs="false">SET UP 1 HOME ENTERTAINMENT SYSTEM</h3>
+                <h6 fxShow="false" fxShow.xs="true">SET UP 1 HOME ENTERTAINMENT SYSTEM</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>10$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideENTERTAINMENT1">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='10$';addreSS.choosedParentCategory='SET UP HOME ENTERTAINMENT SYSTEM';addreSS.choosedCategory='SET UP 1 HOME ENTERTAINMENT SYSTEM';ENTERTAINMENTpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-header (click)="hideENTERTAINMENT2==true ? hideENTERTAINMENT2=false : hideENTERTAINMENT2=true">
+                <h3 fxShow="true" fxShow.xs="false">SET UP 2 HOME ENTERTAINMENT SYSTEM</h3>
+                <h6 fxShow="false" fxShow.xs="true">SET UP 2 HOME ENTERTAINMENT SYSTEM</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>20$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideENTERTAINMENT2">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='20$';addreSS.choosedParentCategory='SET UP HOME ENTERTAINMENT SYSTEM';addreSS.choosedCategory='SET UP 2 HOME ENTERTAINMENT SYSTEM';ENTERTAINMENTpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-header (click)="hideENTERTAINMENT3==true ? hideENTERTAINMENT3=false : hideENTERTAINMENT3=true">
+                <h3 fxShow="true" fxShow.xs="false">SET UP 3 HOME ENTERTAINMENT SYSTEM</h3>
+                <h6 fxShow="false" fxShow.xs="true">SET UP 3 HOME ENTERTAINMENT SYSTEM</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>30$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideENTERTAINMENT3">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='30$';addreSS.choosedParentCategory='SET UP HOME ENTERTAINMENT SYSTEM';addreSS.choosedCategory='SET UP 3 HOME ENTERTAINMENT SYSTEM';ENTERTAINMENTpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-header (click)="hideENTERTAINMENT4==true ? hideENTERTAINMENT4=false : hideENTERTAINMENT4=true">
+                <h3 fxShow="true" fxShow.xs="false">SET UP 4 HOME ENTERTAINMENT SYSTEM</h3>
+                <h6 fxShow="false" fxShow.xs="true">SET UP 4 HOME ENTERTAINMENT SYSTEM</h6>
+                <span class="fill-remaining-space"></span>
+                <h1>40$</h1>
+            </md-card-header>
+            <md-card-content>
+                <div *ngIf="!hideENTERTAINMENT4">
+                    <br>
+                    <md-divider></md-divider>
+                    Lorem ipsum
+                    <ul>
+                        <li>Connect customer-supplied sound bar to 1-3 devices.</li>
+                        <li>Neatly tie or conceal all wires.</li>
+                        <li>Test system and sound quality.</li>
+                        <li>Demonstrate proper usage and maintenance.</li>
+                    </ul>
+                    *bla bla bla
+                    <br>
+                    <button md-raised-button color="primary" class="width100"
+                            (click)="addreSS.choosedPrice='40$';addreSS.choosedParentCategory='SET UP HOME ENTERTAINMENT SYSTEM';addreSS.choosedCategory='SET UP 4 HOME ENTERTAINMENT SYSTEM';ENTERTAINMENTpage=false;addressPage=true;">
+                        <b>NEXT</b>
+                    </button>
+                </div>
+            </md-card-content>
+        </md-card>
+    </div>
+</div>

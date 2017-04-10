@@ -1,3 +1,21 @@
-.sebm-google-map-container{
-  height:375px;
+.relative{
+  position:relative;
+}
+.swiper-slide{
+  width:300px;
+}
+.mat-card-image{
+  width:calc(100%+ 48px);
+}
+.margin50{
+  margin-top:50px;
+}
+.fa-times-circle,md-card-header{
+  cursor:pointer;
+}
+.fa-angle-right{
+  color:grey;
+}
+md-card{
+  cursor:pointer;
 }

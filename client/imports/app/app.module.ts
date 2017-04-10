@@ -6,16 +6,19 @@ import {AccountsModule} from 'angular2-meteor-accounts-ui';
 import {AgmCoreModule} from 'angular2-google-maps/core';
 import {AppComponent} from "./app.component";
 import {routes,checkUser} from './app.routes';
+import {SwiperModule} from 'angular2-useful-swiper';
 import {MAIN_DECLARATIONS} from './mainComponents';
 import {SHARED_DECLARATIONS} from './shared';
 import {MaterialModule} from "@angular/material";
-import {CovalentStepsModule} from '@covalent/core';
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {AUTH_DECLARATIONS} from "./auth/index";
+import {areYouSurePopup} from "./mainComponents/address.component";
 import {FileDropModule} from "angular2-file-drop";
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 let moduleDefinition;
 moduleDefinition={
     imports:[
+        BrowserAnimationsModule,
         BrowserModule,
         FormsModule,
         ReactiveFormsModule,
@@ -23,9 +26,9 @@ moduleDefinition={
         AccountsModule,
         AgmCoreModule.forRoot({apiKey:'AIzaSyAWoBdZHCNh5R-hB5S5ZZ2oeoYyfdDgniA'}),
         MaterialModule,
-        CovalentStepsModule.forRoot(),
         FlexLayoutModule,
-        FileDropModule
+        FileDropModule,
+	    SwiperModule
     ],
     declarations:[
       AppComponent,
@@ -38,6 +41,9 @@ moduleDefinition={
     ],
     bootstrap:[
       AppComponent
+    ],
+    entryComponents:[
+        areYouSurePopup
     ]
 }
 @NgModule(moduleDefinition)

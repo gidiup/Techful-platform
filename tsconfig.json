@@ -1,16 +1,32 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "declaration": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
     "lib": [
-      "es6",
-      "dom"
+      "dom",
+      "es2015"
     ],
     "module": "commonjs",
     "moduleResolution": "node",
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "sourceMap": true
+    "sourceMap": true,
+    "target": "es5",
+    "skipLibCheck": true,
+    "stripInternal": true,
+    "noImplicitAny": false,
+    "types": [
+      "meteor-typings",
+      "@types/underscore",
+      "@types/meteor-accounts-phone"
+    ]
   },
+  "include": [
+    "client/**/*.ts",
+    "server/**/*.ts",
+    "imports/**/*.ts"
+  ],
   "exclude": [
     "node_modules"
   ],
@@ -18,8 +34,7 @@
     "typings.d.ts"
   ],
   "compileOnSave": false,
-  "angularCompilerOptions": {
-    "genDir": "aot",
-    "skipMetadataEmit": true
+  "atom": {
+    "rewriteTsconfig": false
   }
 }
