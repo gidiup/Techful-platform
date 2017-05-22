@@ -4,13 +4,20 @@
     </button>
     <md-list>
         <md-list-item>
-            <h1 md-line fxLayoutAlign="center" class="aqua" (click)="newAddress_('Home','','','','',null)">Use New Address</h1>
+            <h1 md-line fxLayoutAlign="center" class="aqua" (click)="addressList=false;newAddress_('Home','','','','',null)">Use New Address</h1>
+        </md-list-item>
+        <md-divider></md-divider>
+        <md-list-item>
+            <h1 md-line fxLayoutAlign="center"
+                (click)="addressList=false;newAddress_('Home',customer.address1,customer.address2,customer.city,customer.state,customer.zipCode)">
+                Home
+            </h1>
         </md-list-item>
         <md-divider></md-divider>
         <div *ngFor="let adrs of customer.addresses">
                 <md-list-item>
                     <h1 md-line fxLayoutAlign="center"
-                        (click)="newAddress_(adrs.name,adrs.address1,adrs.address2,adrs.city,adrs.state,adrs.index_)">
+                        (click)="addressList=false;newAddress_(adrs.name,adrs.address1,adrs.address2,adrs.city,adrs.state,adrs.zipCode)">
                         {{adrs.name}}
                     </h1>
                 </md-list-item>
@@ -24,7 +31,7 @@
     </button>
     <div fxLayout="column">
         <h1 *ngIf="!when" fxLayoutAlign="center" class="font-normal aqua textCenter">{{choosedParentCategory}}</h1>
-        <h3 fxLayoutAlign="center" class="font-normal grey">{{choosedCategory}}</h3>
+        <h3 fxLayoutAlign="center" class="font-normal grey textCenter">{{choosedCategory}}</h3>
         <h2 fxLayoutAlign="center" class="font-normal">{{choosedPrice}}</h2>
         <h4 fxLayoutAlign="center" class="font-normal darkgrey">A 8% service fee is added to every job</h4>
         <h2 *ngIf="!when" fxLayoutAlign="center" class="font-normal" style="color:dimgray;">What address is being serviced?</h2>
@@ -33,23 +40,27 @@
                 <md-divider></md-divider>
                 <h3 fxLayoutAlign="center" class="font-normal aqua textCenter">{{addressForm.value.address1}}, {{addressForm.value.city}}, {{addressForm.value.state}}, {{addressForm.value.index_}}</h3>
                 <md-divider></md-divider>
-                <h3 *ngIf="whenDate" fxLayoutAlign="center" class="font-normal" style="color:dimgray;">When do you need your chore completed?</h3>
-                <button *ngIf="whenDate" md-raised-button class="when" (click)="openDialog();">
+                <h3 *ngIf="whenDate" fxLayoutAlign="center" class="font-normal textCenter" style="color:dimgray;">When do you need your chore completed?</h3>
+                <button *ngIf="whenDate" md-raised-button class="when" (click)="schedule=false;nowChore=true;openDialog();">
                             <i fxShow="true" fxShow.sm="false" fxShow.xs="false" class="fa fa-bolt fa-4x" aria-hidden="true" style="padding-left:46%;"></i>
                             <i fxShow="false" fxShow.sm="true" class="fa fa-bolt fa-4x" aria-hidden="true" style="padding-left:40%;"></i>
                             <i fxShow="false" fxShow.xs="true" class="fa fa-bolt fa-4x" aria-hidden="true" style="padding-left:34%;"></i>
                             <h1 class="startText">&nbsp;&nbsp;Now</h1>
                 </button>
                 <br *ngIf="whenDate">
-                <button *ngIf="whenDate" md-raised-button class="when">
+                <button *ngIf="whenDate" md-raised-button class="when" (click)="nowChore=false;schedule=true">
                             <i fxShow="true" fxShow.sm="false" fxShow.xs="false" class="fa fa-calendar fa-4x" aria-hidden="true" style="padding-left:43%;"></i>
                             <i fxShow="false" fxShow.sm="true" class="fa fa-calendar fa-4x" aria-hidden="true" style="padding-left:35%;"></i>
                             <i fxShow="false" fxShow.xs="true" class="fa fa-calendar fa-4x" aria-hidden="true" style="padding-left:23%;"></i>
                             <h1 class="startText">&nbsp;&nbsp;Schedule</h1>
                 </button>
+                <md-input-container *ngIf="schedule">
+                    <input mdInput type="datetime-local" [(ngModel)]="date_">
+                </md-input-container>
+                <button *ngIf="schedule" md-raised-button aria-label="next_" color="primary" (click)="date_ ? shedule_() : true">NEXT</button>
                 <div *ngIf="photosNotes" fxLayout="column">
                     <br>
-                    <swiper [config]="config" style="height:135px;">
+                    <swiper [config]="config" class="height135">
                         <div class="swiper-wrapper">
                             <div *ngFor="let url of thumbs;let i=index" class="swiper-slide" fxLayoutAlign="center center">
                                 <i class="fa fa-window-close fa-2x closeButton" aria-hidden="true" (click)="thumbs.splice(index,1);"></i>
@@ -58,39 +69,41 @@
                             <div class="swiper-slide" fxLayoutAlign="center center"
                                  fileDrop [ngClass]="{'file-is-over':fileIsOver,'file-uploading':uploading}" (fileOver)="fileOver($event)" (onFileDrop)="onFileDrop($event)">
                                 <i class="fa fa-camera fa-5x" aria-hidden="true"></i>
+                                <input type="file" accept="image/jpeg,image/png" class="file" (change)="onFileDrop($event.target.files[0])">
                             </div>
                         </div>
                     </swiper>
                     <h3 fxLayoutAlign="center" class="font-normal grey">We suggest you take one or two detailed photos of the job.</h3>
                     <md-input-container>
-                        <textarea md-autosize [maxRows]="9" mdInput placeholder="Add notes to your job" class="aquaBorder" ([ngModel])="description"></textarea>
+                        <textarea md-autosize [maxRows]="9" mdInput placeholder="Add notes to your job" class="aquaBorder" [(ngModel)]="description"></textarea>
                     </md-input-container>
-                    <button md-raised-button aria-label="next" color="primary" (click)="photosNotes=false;pay=true;">NEXT</button>
+                    <button md-raised-button aria-label="next" color="primary" (click)="descriptionNext()">NEXT</button>
+                    <br>
                 </div>
                 <br>
                 <br>
                 <br>
-                <form *ngIf="pay" fxLayout="column" [formGroup]="payForm" #f="ngForm" (ngSubmit)="nextPay()">
+                <form *ngIf="pay" fxLayout="column" [formGroup]="payForm" #f="ngForm" (ngSubmit)="nextPay()" class="marginAuto" style="width:300px;">
                     <md-input-container>
-                        <input mdInput formControlName="name" placeholder="Card Holder Name">
+                        <input mdInput required formControlName="name" placeholder="Card Holder Name">
                     </md-input-container>
                     <md-input-container>
-                        <input mdInput maxlength="16" minlength="16" formControlName="cardN" placeholder="Card Number">
+                        <input mdInput required maxlength="16" minlength="16" formControlName="cardN" placeholder="Card Number">
                     </md-input-container>
                     <div fxLayout="row" fxLayoutAlign="space-between">
-                        <div>
+                        <div style="width:167px;">
                             <md-input-container align="end" class="max46">
-                                <input mdInput maxlength="2" minlength="2" formControlName="exp">
+                                <input mdInput required maxlength="2" minlength="2" formControlName="exp">
                                 <md-hint align="end">Exp</md-hint>
                             </md-input-container>
                             /
                             <md-input-container class="max46">
-                                <input mdInput maxlength="2" minlength="2" formControlName="date">
+                                <input mdInput required maxlength="2" minlength="2" formControlName="date">
                                 <md-hint>Date</md-hint>
                             </md-input-container>
                         </div>
-                        <md-input-container>
-                            <input mdInput maxlength="3" minlength="3" formControlName="cvv" placeholder="CVV">
+                        <md-input-container style="width:99px;">
+                            <input mdInput required maxlength="3" minlength="3" formControlName="cvv" placeholder="CVV">
                         </md-input-container>
                     </div>
                     <button md-raised-button type="submit" aria-label="next" color="primary">NEXT</button>
@@ -104,12 +117,12 @@
                     </md-select>
                     <br>
                     <br>
-                    <md-toolbar>
-                        <h1 class="font-normal aqua">Job fee</h1>
+                    <md-toolbar class="backgroundInherit">
+                        <h1 class="font-normal aqua weight100">Job fee</h1>
                         <span class="fill-remaining-space"></span>
                         <h1 class="font-normal aqua">{{choosedPrice}}</h1>
                         <md-toolbar-row>
-                            <span class="font-normal aqua" style="font-size:2.3em;padding-top:30px;">SUBTOTAL {{choosedPrice}}</span>
+                            <span class="font-normal aqua" style="font-size:2.1em;font-weight:600;padding-top:30px;">SUBTOTAL {{choosedPrice}}</span>
                         </md-toolbar-row>
                     </md-toolbar>
                     <br>
@@ -119,8 +132,8 @@
                 </form>
             </div>
         </div>
-        <div *ngIf="!when" fxLayout="row" fxLayoutAlign="center">
-            <form fxLayout="column" fxFlex="90%" [formGroup]="addressForm" #f="ngForm" (ngSubmit)="next()">
+        <div *ngIf="addressFields" fxLayout="row" fxLayoutAlign="center">
+            <form fxLayout="column" fxFlex="90%" [formGroup]="addressForm" #f="ngForm" (ngSubmit)="addressFields=false;next()">
                 <md-input-container>
                             <input mdInput formControlName="address1" placeholder="Street Address 1">
                 </md-input-container>
@@ -134,7 +147,7 @@
                             <input mdInput formControlName="state" placeholder="State">
                 </md-input-container>
                 <md-input-container>
-                            <input mdInput formControlName="index_" placeholder="Index" type="number">
+                            <input mdInput formControlName="index_" placeholder="Zip code" type="number">
                 </md-input-container>
                 <div fxLayout="row" fxLayoutAlign="center">
                     <md-slide-toggle [labelPosition]="'before'" [color]="'warn'" (change)="saveAddress==true ? saveAddress=false : saveAddress=true">Save this Address</md-slide-toggle>

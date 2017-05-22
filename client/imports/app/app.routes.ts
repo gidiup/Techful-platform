@@ -2,6 +2,7 @@ import {Route,Router,CanActivate} from '@angular/router';
 import {Injectable} from '@angular/core';
 import {Meteor} from 'meteor/meteor';
 import {MainComponent} from './mainComponents/main.component';
+import {AppComponent} from './appComponents/app.component';
 import {SignupComponent} from "./auth/signup.component";
 import {RecoverComponent} from "./auth/recover.component";
 import {LoginComponent} from "./auth/login.component";
@@ -18,7 +19,8 @@ export class checkUser implements CanActivate{
   }
 }
 export const routes:Route[]=[
-  {path:'',component:MainComponent,canActivate:[checkUser]},
+  {path:'app',component:MainComponent,canActivate:[checkUser]},
+  {path:'',component:AppComponent,canActivate:[checkUser]},
   {path:'login',component:LoginComponent},
   {path:'signup',component:SignupComponent},
   {path:'recover',component:RecoverComponent}

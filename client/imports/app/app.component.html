@@ -1,19 +1,20 @@
 <md-toolbar color="warn">
-  <a routerLink="/" class="toolbar-title"><b><i>TECHFUL</i></b></a>
-  <span class="fill-remaining-space"></span>
-  <div [hidden]="user">
+    <a *ngIf="!user" fxShow="true" fxShow.xs="false" [routerLink]="['/']" class="toolbar-title"><b><i>TECHFUL</i></b></a>
+    <a *ngIf="user" fxShow="true" fxShow.xs="false" [routerLink]="['/app']" class="toolbar-title"><b><i>TECHFUL</i></b></a>
+    <span class="fill-remaining-space"></span>
+    <div [hidden]="user">
       <button md-icon-button mdTooltip="Facebook login" (click)="facebook();">
           <i class="fa fa-facebook fa-2x" aria-hidden="true"></i>
       </button>
       <button md-icon-button mdTooltip="Google login" (click)="google();">
           <i class="fa fa-google fa-2x" aria-hidden="true"></i>
       </button>
-      <a md-button [routerLink]="['/login']" >Login</a>
+      <a md-button [routerLink]="['/login']">Login</a>
       <a md-button [routerLink]="['/signup']">Sign up</a>
-  </div>
-  <div [hidden]="!user">
+    </div>
+    <div [hidden]="!user">
       <i class="fa fa-user" aria-hidden="true" [mdTooltip]="user | displayName"></i>
       <button md-button (click)="logout()">Logout</button>
-  </div>
+    </div>
 </md-toolbar>
 <router-outlet></router-outlet>

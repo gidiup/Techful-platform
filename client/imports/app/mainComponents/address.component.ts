@@ -3,11 +3,12 @@ import {FormBuilder,FormGroup,Validators} from '@angular/forms';
 import {MdDialog,MdDialogRef,MdSnackBar} from '@angular/material';
 import {Customers} from '../../../../both/collections/customers.collection';
 import {Customer} from '../../../../both/models/customer.model';
-import {Orders} from '../../../../both/collections/orders.collection';
 import {Order} from '../../../../both/models/order.model';
 import {upload} from '../../../../both/methods/images.methods';
 import {Thumb} from "../../../../both/models/image.model";
 import {Thumbs} from "../../../../both/collections/images.collection";
+import {Orders} from '../../../../both/collections/orders.collection';
+import {Stripes} from '../../../../both/collections/stripes.collection';
 import {Subject,Subscription} from 'rxjs';
 import {MeteorObservable} from 'meteor-rxjs';
 import template from './address.component.html';
@@ -37,6 +38,7 @@ export class AddressComponent implements OnInit,OnDestroy{
   saveAddress:boolean=false;
   addressForm:FormGroup;
   payForm:FormGroup;
+  parentParentCategory:string="";
   choosedParentCategory:string="";
   choosedCategory:string="";
   choosedPrice:string="";
@@ -51,7 +53,6 @@ export class AddressComponent implements OnInit,OnDestroy{
   order:Order;
   thumb:Thumb;
   thumbs:string[]=[];
-  thumbIds:string[]=[];
   submitParams:string[]=[];
   _name_:string="";
   adrs1:string="";
@@ -60,12 +61,24 @@ export class AddressComponent implements OnInit,OnDestroy{
   _state_:string="";
   _index_:string="";
   homeAddress:boolean=true;
+  nowChore:boolean;
+  schedule:boolean=false;
   description:string="To protect your privacy, please don't include contact information in your job notes";
+  date_:any;
+  addressFields:boolean=false;
+  usePreviousCard:boolean=false;
+  stripeCustomer:string;
   @Output() onBack:EventEmitter<any>=new EventEmitter();
   @Output() onSubmit:EventEmitter<string[]>=new EventEmitter<string[]>();
   constructor(private formBuilder:FormBuilder,public dialog:MdDialog,public snackBar:MdSnackBar){}
   ngOnInit(){
-    this.height=window.innerHeight-125;
+    if(window.innerWidth>666){
+      this.height=window.innerHeight-125;
+    }else{
+      this.height=window.innerHeight-117;
+    }
+    // pk_live_kSgodW0LStFSbxu7VU8Var3Z
+    Stripe.setPublishableKey('pk_test_Ng3ruHIukPsB3Z1Os17y1X4i');
     this.addressForm=this.formBuilder.group({
       address1:['',Validators.required],
       address2:[''],
@@ -91,7 +104,6 @@ export class AddressComponent implements OnInit,OnDestroy{
           MeteorObservable.autorun().subscribe(()=>{
             this.thumb=Thumbs.findOne({originalStore:'images',originalId:fileId});
             if(this.thumb && this.thumb.url){
-              this.thumbIds.push(this.thumb._id);
               this.thumbs.push(this.thumb.url);
             }
           })
@@ -104,7 +116,7 @@ export class AddressComponent implements OnInit,OnDestroy{
     this.customerSubscription=MeteorObservable.subscribe('user',Meteor.userId()).subscribe(()=>{
       MeteorObservable.autorun().subscribe(()=>{
         this.customer=Customers.findOne();
-        if(this.when==false){
+        if(!this.when && !this.addressFields){
           this.addressList=true;
         }
       })
@@ -114,6 +126,7 @@ export class AddressComponent implements OnInit,OnDestroy{
     this.onBack.emit(null);
   }
   newAddress_(name,adrs1,adrs2,city,state,index){
+    this.addressList=false;
     this._name_=name;
     this.adrs1=adrs1;
     this.adrs2=adrs2;
@@ -128,49 +141,82 @@ export class AddressComponent implements OnInit,OnDestroy{
       index_:[this._index_,Validators.required],
       name:[this._name_],
     });
-    this.addressList=false;
     this.newAddress=true;
+    this.addressFields=true;
   }
   next(){
     if(this.addressForm.valid){
       this.whenDate=true;
       this.when=true;
       if(this.saveAddress){
-        Customers.update(Meteor.userId(),{
-          $addToSet:{
-            addresses:{
-              name:this.addressForm.value.name,
+        if(this.homeAddress){
+          Customers.update(Meteor.userId(),{
+            $set:{
               address1:this.addressForm.value.address1,
               address2:this.addressForm.value.address2,
               city:this.addressForm.value.city,
               state:this.addressForm.value.state,
-              index_:this.addressForm.value.index_
+              zipCode:this.addressForm.value.index_
             }
-          }
-        });
-        if(this.homeAddress){
+          });
+        }else{
           Customers.update(Meteor.userId(),{
-            $set:{
-              "homeLocation.name":this.addressForm.value.name,
-              "homeLocation.address1":this.addressForm.value.address1,
-              "homeLocation.address2":this.addressForm.value.address2,
-              "homeLocation.city":this.addressForm.value.city,
-              "homeLocation.state":this.addressForm.value.state,
-              "homeLocation.index_":this.addressForm.value.index_
+            $addToSet:{
+              addresses:{
+                name:this.addressForm.value.name,
+                address1:this.addressForm.value.address1,
+                address2:this.addressForm.value.address2,
+                city:this.addressForm.value.city,
+                state:this.addressForm.value.state,
+                zipCode:this.addressForm.value.index_
+              }
             }
           });
         }
       }
     }else{
-      this.snackBar.open("Empty filds!","OK.",{duration:999});
+      this.snackBar.open("Empty filds!","OK.",{duration:9999});
     }
   }
   nextPay(){
     if(this.payForm.valid){
-      let last4numbers=this.payForm.value.cardN.substring(this.payForm.value.cardN.length-4);
-      this.submitParams.push(last4numbers);
-      this.pay=false;
-      this.submitPay=true;
+      if(Stripe.card.validateCardNumber(this.payForm.value.cardN) && Stripe.card.validateExpiry(this.payForm.value.exp,this.payForm.value.date)){
+        let last4numbers_=this.payForm.value.cardN.substring(this.payForm.value.cardN.length-4);
+        Customers.update(Meteor.userId(),{
+          $set:{
+            last4Numbers:last4numbers_
+          }
+        })
+        this.submitParams.push(last4numbers_);
+        this.pay=false;
+        this.submitPay=true;
+        if(this.usePreviousCard){
+          if(this.customer.lastStripeCustomer.indexOf("tok_")!==-1){
+            MeteorObservable.call('firstStripeCustomer',this.customer.lastStripeCustomer,this.customer.email).subscribe((response)=>{
+              if(response.id){
+                this.stripeCustomer=response.id;
+              }
+            },(err)=>{
+              console.log(err);
+            })
+          }
+        }else{
+          Stripe.card.createToken({
+            number:this.payForm.value.cardN,
+            cvc:this.payForm.value.cvv,
+            exp_month:this.payForm.value.exp,
+            exp_year:this.payForm.value.date
+          },(status,response)=>{
+            if(response.error){
+              this.snackBar.open(response.error.message,"",{duration:9999});
+            }else{
+              this.stripeCustomer=response.id;
+            }
+          })
+        }
+      }else{
+        this.snackBar.open("You typed wrong card or date/month number","",{duration:9999});
+      }
     }else{
       this.snackBar.open("You typed wrong data.","OK!",{duration:9999});
     }
@@ -187,33 +233,145 @@ export class AddressComponent implements OnInit,OnDestroy{
     });
   }
   onFileDrop(file:File):void{
-    this.uploading=true;
-    upload(file)
-        .then((result)=>{
-          this.uploading=false;
-          this.file.next(result._id);
-        })
-        .catch((error)=>{
-          this.uploading=false;
-          console.log(`Something went wrong!`,error);
-        });
+    if(file){
+      this.uploading = true;
+      upload(file)
+          .then((result)=> {
+            this.uploading = false;
+            this.file.next(result._id);
+          })
+          .catch((error)=> {
+            this.uploading = false;
+            console.log(`Something went wrong!`, error);
+          });
+    }
   }
   fileOver(fileIsOver:boolean):void{
     this.fileIsOver=fileIsOver;
   }
+  shedule_(){
+    this.schedule=false;
+    this.whenDate=false;
+    this.photosNotes=true;
+  }
   successfulSubmit(){
-    Orders.insert({
-      date:Date.now(),
+    let customerPhoto="img/user-icon.png";
+    if(this.customer.photo!==""){
+      customerPhoto=this.customer.photo;
+    }
+    let date=Date.now();
+    if(this.date_){
+      date=Date.parse(this.date_);
+    }
+    let orderId=Orders.collection.insert({
+      now:this.nowChore,
+      location:{
+        lng:this.customer.location.lng,
+        lat:this.customer.location.lat
+      },
+      status_:'Looking For Providers',
+      name:this.choosedCategory,
+      parentName:this.choosedParentCategory,
+      categoryName:this.parentParentCategory,
+      date:date,
       creator:Meteor.userId(),
+      creatorName:this.customer.firstName,
+      creatorPhoto:customerPhoto,
       address1:this.addressForm.value.address1,
       address2:this.addressForm.value.address2,
       city:this.addressForm.value.city,
       state:this.addressForm.value.state,
       index:this.addressForm.value.index_,
-      sum:this.choosedPrice,
+      choreSum:this.choosedPrice,
       description:this.description,
-      images:this.thumbs
+      images:this.thumbs,
+      cardLast4:this.submitParams[0]
     });
+    let shouldAddCat:boolean=true;
+    if(this.customer.favoriteCategories){
+      this.customer.favoriteCategories.forEach((cat)=>{
+        if(cat.choosedCategory==this.choosedCategory){
+          shouldAddCat=false;
+        }
+      })
+    }
+    if(this.usePreviousCard){
+      if(this.customer.lastStripeCustomer.indexOf("tok_")==-1){
+        if(shouldAddCat){
+          Customers.update(Meteor.userId(),{
+            $addToSet:{
+              favoriteCategories:{
+                parentParentCategory:this.parentParentCategory,
+                choosedPrice:this.choosedPrice,
+                choosedParentCategory:this.choosedParentCategory,
+                choosedCategory:this.choosedCategory
+              }
+            }
+          })
+        }
+        Stripes.insert({
+          orderId:orderId,
+          customer:this.customer.lastStripeCustomer,
+          usePrevious:true
+        })
+      }else{
+          if(this.stripeCustomer){
+            if(shouldAddCat){
+              Customers.update(Meteor.userId(),{
+                $set:{
+                  lastStripeCustomer:this.stripeCustomer
+                },
+                $addToSet:{
+                  favoriteCategories:{
+                    parentParentCategory:this.parentParentCategory,
+                    choosedPrice:this.choosedPrice,
+                    choosedParentCategory:this.choosedParentCategory,
+                    choosedCategory:this.choosedCategory
+                  }
+                }
+              })
+            }else{
+              Customers.update(Meteor.userId(),{
+                $set:{
+                  lastStripeCustomer:this.stripeCustomer
+                }
+              })
+            }
+            Stripes.insert({
+              orderId:orderId,
+              customer:this.stripeCustomer,
+              usePrevious:false
+            })
+          }
+      }
+    }else{
+      if(shouldAddCat){
+        Customers.update(Meteor.userId(),{
+          $set:{
+            lastStripeCustomer:this.stripeCustomer
+          },
+          $addToSet:{
+            favoriteCategories:{
+              parentParentCategory:this.parentParentCategory,
+              choosedPrice:this.choosedPrice,
+              choosedParentCategory:this.choosedParentCategory,
+              choosedCategory:this.choosedCategory
+            }
+          }
+        })
+      }else{
+        Customers.update(Meteor.userId(),{
+          $set:{
+            lastStripeCustomer:this.stripeCustomer
+          }
+        })
+      }
+      Stripes.insert({
+            orderId:orderId,
+            customer:this.stripeCustomer,
+            usePrevious:false
+      })
+    }
     this.submitParams.push(this.choosedParentCategory);
     this.submitParams.push(this.choosedCategory);
     this.submitParams.push(this.choosedPrice);
@@ -226,8 +384,29 @@ export class AddressComponent implements OnInit,OnDestroy{
     this.photosNotes=false;
     this.pay=false;
     this.submitPay=false;
-    this.addressList=true;
+    this.addressList=false;
     this.onSubmit.emit(this.submitParams);
+    alert("Credit card is approved");
+  }
+  descriptionNext(){
+    if(this.description!=="To protect your privacy, please don't include contact information in your job notes" && this.description!==""){
+      if(this.customer.lastStripeCustomer){
+        let previousCard=confirm("Do you want to use the credit/debit card (..."+this.customer.last4Numbers+") from your last chore? If you wish to try a new pay card press 'CANCEL'");
+        this.photosNotes=false;
+        if(previousCard){
+          this.submitParams.push(this.customer.last4Numbers);
+          this.usePreviousCard=true;
+          this.submitPay=true;
+        }else{
+          this.pay=true;
+        }
+      }else{
+        this.photosNotes=false;
+        this.pay=true;
+      }
+    }else{
+      this.snackBar.open("Please add the","description",{duration:9999});
+    }
   }
   ngOnDestroy(){
     if(this.thumbsSubscription){

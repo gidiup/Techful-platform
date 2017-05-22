@@ -1,10 +1,12 @@
-<div class="flex-container" fxLayout="row" fxLayoutAlign="center">
+<br fxShow="true" fxShow.xs="false">
+<div fxLayout="row" fxLayoutAlign="center">
         <md-card>
             <md-card-header>
                 <md-card-title>Sign in</md-card-title>
                 <md-card-subtitle>Sign in with your email</md-card-subtitle>
             </md-card-header>
             <md-card-content>
+                <br>
                 <form [formGroup]="loginForm" #f="ngForm" (ngSubmit)="login()">
                     <md-input-container>
                         <input mdInput formControlName="email" type="email" placeholder="Email">
@@ -12,19 +14,8 @@
                     <md-input-container>
                         <input mdInput formControlName="password" type="password" placeholder="Password">
                     </md-input-container>
+                    <br fxShow="false" fxShow.xs="true">
                     <button md-raised-button type="submit" aria-label="login">Sign In</button>
-                </form>
-                <form *ngIf="!isStepTwo" [formGroup]="phoneForm" #f="ngForm" (ngSubmit)="send()">
-                    <md-input-container>
-                        <input mdInput formControlName="phone" type="text" placeholder="Phone">
-                    </md-input-container>
-                    <button md-raised-button aria-label="send " type="submit">Send SMS</button>
-                </form>
-                <form *ngIf="isStepTwo" [formGroup]="verifyForm" #f="ngForm" (ngSubmit)="verify()">
-                    <md-input-container>
-                        <input mdInput formControlName="code" type="text" placeholder="Code">
-                    </md-input-container>
-                    <button md-raised-button aria-label="verify" type="submit">Verify code</button>
                 </form>
                 <div [hidden]="error==''">
                     <md-toolbar [hidden]="error==''">

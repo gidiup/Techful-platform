@@ -16,6 +16,29 @@
 .fa-angle-right{
   color:grey;
 }
-md-card{
+.height99,.mat-card-avatar{
+  height:99px !important;
+}
+.fa-star,.fa-star-half-o,.fa-star-o{
+  color:orange;
+}
+.mat-card-avatar{
+  background-size:contain;
+}
+md-toolbar-row{
   cursor:pointer;
+  border-top-style:solid;
+  border-top-width:1px;
+  border-top-color:rgba(0,0,0,0.12);
+}
+.noBorder{
+  border-top-width:0;
+}
+.swiperSlide{
+  width:135px;
+  background-color:rgba(0,0,0,0.12);
+  border:3px darkgrey solid;
+}
+.fa-camera{
+  color:white;
 }

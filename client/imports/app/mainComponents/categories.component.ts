@@ -1,4 +1,4 @@
-import {Component,OnInit,OnDestroy,EventEmitter,Output} from '@angular/core';
+import {Component,OnInit,EventEmitter,Output} from '@angular/core';
 import template from './categories.component.html';
 import style from './categories.component.scss';
 @Component({
@@ -6,7 +6,7 @@ import style from './categories.component.scss';
   template,
   styles:[style]
 })
-export class CategoriesComponent implements OnInit,OnDestroy{
+export class CategoriesComponent implements OnInit{
   height:number=0;
   categoriesPage:boolean=true;
   ELECTRONICSpage:boolean=false;
@@ -121,14 +121,16 @@ export class CategoriesComponent implements OnInit,OnDestroy{
   @Output() onSubmit:EventEmitter<any>=new EventEmitter();
   constructor(){}
   ngOnInit(){
-    this.height=window.innerHeight-125;
+    if(window.innerWidth>666){
+      this.height=window.innerHeight-125;
+    }else{
+      this.height=window.innerHeight-117;
+    }
   }
   back(){
     this.onBack.emit(null);
   }
   submit(){
     this.onSubmit.emit(null);
-  }
-  ngOnDestroy(){
   }
 }

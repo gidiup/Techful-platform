@@ -1,0 +1,70 @@
+.sebm-google-map-container{
+  height:375px;
+}
+.example-container {
+  width:100%;
+}
+.item{
+  height:80px;
+}
+.item:hover{
+  background:pink;
+}
+.disabled i,h4,h2,h5,.darkgrey{
+  color:darkgrey !important;
+}
+.item i,md-toolbar-row i,.fa-3x{
+  width:74px !important;
+  height:inherit !important;
+}
+h3,.fa-3x{
+  padding-top:10px !important;
+}
+h1,.checked,.fa-3x{
+  color:#ff4081 !important;
+}
+.item,md-card-header,md-card-content h3{
+  cursor:pointer;
+}
+.disabled{
+  cursor:not-allowed;
+}
+.marginAuto{
+  margin:auto;
+}
+md-card{
+  margin-bottom:1em;
+  padding-top:0;
+}
+@media(min-width:600px){
+  md-card{
+    margin-bottom:1em;
+    padding:1em;
+    padding-top:0.4em;
+  }
+}
+md-chip{
+  height:16px;
+  margin-top:1.2em;
+}
+ul{
+  list-style-position:inside;
+  padding-left:0;
+  margin-bottom:0;
+}
+h5{
+  margin:0;
+}
+h4{
+  margin-top:25px;
+}
+.photo{
+  width:135px;
+  height:135px;
+  margin-right:10px;
+  background-color:rgba(0,0,0,0.12);
+  border:3px darkgrey solid;
+}
+.fa-camera{
+  color:white;
+}

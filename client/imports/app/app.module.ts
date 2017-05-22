@@ -9,6 +9,7 @@ import {routes,checkUser} from './app.routes';
 import {SwiperModule} from 'angular2-useful-swiper';
 import {MAIN_DECLARATIONS} from './mainComponents';
 import {SHARED_DECLARATIONS} from './shared';
+import {APP_DECLARATIONS} from './appComponents';
 import {MaterialModule} from "@angular/material";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {AUTH_DECLARATIONS} from "./auth/index";
@@ -33,6 +34,7 @@ moduleDefinition={
     declarations:[
       AppComponent,
       ...MAIN_DECLARATIONS,
+      ...APP_DECLARATIONS,
       ...SHARED_DECLARATIONS,
       ...AUTH_DECLARATIONS
     ],

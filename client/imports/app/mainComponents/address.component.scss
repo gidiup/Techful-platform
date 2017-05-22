@@ -1,11 +1,6 @@
 h1{
   cursor:pointer;
 }
-.backButton{
-  position:absolute;
-  margin-top:-50px;
-  color:white;
-}
 @media(max-width:972px){
   .backButton{
     margin-top:-46px !important;
@@ -30,6 +25,6 @@ h1{
 .fa-camera{
   color:white;
 }
-/deep/ .mat-select-trigger{
-  height:60px !important;
-}
+///deep/ .mat-select-trigger{
+//  height:60px !important;
+//}

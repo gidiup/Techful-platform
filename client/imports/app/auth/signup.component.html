@@ -1,3 +1,4 @@
+<br fxShow="true" fxShow.xs="false">
 <div class="flex-container" fxLayout="row" fxLayoutAlign="center">
     <md-card>
         <md-card-header>
@@ -11,6 +12,7 @@
                 <md-input-container>
                     <input mdInput formControlName="password" type="password" placeholder="Password">
                 </md-input-container>
+                <br fxShow="false" fxShow.xs="true">
                 <button md-raised-button type="submit" aria-label="login">Sign Up</button>
             </form>
             <div [hidden]="error==''">
