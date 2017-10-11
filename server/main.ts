@@ -4,10 +4,13 @@ import './imports/publications/users';
 import './imports/publications/techs';
 import './imports/publications/orders';
 import './imports/publications/stripes';
+import './imports/publications/notifications';
+import {Orders} from '../both/collections/orders.collection';
+import {Customers} from '../both/collections/customers.collection';
 const twilio=require('twilio');
 const client=new twilio("AC2eb5ba4f10766652254e98f39edfb94a","12d2a562e3086135de08a2708e81df15");
-// sk_live_QaFnWv9hZusRdI4sNmb64jEb
-const stripe=require('stripe')('sk_test_0jcDreMXhtK1jbt2X4Uvqa7q');
+//sk_live_DTUVpBy5ZJlLhCMpyrkafuYx
+const stripe=require('stripe')('sk_test_cFbM4dJXHKw33TbfjcfBtavO');
 const Uber=require('node-uber');
 // const uber=new Uber({
 //   client_id:'qqJi5e4WM0_99YkW4upuKKwDwxpo6EAG',
@@ -106,7 +109,7 @@ Meteor.methods({
     let newCustomer_=stripe.customers.retrieve(customer).then(function(newCustomer){
       return newCustomer
     }).catch(function(err){
-      throw new Meteor.Error("stripeAPIFailure",err.message || err);
+      throw new Meteor.Error("stripeAPIFailureServer",err.message || err);
     })
     return newCustomer_
   },
@@ -119,7 +122,10 @@ Meteor.methods({
     return customer_
   },
   sendCode:function(sms,phoneN){
-    let code=Math.round(Math.random()*1000);
+    let code:any="";
+    if(sms=='Welcome your invitation code is: '){
+      code=Math.round(Math.random()*1000);
+    }
     let answer=client.messages.create({
       body:sms+code,
       to:phoneN,
@@ -130,12 +136,40 @@ Meteor.methods({
       throw new Meteor.Error("twilioAPIFailure",err.message || err);
     })
     return answer
+  },
+  serverTime:function(){
+    return Date.now()
   }
 })
 Meteor.startup(()=>{
-  process.env.MONGODB_URI='mongodb://heroku_plw4nr3k:vrbj5t6d70dvs63j9ce14e5f0f@ds113670.mlab.com:13670/heroku_plw4nr3k';
   process.env.MAIL_URL='smtp://goodkidsapp:zxcvbnm,@smtp.gmail.com:465';
   if(Meteor.settings){
     SMS.twilio=Meteor.settings['twilio'];
   }
+  Meteor.setInterval(()=>{
+    let orders=Orders.find({status_:'Looking For Providers',date:{$lt:Date.now()-180000}},{fields:{creator:1}}).fetch()
+    let orderIds=[];
+    let usersArray=[];
+    orders.forEach((order)=>{
+      usersArray.push(order.creator);
+      orderIds.push(order._id)
+    })
+    let customers=Customers.find({_id:{$in:usersArray}},{fields:{phone:1}}).fetch()
+    customers.forEach((customer)=>{
+      client.messages.create({
+        body:"Counterbidding enabled. It's been 30 minutes and no provider has taken your job. We're going to open it up to counter bidding and see if that helps",
+        to:customer.phone,
+        from:SMS.twilio.FROM
+      }).then((message)=>{
+        console.log(message)
+      }).catch(function(err){
+        console.error(err.message || err)
+      })
+    })
+    Orders.update({_id:{$in:orderIds}},{
+      $set:{
+        status_:"Counter-bidding"
+      }
+    })
+  },99999)
 })

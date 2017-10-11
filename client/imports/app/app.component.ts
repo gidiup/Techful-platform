@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {Router} from '@angular/router';
 import {MeteorObservable} from 'meteor-rxjs';
 import {Subscription} from 'rxjs/Subscription';
+import {MdSnackBar} from '@angular/material'
 import {Customers} from '../../../both/collections/customers.collection';
 import {Customer} from '../../../both/models/customer.model';
 import style from './app.component.scss';
@@ -16,7 +17,7 @@ import {InjectUser} from "angular2-meteor-accounts-ui";
 export class AppComponent{
   customerSub:Subscription;
   customer:Customer;
-  constructor(private router:Router){
+  constructor(private router:Router,public snackBar:MdSnackBar){
     MeteorObservable.autorun().subscribe(()=>{
       if(Meteor.userId()){
         if(this.customerSub){
@@ -62,24 +63,24 @@ export class AppComponent{
       requestPermissions:['public_profile','email']
     },(err)=>{
       if(err){
-        console.log(err);
+        this.snackBar.open(err.message || err,"OK")
       }else{
-        console.log("facebook loged in");
+        this.snackBar.open("Facebook loged in","OK",{duration:9999})
       }
-    });
+    })
   }
   google(){
     Meteor.loginWithGoogle({
       requestPermissions:['profile','email']
     },(err)=>{
       if(err){
-        console.log(err);
+        this.snackBar.open(err.message || err,"OK")
       }else{
-        console.log("google loged in");
+        this.snackBar.open("Google loged in","OK",{duration:9999})
       }
-    });
+    })
   }
   logout(){
-    Meteor.logout();
+    Meteor.logout()
   }
 }

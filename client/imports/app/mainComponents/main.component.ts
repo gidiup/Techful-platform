@@ -1,4 +1,4 @@
-import {Component,OnInit,OnDestroy} from '@angular/core';
+import {Component,OnInit,OnDestroy,NgZone} from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
 import {MeteorObservable} from 'meteor-rxjs';
 import {Observable,Subject} from "rxjs";
@@ -14,6 +14,7 @@ import {Thumb} from "../../../../both/models/image.model";
 import {Thumbs} from "../../../../both/collections/images.collection";
 import {Stripe} from "../../../../both/models/stripe.model";
 import {Stripes} from "../../../../both/collections/stripes.collection";
+import {Notifications} from '../../../../both/collections/notifications.collection';
 import template from './main.component.html';
 import style from './main.component.scss';
 @Component({
@@ -75,11 +76,41 @@ export class MainComponent implements OnInit,OnDestroy{
   swiper_:boolean=true;
   showPast:boolean=false;
   addressPage:boolean=false;
-  constructor(public snackBar:MdSnackBar){}
+  priceInfo:boolean=false;
+  interval:any;
+  notificationSub:Subscription;
+  notifications:string[]=[];
+  constructor(public snackBar:MdSnackBar,private zone:NgZone){
+    this.zone.runOutsideAngular(()=>{
+      let oldGeo_;
+      this.interval=setInterval(()=>{
+        let geo=Geolocation.latLng();
+        if(geo){
+          if(!oldGeo_){
+            oldGeo_=geo;
+            Customers.update(Meteor.userId(),{
+              $set:{
+                "location.lat":geo.lat,
+                "location.lng":geo.lng
+              }
+            });
+          }else if(geo.lat!==oldGeo_.lat || geo.lng!==oldGeo_.lng){
+            oldGeo_=geo;
+            Customers.update(Meteor.userId(),{
+              $set:{
+                "location.lat":geo.lat,
+                "location.lng":geo.lng
+              }
+            });
+          }
+        }
+      },9999);
+    })
+  }
   ngOnInit(){
     let oldGeo;
-    setInterval(()=>{
-      let geo=Geolocation.latLng();
+    setTimeout(()=>{
+      let geo=Geolocation.latLng()
       if(geo){
         if(!oldGeo){
           oldGeo=geo;
@@ -99,7 +130,7 @@ export class MainComponent implements OnInit,OnDestroy{
           });
         }
       }
-    },9999);
+    },999)
     let correctingWidth=0;
     if(window.innerWidth>666){
       correctingWidth=48;
@@ -114,8 +145,13 @@ export class MainComponent implements OnInit,OnDestroy{
     this.customerSub=MeteorObservable.subscribe('user',Meteor.userId()).subscribe(()=>{
       MeteorObservable.autorun().subscribe(()=>{
         this.customer=Customers.findOne();
-        if(this.customer && !this.categoriesPage && !this.thanksPage){
+        if(this.customer && !this.categoriesPage && !this.thanksPage && !this.firstPage){
           this.firstPage=true;
+          this.tabIndex=1;
+          this.refresh(()=>{
+            this.tabIndex=2;
+            this.jobIndex=0
+          })
         }
         // if(!this.customer.uberAccessToken){
         //   let codeIndex=location.href.indexOf("?code=");
@@ -194,28 +230,83 @@ export class MainComponent implements OnInit,OnDestroy{
         });
       })
     })
+    if(this.notificationSub){
+      this.notificationSub.unsubscribe()
+    }
+    this.notificationSub=MeteorObservable.subscribe('notifications',Meteor.userId()).subscribe(()=>{
+      MeteorObservable.autorun().subscribe(()=>{
+        let notifications=Notifications.find().fetch()
+        this.notifications=[]
+        notifications.forEach((NN)=>{
+          this.notifications.push(NN.orderId)
+        })
+      })
+    })
+  }
+  clear_(){
+    clearInterval(this.interval)
+  }
+  antibug(){
+    this.tabIndex=3;
+    this.refresh(()=>{
+      this.tabIndex=2;
+    })
+  }
+  onInterval(){
+    this.zone.runOutsideAngular(()=> {
+      let oldGeo;
+      this.interval=setInterval(()=>{
+        let geo=Geolocation.latLng();
+        if(geo){
+          if(!oldGeo){
+            oldGeo=geo;
+            Customers.update(Meteor.userId(),{
+              $set:{
+                "location.lat":geo.lat,
+                "location.lng":geo.lng
+              }
+            })
+          } else if(geo.lat !== oldGeo.lat || geo.lng !== oldGeo.lng){
+            oldGeo=geo;
+            Customers.update(Meteor.userId(),{
+              $set:{
+                "location.lat":geo.lat,
+                "location.lng":geo.lng
+              }
+            })
+          }
+        }
+      },9999)
+    })
   }
   activateJob(event_){
     if(event_.index==1){
       this.jobIndex=0;
     }
   }
-  reload(){
+  reload(tabIndex){
+    this.jobsList=true;
     this.firstPage=true;
     this.jobIndex=1;
     this.swiper_=false;
     this.thankYou=false;
     this.thanksPage=false;
     this.refresh(()=>{
-      this.tabIndex=1;
       this.swiper_=true;
-      this.jobIndex=0;
-    });
+      this.tabIndex=tabIndex
+    })
+    setTimeout(()=>{
+      this.jobIndex=0
+    },999)
   }
   refresh(doneCallback:()=>void){
     setTimeout(function(){
       doneCallback();
     },0)
+  }
+  togglegroup(value){
+    this.tip=Number(value);
+    this.totalSum=(this.sumWithoutTip+Number(value)).toFixed(2)
   }
   search(text){
   //
@@ -224,10 +315,9 @@ export class MainComponent implements OnInit,OnDestroy{
     if(this.customer.favorites){
       let alreadyExists=this.customer.favorites.includes(technicianId);
       if(!alreadyExists){
-        this.customer.favorites.push(technicianId)
         Customers.update(Meteor.userId(),{
-          $set:{
-            favorites:this.customer.favorites
+          $addToSet:{
+            favorites:technicianId
           }
         })
       }
@@ -240,15 +330,19 @@ export class MainComponent implements OnInit,OnDestroy{
     }
   }
   toChore(order){
-    if(order.status_!==' Due to arrive' && order.status_!==' Chore in progress'){
+    if(order.status_!==' Chore in progress'){
       this.order_=order;
+      this.orderAddress=this.order_.address1+", "+this.order_.city+", "+this.order_.state+", "+this.order_.index;
       if(this.order_.providers && this.order_.providers.length>0){
-        this.orderAddress=this.order_.address1+", "+this.order_.city+", "+this.order_.state+", "+this.order_.index;
-        if(this.order_.status_=="Providers Available"){
+        if(this.order_.status_=="Providers Available" || this.order_.status_=="Counter-bidding"){
+          let providers=[];
+          this.order_.providers.forEach((provider)=>{
+            providers.push(provider.id);
+          })
           if(this.techSub){
             this.techSub.unsubscribe();
           }
-          this.techSub=MeteorObservable.subscribe('providersSubscription',this.order_.providers).subscribe(()=>{
+          this.techSub=MeteorObservable.subscribe('providersSubscription',providers).subscribe(()=>{
             MeteorObservable.autorun().subscribe(()=>{
               this.orderProviders=Techs.find().zone();
               this.jobsList=false;
@@ -258,13 +352,24 @@ export class MainComponent implements OnInit,OnDestroy{
           if(this.oneTechSub){
             this.oneTechSub.unsubscribe();
           }
-          this.oneTechSub=MeteorObservable.subscribe('provider',this.order_.providers[0]).subscribe(()=>{
+          this.oneTechSub=MeteorObservable.subscribe('provider',this.order_.providers[0].id).subscribe(()=>{
             MeteorObservable.autorun().subscribe(()=>{
-              this.provider=Techs.findOne(this.order_.providers[0]);
+              this.provider=Techs.findOne(this.order_.providers[0].id);
               this.jobsList=false;
-            });
+            })
           })
         }
+      }else{
+        this.jobsList=false
+      }
+      let tempN=Notifications.find({
+        orderId:order._id,
+        forWhom:Meteor.userId()
+      }).fetch()
+      if(tempN){
+        tempN.forEach((nn)=>{
+          Notifications.remove(nn._id)
+        })
       }
     }else{
       this.snackBar.open("Waiting on the technician.","ok",{duration:9999});
@@ -279,34 +384,76 @@ export class MainComponent implements OnInit,OnDestroy{
   }
   confirmProvider(providerId,providerName){
     let temporaryProviders=[];
-    temporaryProviders.push(providerId);
-    if(this.order_.now){
-      Orders.update(this.order_._id,{
-        $set:{
-          date:Date.now(),
-          status_:' Due to arrive',
-          providerId:providerId,
-          providerName:providerName,
-          providers:temporaryProviders
-        }
-      })
-    }else{
-      Orders.update(this.order_._id,{
-        $set:{
-          status_:' Due to arrive',
-          providerId:providerId,
-          providerName:providerName,
-          providers:temporaryProviders
-        }
+    let bid;
+    if(this.order_.status_=="Counter-bidding"){
+      this.order_.providers.forEach((provider)=>{
+         if(provider.id==providerId){
+           bid=provider.bid
+         }
       })
     }
+    if(!bid){
+      temporaryProviders.push({id:providerId})
+    }else{
+      temporaryProviders.push({id:providerId,bid:bid})
+    }
+    if(this.order_.now){
+      if(!bid){
+        Orders.update(this.order_._id,{
+          $set:{
+            date:Date.now(),
+            status_:' Due to arrive',
+            providerId:providerId,
+            providerName:providerName,
+            providers:temporaryProviders
+          }
+        })
+      }else{
+        Orders.update(this.order_._id,{
+          $set:{
+            choreSum:'$'+bid,
+            date:Date.now(),
+            status_:' Due to arrive',
+            providerId:providerId,
+            providerName:providerName,
+            providers:temporaryProviders
+          }
+        })
+      }
+    }else{
+      if(!bid){
+        Orders.update(this.order_._id,{
+          $set:{
+            status_:' Due to arrive',
+            providerId:providerId,
+            providerName:providerName,
+            providers:temporaryProviders
+          }
+        })
+      }else{
+        Orders.update(this.order_._id,{
+          $set:{
+            choreSum:'$'+bid,
+            status_:' Due to arrive',
+            providerId:providerId,
+            providerName:providerName,
+            providers:temporaryProviders
+          }
+        })
+      }
+    }
+    Notifications.insert({
+      orderId:this.order_._id,
+      forWhom:providerId,
+      myOrAvailable:true
+    })
     this.shownProviders=2;
     this.jobsList=true;
   }
   acceptChore_(){
     let temporarySum=Number(this.order_.choreSum.slice(1));
     this.serviceFee=temporarySum*0.08;
-    this.sumWithoutTip=temporarySum+this.serviceFee;
+    this.sumWithoutTip=Math.ceil(temporarySum+this.serviceFee);
     this.totalSum=this.sumWithoutTip.toFixed(2);
     this.jobsList=true;
     this.acceptChore=true;
@@ -324,6 +471,11 @@ export class MainComponent implements OnInit,OnDestroy{
     }else if(this.fiveStars){
       mark=5;
     }
+    this.oneStar=false;
+    this.twoStars=false;
+    this.threeStars=false;
+    this.fourStars=false;
+    this.fiveStars=false;
     if(mark==0){
       this.snackBar.open("You must live the"," mark",{duration:9999});
     }else{
@@ -338,7 +490,7 @@ export class MainComponent implements OnInit,OnDestroy{
           MeteorObservable.call('retrieveStripeCustomer',this.stripe.customer).subscribe((response_)=>{
             if(response_.id){
               this.snackBar.open(" Old data retrieved!","",{duration:999});
-              MeteorObservable.call('stripeCharge',response_.id,this.totalSum*100).subscribe((response)=> {
+              MeteorObservable.call('stripeCharge',response_.id,this.totalSum*100).subscribe((response)=>{
                 this.snackBar.open("Success", "OK", {duration: 9999});
                 Orders.update(this.order_._id,{
                   $set:{
@@ -355,15 +507,15 @@ export class MainComponent implements OnInit,OnDestroy{
                 })
                 this.acceptChore = false;
                 this.thankYou = true;
-              }), (err)=> {
-                this.snackBar.open(err,"",{duration: 9999});
+              },(err)=>{
+                this.snackBar.open(err,"OK");
                 this.acceptChore = false;
-              }
+              })
             }
-          }),(err)=>{
-            this.snackBar.open(err,"",{duration:9999});
+          },(err)=>{
+            this.snackBar.open(err,"OK");
             this.acceptChore=false;
-          }
+          })
         }else{
           MeteorObservable.call('stripeCharge',this.stripe.customer,this.totalSum*100).subscribe((response)=>{
             this.snackBar.open("Success","OK",{duration:9999});
@@ -383,11 +535,20 @@ export class MainComponent implements OnInit,OnDestroy{
             this.acceptChore=false;
             this.thankYou=true;
           },(err)=>{
-            this.snackBar.open(err,"",{duration:9999});
+            this.snackBar.open(err,"OK");
             this.acceptChore=false;
           })
         }
-      });
+      })
+      let tempN=Notifications.find({
+        orderId:this.order_._id,
+        forWhom:Meteor.userId()
+      }).fetch()
+      if(tempN){
+        tempN.forEach((nn)=>{
+          Notifications.remove(nn._id)
+        })
+      }
     }
   }
   submitAtIt(describeAtIt,priceAtIt){
@@ -428,6 +589,15 @@ export class MainComponent implements OnInit,OnDestroy{
         customer:this.stripe.customer,
         usePrevious:true
       })
+      Notifications.insert({
+        orderId:orderId,
+        forWhom:this.provider._id,
+        myOrAvailable:true
+      })
+      Notifications.insert({
+        orderId:orderId,
+        forWhom:Meteor.userId()
+      })
       this.submitParameters=[];
       this.submitParameters.push(this.order_.cardLast4);
       this.submitParameters.push("WHILE YOU`RE AT IT");
@@ -454,6 +624,7 @@ export class MainComponent implements OnInit,OnDestroy{
     this.fileIsOver=fileIsOver;
   }
   ngOnDestroy(){
+    clearInterval(this.interval);
     this.customerSub.unsubscribe();
     this.orderSub.unsubscribe();
     if(this.stripeSubscription){
@@ -464,6 +635,9 @@ export class MainComponent implements OnInit,OnDestroy{
     }
     if(this.techSub){
       this.techSub.unsubscribe();
+    }
+    if(this.notificationSub){
+      this.notificationSub.unsubscribe()
     }
   }
 }

@@ -5,7 +5,7 @@ import {Accounts} from 'meteor/accounts-base';
 import {MdSnackBar} from '@angular/material';
 import template from './signup.component.html';
 @Component({
-  selector: 'signup',
+  selector:'signup',
   template
 })
 export class SignupComponent implements OnInit{
@@ -26,13 +26,11 @@ export class SignupComponent implements OnInit{
         password: this.signupForm.value.password
       },(err)=>{
         if(err){
-          this.zone.run(()=>{
-            this.error=err;
-          });
+          this.error=err;
         }else{
-          this.router.navigate(['/']);
+          this.snackBar.open("Loged in","OK",{duration:9999});
         }
-      });
+      })
     }else{
       this.signupForm.reset();
       this.snackBar.open("Empty password or invalid email.","Try again.");

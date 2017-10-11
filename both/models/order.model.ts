@@ -26,9 +26,13 @@ export interface Order extends CollectionObject{
     parentName:string;
     categoryName:string;
     status_:string;
-    providers?:string[];
+    providers?:Providers[];
 }
 interface Location{
     lng:number;
     lat:number;
+}
+interface Providers{
+    id:string;
+    bid?:number;
 }

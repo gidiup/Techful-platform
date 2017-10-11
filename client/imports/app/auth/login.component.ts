@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit{
           if(err){
             this.error=err;
           }else{
-            this.router.navigate(['/']);
+            this.snackBar.open("Loged in","OK",{duration:9999});
           }
         });
       });

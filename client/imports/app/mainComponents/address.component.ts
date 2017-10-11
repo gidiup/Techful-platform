@@ -1,6 +1,6 @@
-import {Component,OnInit,OnDestroy,EventEmitter,Output} from '@angular/core';
+import {Component,OnInit,OnDestroy,EventEmitter,Output,Inject,Optional} from '@angular/core';
 import {FormBuilder,FormGroup,Validators} from '@angular/forms';
-import {MdDialog,MdDialogRef,MdSnackBar} from '@angular/material';
+import {MdDialog,MdDialogRef,MdSnackBar,MD_DIALOG_DATA} from '@angular/material';
 import {Customers} from '../../../../both/collections/customers.collection';
 import {Customer} from '../../../../both/models/customer.model';
 import {Order} from '../../../../both/models/order.model';
@@ -9,6 +9,7 @@ import {Thumb} from "../../../../both/models/image.model";
 import {Thumbs} from "../../../../both/collections/images.collection";
 import {Orders} from '../../../../both/collections/orders.collection';
 import {Stripes} from '../../../../both/collections/stripes.collection';
+import {Notifications} from '../../../../both/collections/notifications.collection';
 import {Subject,Subscription} from 'rxjs';
 import {MeteorObservable} from 'meteor-rxjs';
 import template from './address.component.html';
@@ -67,7 +68,7 @@ export class AddressComponent implements OnInit,OnDestroy{
   date_:any;
   addressFields:boolean=false;
   usePreviousCard:boolean=false;
-  stripeCustomer:string;
+  stripeCustomer:string="";
   @Output() onBack:EventEmitter<any>=new EventEmitter();
   @Output() onSubmit:EventEmitter<string[]>=new EventEmitter<string[]>();
   constructor(private formBuilder:FormBuilder,public dialog:MdDialog,public snackBar:MdSnackBar){}
@@ -77,8 +78,8 @@ export class AddressComponent implements OnInit,OnDestroy{
     }else{
       this.height=window.innerHeight-117;
     }
-    // pk_live_kSgodW0LStFSbxu7VU8Var3Z
-    Stripe.setPublishableKey('pk_test_Ng3ruHIukPsB3Z1Os17y1X4i');
+    //pk_live_L8XPo5K8JbfCBGFS4qdo7DMR
+    Stripe.setPublishableKey('pk_test_GbzLgFkClr4SBIMivxkGKbsc');
     this.addressForm=this.formBuilder.group({
       address1:['',Validators.required],
       address2:[''],
@@ -115,9 +116,11 @@ export class AddressComponent implements OnInit,OnDestroy{
     };
     this.customerSubscription=MeteorObservable.subscribe('user',Meteor.userId()).subscribe(()=>{
       MeteorObservable.autorun().subscribe(()=>{
-        this.customer=Customers.findOne();
+        if(!this.submitPay){
+          this.customer=Customers.findOne()
+        }
         if(!this.when && !this.addressFields){
-          this.addressList=true;
+          this.addressList=true
         }
       })
     });
@@ -190,30 +193,23 @@ export class AddressComponent implements OnInit,OnDestroy{
         this.submitParams.push(last4numbers_);
         this.pay=false;
         this.submitPay=true;
-        if(this.usePreviousCard){
-          if(this.customer.lastStripeCustomer.indexOf("tok_")!==-1){
-            MeteorObservable.call('firstStripeCustomer',this.customer.lastStripeCustomer,this.customer.email).subscribe((response)=>{
-              if(response.id){
-                this.stripeCustomer=response.id;
-              }
-            },(err)=>{
-              console.log(err);
-            })
-          }
-        }else{
-          Stripe.card.createToken({
+        Stripe.card.createToken({
             number:this.payForm.value.cardN,
             cvc:this.payForm.value.cvv,
             exp_month:this.payForm.value.exp,
             exp_year:this.payForm.value.date
-          },(status,response)=>{
+        },(status,response)=>{
             if(response.error){
               this.snackBar.open(response.error.message,"",{duration:9999});
             }else{
-              this.stripeCustomer=response.id;
+              this.stripeCustomer=response.id
+              Customers.update(Meteor.userId(),{
+                $set:{
+                  lastStripeCustomer:response.id
+                }
+              })
             }
-          })
-        }
+        })
       }else{
         this.snackBar.open("You typed wrong card or date/month number","",{duration:9999});
       }
@@ -221,16 +217,42 @@ export class AddressComponent implements OnInit,OnDestroy{
       this.snackBar.open("You typed wrong data.","OK!",{duration:9999});
     }
   }
-  openDialog(){
-    let dialogRef=this.dialog.open(areYouSurePopup);
+  openDialog(secondPopup){
+    let dialogRef=this.dialog.open(areYouSurePopup,{data:secondPopup});
     dialogRef.afterClosed().subscribe(result=>{
-      if(result){
-        this.whenDate=false;
-        this.photosNotes=true;
+      if(!secondPopup){
+        if(result){
+          this.schedule=false;
+          this.whenDate=false;
+          this.photosNotes=true;
+        }else{
+          console.log(result);
+        }
       }else{
-        console.log(result);
+        this.photosNotes=false;
+        if(result){
+          this.submitParams.push(this.customer.last4Numbers);
+          this.usePreviousCard=true;
+          this.submitPay=true;
+          if(this.customer.lastStripeCustomer.indexOf("tok_")!==-1){
+            MeteorObservable.call('firstStripeCustomer',this.customer.lastStripeCustomer,this.customer.email).subscribe((response)=>{
+              if(response.id){
+                this.stripeCustomer=response.id
+                Customers.update(Meteor.userId(),{
+                  $set:{
+                    lastStripeCustomer:response.id
+                  }
+                })
+              }
+            },(err)=>{
+              console.log(err);
+            })
+          }
+        }else{
+          this.pay=true;
+        }
       }
-    });
+    })
   }
   onFileDrop(file:File):void{
     if(file){
@@ -259,68 +281,49 @@ export class AddressComponent implements OnInit,OnDestroy{
     if(this.customer.photo!==""){
       customerPhoto=this.customer.photo;
     }
-    let date=Date.now();
-    if(this.date_){
-      date=Date.parse(this.date_);
-    }
-    let orderId=Orders.collection.insert({
-      now:this.nowChore,
-      location:{
-        lng:this.customer.location.lng,
-        lat:this.customer.location.lat
-      },
-      status_:'Looking For Providers',
-      name:this.choosedCategory,
-      parentName:this.choosedParentCategory,
-      categoryName:this.parentParentCategory,
-      date:date,
-      creator:Meteor.userId(),
-      creatorName:this.customer.firstName,
-      creatorPhoto:customerPhoto,
-      address1:this.addressForm.value.address1,
-      address2:this.addressForm.value.address2,
-      city:this.addressForm.value.city,
-      state:this.addressForm.value.state,
-      index:this.addressForm.value.index_,
-      choreSum:this.choosedPrice,
-      description:this.description,
-      images:this.thumbs,
-      cardLast4:this.submitParams[0]
-    });
-    let shouldAddCat:boolean=true;
-    if(this.customer.favoriteCategories){
-      this.customer.favoriteCategories.forEach((cat)=>{
-        if(cat.choosedCategory==this.choosedCategory){
-          shouldAddCat=false;
+    let date;
+    MeteorObservable.call('serverTime').subscribe((response)=>{
+        if(this.date_){
+          date=Date.parse(this.date_);
+        }else{
+          date=response
         }
-      })
-    }
-    if(this.usePreviousCard){
-      if(this.customer.lastStripeCustomer.indexOf("tok_")==-1){
-        if(shouldAddCat){
-          Customers.update(Meteor.userId(),{
-            $addToSet:{
-              favoriteCategories:{
-                parentParentCategory:this.parentParentCategory,
-                choosedPrice:this.choosedPrice,
-                choosedParentCategory:this.choosedParentCategory,
-                choosedCategory:this.choosedCategory
-              }
+        let orderId=Orders.collection.insert({
+          now:this.nowChore,
+          location:{
+            lng:this.customer.location.lng,
+            lat:this.customer.location.lat
+          },
+          status_:'Looking For Providers',
+          name:this.choosedCategory,
+          parentName:this.choosedParentCategory,
+          categoryName:this.parentParentCategory,
+          date:date,
+          creator:Meteor.userId(),
+          creatorName:this.customer.firstName,
+          creatorPhoto:customerPhoto,
+          address1:this.addressForm.value.address1,
+          address2:this.addressForm.value.address2,
+          city:this.addressForm.value.city,
+          state:this.addressForm.value.state,
+          index:this.addressForm.value.index_,
+          choreSum:this.choosedPrice,
+          description:this.description,
+          images:this.thumbs,
+          cardLast4:this.submitParams[0]
+        });
+        let shouldAddCat:boolean=true;
+        if(this.customer.favoriteCategories){
+          this.customer.favoriteCategories.forEach((cat)=>{
+            if(cat.choosedCategory==this.choosedCategory){
+              shouldAddCat=false;
             }
           })
         }
-        Stripes.insert({
-          orderId:orderId,
-          customer:this.customer.lastStripeCustomer,
-          usePrevious:true
-        })
-      }else{
-          if(this.stripeCustomer){
+        if(this.usePreviousCard){
+          if(this.stripeCustomer.indexOf("tok_")==-1){//other tries
             if(shouldAddCat){
               Customers.update(Meteor.userId(),{
-                $set:{
-                  lastStripeCustomer:this.stripeCustomer
-                },
                 $addToSet:{
                   favoriteCategories:{
                     parentParentCategory:this.parentParentCategory,
@@ -330,10 +333,22 @@ export class AddressComponent implements OnInit,OnDestroy{
                   }
                 }
               })
-            }else{
+            }
+            Stripes.insert({
+              orderId:orderId,
+              customer:this.customer.lastStripeCustomer,
+              usePrevious:true
+            })
+          }else{//second try
+            if(shouldAddCat){
               Customers.update(Meteor.userId(),{
-                $set:{
-                  lastStripeCustomer:this.stripeCustomer
+                $addToSet:{
+                  favoriteCategories:{
+                    parentParentCategory:this.parentParentCategory,
+                    choosedPrice:this.choosedPrice,
+                    choosedParentCategory:this.choosedParentCategory,
+                    choosedCategory:this.choosedCategory
+                  }
                 }
               })
             }
@@ -343,35 +358,34 @@ export class AddressComponent implements OnInit,OnDestroy{
               usePrevious:false
             })
           }
-      }
-    }else{
-      if(shouldAddCat){
-        Customers.update(Meteor.userId(),{
-          $set:{
-            lastStripeCustomer:this.stripeCustomer
-          },
-          $addToSet:{
-            favoriteCategories:{
-              parentParentCategory:this.parentParentCategory,
-              choosedPrice:this.choosedPrice,
-              choosedParentCategory:this.choosedParentCategory,
-              choosedCategory:this.choosedCategory
-            }
+        }else{//first try
+          if(shouldAddCat){
+            Customers.update(Meteor.userId(),{
+              $addToSet:{
+                favoriteCategories:{
+                  parentParentCategory:this.parentParentCategory,
+                  choosedPrice:this.choosedPrice,
+                  choosedParentCategory:this.choosedParentCategory,
+                  choosedCategory:this.choosedCategory
+                }
+              }
+            })
           }
-        })
-      }else{
-        Customers.update(Meteor.userId(),{
-          $set:{
-            lastStripeCustomer:this.stripeCustomer
-          }
-        })
-      }
-      Stripes.insert({
+          Stripes.insert({
             orderId:orderId,
             customer:this.stripeCustomer,
             usePrevious:false
-      })
-    }
+          })
+        }
+        Notifications.insert({
+          orderId:orderId,
+          myOrAvailable:false
+        })
+        Notifications.insert({
+          orderId:orderId,
+          forWhom:Meteor.userId()
+        })
+    })
     this.submitParams.push(this.choosedParentCategory);
     this.submitParams.push(this.choosedCategory);
     this.submitParams.push(this.choosedPrice);
@@ -391,15 +405,7 @@ export class AddressComponent implements OnInit,OnDestroy{
   descriptionNext(){
     if(this.description!=="To protect your privacy, please don't include contact information in your job notes" && this.description!==""){
       if(this.customer.lastStripeCustomer){
-        let previousCard=confirm("Do you want to use the credit/debit card (..."+this.customer.last4Numbers+") from your last chore? If you wish to try a new pay card press 'CANCEL'");
-        this.photosNotes=false;
-        if(previousCard){
-          this.submitParams.push(this.customer.last4Numbers);
-          this.usePreviousCard=true;
-          this.submitPay=true;
-        }else{
-          this.pay=true;
-        }
+        this.openDialog(this.customer.last4Numbers)
       }else{
         this.photosNotes=false;
         this.pay=true;
@@ -418,22 +424,27 @@ export class AddressComponent implements OnInit,OnDestroy{
 @Component({
   selector:'dialog-overview-example-dialog',
   template:`
-    <div fxLayout="column">
+    <div *ngIf="!data" fxLayout="column">
         <h2 fxLayoutAlign="center" class="font-normal">Are You Sure?</h2>
-        <p>When you select a provider for this job, you must have any necessary supplies ready and be prepared for them to arrive at your location in about an hour of being chosen.</p>
+        <p class="textCenter">When you select a provider for this job, you must have any necessary supplies ready and be prepared for them to arrive at your location in about an hour of being chosen.</p>
         <div fxLayout="row">
-            <button md-raised-button fxFlex="50%" aria-label="no" (click)="answer(false)">No</button><button md-raised-button fxFlex="50%" aria-label="yes" (click)="answer(true)">Yes</button>
+            <button md-raised-button fxFlex="50%" aria-label="no" (click)="answer(false)" class="aqua">No</button>
+            <button md-raised-button fxFlex="50%" aria-label="yes" (click)="answer(true)" class="aqua">Yes</button>
+        </div>
+    </div>
+    <div *ngIf="data" fxLayout="column">
+        <h2 fxLayoutAlign="center" class="font-normal">Do you want to use the credit/debit card (...{{data}}) from your last chore?</h2>
+        <p class="textCenter">If you wish to try a new pay card press 'No'</p>
+        <div fxLayout="row">
+            <button md-raised-button fxFlex="50%" aria-label="no" (click)="answer(false)" class="aqua">No</button>
+            <button md-raised-button fxFlex="50%" aria-label="yes" (click)="answer(true)" class="aqua">Yes</button>
         </div>
     </div>
   `
 })
 export class areYouSurePopup{
-  constructor(public dialogRef:MdDialogRef<areYouSurePopup>){}
+  constructor(public dialogRef:MdDialogRef<areYouSurePopup>,@Optional() @Inject(MD_DIALOG_DATA) public data:any){}
   answer(answr){
-    if(answr){
-      this.dialogRef.close(answr);
-    }else{
-      this.dialogRef.close(answr);
-    }
+    this.dialogRef.close(answr)
   }
 }

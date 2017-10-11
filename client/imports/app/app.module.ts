@@ -10,7 +10,8 @@ import {SwiperModule} from 'angular2-useful-swiper';
 import {MAIN_DECLARATIONS} from './mainComponents';
 import {SHARED_DECLARATIONS} from './shared';
 import {APP_DECLARATIONS} from './appComponents';
-import {MaterialModule} from "@angular/material";
+import {MdDialogModule,MdTooltipModule,MdTabsModule,MdInputModule,MdToolbarModule,MdButtonToggleModule,MdDatepickerModule,
+    MdSelectModule,MdSlideToggleModule,MdSnackBarModule,MdButtonModule,MdCardModule,MdSidenavModule,MdListModule,MdChipsModule,MdNativeDateModule} from "@angular/material";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {AUTH_DECLARATIONS} from "./auth/index";
 import {areYouSurePopup} from "./mainComponents/address.component";
@@ -26,7 +27,22 @@ moduleDefinition={
         RouterModule.forRoot(routes),
         AccountsModule,
         AgmCoreModule.forRoot({apiKey:'AIzaSyAWoBdZHCNh5R-hB5S5ZZ2oeoYyfdDgniA'}),
-        MaterialModule,
+        MdDialogModule,
+        MdTooltipModule,
+        MdTabsModule,
+        MdInputModule,
+        MdToolbarModule,
+        MdButtonToggleModule,
+        MdDatepickerModule,
+        MdSelectModule,
+        MdSlideToggleModule,
+        MdSnackBarModule,
+        MdButtonModule,
+        MdCardModule,
+        MdSidenavModule,
+        MdListModule,
+        MdChipsModule,
+        MdNativeDateModule,
         FlexLayoutModule,
         FileDropModule,
 	    SwiperModule
@@ -39,7 +55,7 @@ moduleDefinition={
       ...AUTH_DECLARATIONS
     ],
     providers:[
-      checkUser
+        checkUser
     ],
     bootstrap:[
       AppComponent

@@ -179,7 +179,7 @@ export class AppComponent implements OnInit,OnDestroy{
           }
         },(err)=>{
           alert(err);
-          //delete this!
+          //delete this!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
           Customers.insert({
             _id:Meteor.userId(),
             email:this.infoForm.value.email,

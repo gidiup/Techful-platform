@@ -16,9 +16,9 @@ export const ThumbsStore = new UploadFS.store.GridFS({
     remove:loggedIn
   }),
   transformWrite(from,to,fileId,file){
-    const gm = require('gm');
-    gm(from, file.name)
-      .resize(129,129)
+    const gm=require('gm');
+    gm(from,file.name)
+      .resize(129,129,'!')
       .gravity('Center')
       .extent(129,129)
       .quality(75)
