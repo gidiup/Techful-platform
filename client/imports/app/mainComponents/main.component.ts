@@ -104,7 +104,7 @@ export class MainComponent implements OnInit,OnDestroy{
             });
           }
         }
-      },9999);
+      },30000);
     })
   }
   ngOnInit(){

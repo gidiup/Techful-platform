@@ -59,7 +59,7 @@ export class AppComponent implements OnInit,OnDestroy{
           });
         }
       }
-    },9999);
+    },30000);
     let user_=Meteor.user();
     let email="";
     if(user_.emails){

@@ -5,6 +5,7 @@ import './imports/publications/techs';
 import './imports/publications/orders';
 import './imports/publications/stripes';
 import './imports/publications/notifications';
+import {registerFacebookMobileLoginHandler} from './imports/loginHandler';
 import {Orders} from '../both/collections/orders.collection';
 import {Customers} from '../both/collections/customers.collection';
 const twilio=require('twilio');
@@ -146,6 +147,7 @@ Meteor.startup(()=>{
   if(Meteor.settings){
     SMS.twilio=Meteor.settings['twilio'];
   }
+  registerFacebookMobileLoginHandler();
   Meteor.setInterval(()=>{
     let orders=Orders.find({status_:'Looking For Providers',date:{$lt:Date.now()-180000}},{fields:{creator:1}}).fetch()
     let orderIds=[];
