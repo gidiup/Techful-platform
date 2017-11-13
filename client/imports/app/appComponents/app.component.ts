@@ -4,7 +4,7 @@ import {MeteorObservable} from 'meteor-rxjs';
 import {Subject} from 'rxjs';
 import {Router} from '@angular/router';
 import {FormBuilder,FormGroup,Validators} from '@angular/forms';
-import {MdSnackBar} from '@angular/material';
+// import {MatSnackBar} from '@angular/material';
 import {InjectUser} from "angular2-meteor-accounts-ui";
 import {upload} from '../../../../both/methods/images.methods';
 import {Customers} from '../../../../both/collections/customers.collection';
@@ -35,7 +35,7 @@ export class AppComponent implements OnInit,OnDestroy{
   fileIsOver:boolean=false;
   uploading:boolean=false;
   file:Subject<string>=new Subject<string>();
-  constructor(private router:Router,private formBuilder:FormBuilder,public snackBar:MdSnackBar){}
+  constructor(private router:Router,private formBuilder:FormBuilder,public snackBar:FormBuilder){}
   ngOnInit(){
     let oldGeo;
     setInterval(()=>{
@@ -175,7 +175,7 @@ export class AppComponent implements OnInit,OnDestroy{
             this.hideStep2=false;
             this.hideStep1=true;
           }else{
-            this.snackBar.open("Wrong code","OK!",{duration:9999});
+            // this.snackBar.open("Wrong code","OK!",{duration:9999});
           }
         },(err)=>{
           alert(err);
@@ -202,7 +202,7 @@ export class AppComponent implements OnInit,OnDestroy{
           this.hideStep1=true;
         })
       }else{
-        this.snackBar.open("Empty filds!","OK.",{duration:9999});
+        // this.snackBar.open("Empty filds!","OK.",{duration:9999});
       }
     }
   }

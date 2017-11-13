@@ -1,107 +1,107 @@
-<button md-fab *ngIf="notifications.length>0" color="primary" style="position:fixed;right:9px;bottom:50px;opacity:0.9;color:white;z-index:9;"><h1>{{notifications.length}}</h1></button>
-<md-tab-group *ngIf="!thanksPage && !acceptChore && !thankYou && !atIt" [selectedIndex]="tabIndex" headerPosition="below">
-    <md-tab>
+<button mat-fab *ngIf="notifications.length>0" color="primary" style="position:fixed;right:9px;bottom:50px;opacity:0.9;color:white;z-index:9;"><h1>{{notifications.length}}</h1></button>
+<mat-tab-group *ngIf="!thanksPage && !acceptChore && !thankYou && !atIt" [selectedIndex]="tabIndex" headerPosition="below">
+    <mat-tab>
         <div [ngStyle]="{'height':height+'px'}" class="scroll">
             <div *ngIf="showPast" fxLayout="column" fxFlex="90%" class="marginAuto">
                 <br>
-                <md-card *ngFor="let providerId of customer.favorites" class="margin8 pointer">
-                    <md-card-header fxLayoutAlign="center center" class="height99">
-                        <div md-card-avatar [ngStyle]="{'background-image':'url('+(providerId | providerPhoto)+')'}" class="mat-card-avatar"></div>
-                        <md-card-title><h2 class="font-normal aqua margin0 uppercase">{{providerId | providerName}}</h2></md-card-title>
-                        <md-card-subtitle *ngIf="(providerId | providerMarksPipe)==5">
+                <mat-card *ngFor="let providerId of customer.favorites" class="margin8 pointer">
+                    <mat-card-header fxLayoutAlign="center center" class="height99">
+                        <div mat-card-avatar [ngStyle]="{'background-image':'url('+(providerId | providerPhoto)+')'}" class="mat-card-avatar"></div>
+                        <mat-card-title><h2 class="font-normal aqua margin0 uppercase">{{providerId | providerName}}</h2></mat-card-title>
+                        <mat-card-subtitle *ngIf="(providerId | providerMarksPipe)==5">
                             <i class="fa fa-star" aria-hidden="true"></i>
                             <i class="fa fa-star" aria-hidden="true"></i>
                             <i class="fa fa-star" aria-hidden="true"></i>
                             <i class="fa fa-star" aria-hidden="true"></i>
                             <i class="fa fa-star" aria-hidden="true"></i>
-                        </md-card-subtitle>
-                        <md-card-subtitle *ngIf="4.5<=(providerId | providerMarksPipe) && (providerId | providerMarksPipe)<5">
+                        </mat-card-subtitle>
+                        <mat-card-subtitle *ngIf="4.5<=(providerId | providerMarksPipe) && (providerId | providerMarksPipe)<5">
                             <i class="fa fa-star" aria-hidden="true"></i>
                             <i class="fa fa-star" aria-hidden="true"></i>
                             <i class="fa fa-star" aria-hidden="true"></i>
                             <i class="fa fa-star" aria-hidden="true"></i>
                             <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                        </md-card-subtitle>
-                        <md-card-subtitle *ngIf="4<=(providerId | providerMarksPipe) && (providerId | providerMarksPipe)<4.5">
+                        </mat-card-subtitle>
+                        <mat-card-subtitle *ngIf="4<=(providerId | providerMarksPipe) && (providerId | providerMarksPipe)<4.5">
                             <i class="fa fa-star" aria-hidden="true"></i>
                             <i class="fa fa-star" aria-hidden="true"></i>
                             <i class="fa fa-star" aria-hidden="true"></i>
                             <i class="fa fa-star" aria-hidden="true"></i>
                             <i class="fa fa-star-o" aria-hidden="true"></i>
-                        </md-card-subtitle>
-                        <md-card-subtitle *ngIf="3.5<=(providerId | providerMarksPipe) && (providerId | providerMarksPipe)<4">
+                        </mat-card-subtitle>
+                        <mat-card-subtitle *ngIf="3.5<=(providerId | providerMarksPipe) && (providerId | providerMarksPipe)<4">
                             <i class="fa fa-star" aria-hidden="true"></i>
                             <i class="fa fa-star" aria-hidden="true"></i>
                             <i class="fa fa-star" aria-hidden="true"></i>
                             <i class="fa fa-star-half-o" aria-hidden="true"></i>
                             <i class="fa fa-star-o" aria-hidden="true"></i>
-                        </md-card-subtitle>
-                        <md-card-subtitle *ngIf="3<=(providerId | providerMarksPipe) && (providerId | providerMarksPipe)<3.5">
+                        </mat-card-subtitle>
+                        <mat-card-subtitle *ngIf="3<=(providerId | providerMarksPipe) && (providerId | providerMarksPipe)<3.5">
                             <i class="fa fa-star" aria-hidden="true"></i>
                             <i class="fa fa-star" aria-hidden="true"></i>
                             <i class="fa fa-star" aria-hidden="true"></i>
                             <i class="fa fa-star-o" aria-hidden="true"></i>
                             <i class="fa fa-star-o" aria-hidden="true"></i>
-                        </md-card-subtitle>
-                        <md-card-subtitle *ngIf="2.5<=(providerId | providerMarksPipe) && (providerId | providerMarksPipe)<3">
+                        </mat-card-subtitle>
+                        <mat-card-subtitle *ngIf="2.5<=(providerId | providerMarksPipe) && (providerId | providerMarksPipe)<3">
                             <i class="fa fa-star" aria-hidden="true"></i>
                             <i class="fa fa-star" aria-hidden="true"></i>
                             <i class="fa fa-star-half-o" aria-hidden="true"></i>
                             <i class="fa fa-star-o" aria-hidden="true"></i>
                             <i class="fa fa-star-o" aria-hidden="true"></i>
-                        </md-card-subtitle>
-                        <md-card-subtitle *ngIf="2<=(providerId | providerMarksPipe) && (providerId | providerMarksPipe)<2.5">
+                        </mat-card-subtitle>
+                        <mat-card-subtitle *ngIf="2<=(providerId | providerMarksPipe) && (providerId | providerMarksPipe)<2.5">
                             <i class="fa fa-star" aria-hidden="true"></i>
                             <i class="fa fa-star" aria-hidden="true"></i>
                             <i class="fa fa-star-o" aria-hidden="true"></i>
                             <i class="fa fa-star-o" aria-hidden="true"></i>
                             <i class="fa fa-star-o" aria-hidden="true"></i>
-                        </md-card-subtitle>
-                        <md-card-subtitle *ngIf="1.5<=(providerId | providerMarksPipe) && (providerId | providerMarksPipe)<2">
+                        </mat-card-subtitle>
+                        <mat-card-subtitle *ngIf="1.5<=(providerId | providerMarksPipe) && (providerId | providerMarksPipe)<2">
                             <i class="fa fa-star" aria-hidden="true"></i>
                             <i class="fa fa-star-half-o" aria-hidden="true"></i>
                             <i class="fa fa-star-o" aria-hidden="true"></i>
                             <i class="fa fa-star-o" aria-hidden="true"></i>
                             <i class="fa fa-star-o" aria-hidden="true"></i>
-                        </md-card-subtitle>
-                        <md-card-subtitle *ngIf="1<=(providerId | providerMarksPipe) && (providerId | providerMarksPipe)<1.5">
+                        </mat-card-subtitle>
+                        <mat-card-subtitle *ngIf="1<=(providerId | providerMarksPipe) && (providerId | providerMarksPipe)<1.5">
                             <i class="fa fa-star" aria-hidden="true"></i>
                             <i class="fa fa-star-o" aria-hidden="true"></i>
                             <i class="fa fa-star-o" aria-hidden="true"></i>
                             <i class="fa fa-star-o" aria-hidden="true"></i>
                             <i class="fa fa-star-o" aria-hidden="true"></i>
-                        </md-card-subtitle>
-                        <md-card-subtitle *ngIf="(providerId | providerMarksPipe)==0">
+                        </mat-card-subtitle>
+                        <mat-card-subtitle *ngIf="(providerId | providerMarksPipe)==0">
                             <i class="fa fa-star-o" aria-hidden="true"></i>
                             <i class="fa fa-star-o" aria-hidden="true"></i>
                             <i class="fa fa-star-o" aria-hidden="true"></i>
                             <i class="fa fa-star-o" aria-hidden="true"></i>
                             <i class="fa fa-star-o" aria-hidden="true"></i>
-                        </md-card-subtitle>
-                    </md-card-header>
-                </md-card>
+                        </mat-card-subtitle>
+                    </mat-card-header>
+                </mat-card>
             </div>
         </div>
-        <ng-template md-tab-label>
+        <ng-template mat-tab-label>
             <i class="fa fa-heart-o fa-2x themeColor" aria-hidden="true"><br><div class="font20">Favorites</div></i>
         </ng-template>
-    </md-tab>
-    <md-tab>
-        <ng-template md-tab-label>
+    </mat-tab>
+    <mat-tab>
+        <ng-template mat-tab-label>
             <i class="fa fa-wrench fa-2x" aria-hidden="true"><br><div class="font20">Jobs</div></i>
         </ng-template>
         <div [ngStyle]="{'height':height+'px'}" class="scroll">
-            <md-tab-group *ngIf="jobsList" [selectedIndex]="jobIndex">
-                <md-tab>
-                    <ng-template md-tab-label>
+            <mat-tab-group *ngIf="jobsList" [selectedIndex]="jobIndex">
+                <mat-tab>
+                    <ng-template mat-tab-label>
                         <h1 [ngStyle]="{'width':width/2+'px'}">
-                            CURRENT <md-chip *ngIf="notifications.length>0" color="primary" selected="true" class="notificationChips">{{notifications.length}}</md-chip>
+                            CURRENT <mat-chip *ngIf="notifications.length>0" color="primary" selected="true" class="notificationChips">{{notifications.length}}</mat-chip>
                         </h1>
                     </ng-template>
                     <div fxLayout="column" fxFlex="90%" class="marginAuto padding20">
-                        <md-chip-list></md-chip-list>
-                        <md-card *ngFor="let order of orders | async" fxLayout="row" class="margin8 pointer" (click)="toChore(order)">
-                            <button *ngIf="notifications.indexOf(order._id)!==-1" md-mini-fab color="primary" class="notificationsMiniB">1</button>
+                        <mat-chip-list></mat-chip-list>
+                        <mat-card *ngFor="let order of orders | async" fxLayout="row" class="margin8 pointer" (click)="toChore(order)">
+                            <button *ngIf="notifications.indexOf(order._id)!==-1" mat-mini-fab color="primary" class="notificationsMiniB">1</button>
                             <div fxFlex="90%">
                                 <h2 class="aqua weight100">YOUR {{order.categoryName}} JOB</h2>
                                 <h4 class="weight100">{{order.categoryName}} JOB - WITH {{order.parentName}}</h4>
@@ -117,17 +117,17 @@
                                 <i class="fa fa-angle-right fa-3x" aria-hidden="true"></i>
                             </div>
                             <i *ngIf="order.status_!==''" fxFlex="10%" class="fa fa-angle-right fa-3x" fxLayoutAlign="end center" aria-hidden="true"></i>
-                        </md-card>
+                        </mat-card>
                     </div>
-                </md-tab>
-                <md-tab>
-                    <ng-template md-tab-label>
+                </mat-tab>
+                <mat-tab>
+                    <ng-template mat-tab-label>
                         <h1 [ngStyle]="{'width':width/2+'px'}">PAST</h1>
                     </ng-template>
                     <div fxLayout="row" fxLayoutAlign="center">
                         <div *ngIf="showPast" fxLayout="column" fxFlex="90%">
                             <br>
-                            <md-card *ngFor="let order of previousOrders | async" fxLayout="row" class="margin8 pointer">
+                            <mat-card *ngFor="let order of previousOrders | async" fxLayout="row" class="margin8 pointer">
                                 <div fxFlex="80%">
                                     <h2 class="aqua weight100">YOUR {{order.categoryName}} JOB</h2>
                                     <h4 class="weight100">{{order.categoryName}} JOB - WITH {{order.parentName}}</h4>
@@ -136,187 +136,187 @@
                                     <h5 class="themeColor">Completed</h5>
                                 </div>
                                 <div fxFlex="27%" fxLayout="column" fxLayoutAlign="center center">
-                                    <div md-card-avatar [ngStyle]="{'background-image':'url('+(order.providerId | providerPhoto)+')'}" class="mat-card-avatar"></div>
+                                    <div mat-card-avatar [ngStyle]="{'background-image':'url('+(order.providerId | providerPhoto)+')'}" class="mat-card-avatar"></div>
                                     <br>
-                                    <md-card-subtitle *ngIf="(order.providerId | providerMarksPipe)==5">
+                                    <mat-card-subtitle *ngIf="(order.providerId | providerMarksPipe)==5">
                                         <i class="fa fa-star" aria-hidden="true"></i>
                                         <i class="fa fa-star" aria-hidden="true"></i>
                                         <i class="fa fa-star" aria-hidden="true"></i>
                                         <i class="fa fa-star" aria-hidden="true"></i>
                                         <i class="fa fa-star" aria-hidden="true"></i>
-                                    </md-card-subtitle>
-                                    <md-card-subtitle *ngIf="4.5<=(order.providerId | providerMarksPipe) && (order.providerId | providerMarksPipe)<5">
+                                    </mat-card-subtitle>
+                                    <mat-card-subtitle *ngIf="4.5<=(order.providerId | providerMarksPipe) && (order.providerId | providerMarksPipe)<5">
                                         <i class="fa fa-star" aria-hidden="true"></i>
                                         <i class="fa fa-star" aria-hidden="true"></i>
                                         <i class="fa fa-star" aria-hidden="true"></i>
                                         <i class="fa fa-star" aria-hidden="true"></i>
                                         <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                                    </md-card-subtitle>
-                                    <md-card-subtitle *ngIf="4<=(order.providerId | providerMarksPipe) && (order.providerId | providerMarksPipe)<4.5">
+                                    </mat-card-subtitle>
+                                    <mat-card-subtitle *ngIf="4<=(order.providerId | providerMarksPipe) && (order.providerId | providerMarksPipe)<4.5">
                                         <i class="fa fa-star" aria-hidden="true"></i>
                                         <i class="fa fa-star" aria-hidden="true"></i>
                                         <i class="fa fa-star" aria-hidden="true"></i>
                                         <i class="fa fa-star" aria-hidden="true"></i>
                                         <i class="fa fa-star-o" aria-hidden="true"></i>
-                                    </md-card-subtitle>
-                                    <md-card-subtitle *ngIf="3.5<=(order.providerId | providerMarksPipe) && (order.providerId | providerMarksPipe)<4">
+                                    </mat-card-subtitle>
+                                    <mat-card-subtitle *ngIf="3.5<=(order.providerId | providerMarksPipe) && (order.providerId | providerMarksPipe)<4">
                                         <i class="fa fa-star" aria-hidden="true"></i>
                                         <i class="fa fa-star" aria-hidden="true"></i>
                                         <i class="fa fa-star" aria-hidden="true"></i>
                                         <i class="fa fa-star-half-o" aria-hidden="true"></i>
                                         <i class="fa fa-star-o" aria-hidden="true"></i>
-                                    </md-card-subtitle>
-                                    <md-card-subtitle *ngIf="3<=(order.providerId | providerMarksPipe) && (order.providerId | providerMarksPipe)<3.5">
+                                    </mat-card-subtitle>
+                                    <mat-card-subtitle *ngIf="3<=(order.providerId | providerMarksPipe) && (order.providerId | providerMarksPipe)<3.5">
                                         <i class="fa fa-star" aria-hidden="true"></i>
                                         <i class="fa fa-star" aria-hidden="true"></i>
                                         <i class="fa fa-star" aria-hidden="true"></i>
                                         <i class="fa fa-star-o" aria-hidden="true"></i>
                                         <i class="fa fa-star-o" aria-hidden="true"></i>
-                                    </md-card-subtitle>
-                                    <md-card-subtitle *ngIf="2.5<=(order.providerId | providerMarksPipe) && (order.providerId | providerMarksPipe)<3">
+                                    </mat-card-subtitle>
+                                    <mat-card-subtitle *ngIf="2.5<=(order.providerId | providerMarksPipe) && (order.providerId | providerMarksPipe)<3">
                                         <i class="fa fa-star" aria-hidden="true"></i>
                                         <i class="fa fa-star" aria-hidden="true"></i>
                                         <i class="fa fa-star-half-o" aria-hidden="true"></i>
                                         <i class="fa fa-star-o" aria-hidden="true"></i>
                                         <i class="fa fa-star-o" aria-hidden="true"></i>
-                                    </md-card-subtitle>
-                                    <md-card-subtitle *ngIf="2<=(order.providerId | providerMarksPipe) && (order.providerId | providerMarksPipe)<2.5">
+                                    </mat-card-subtitle>
+                                    <mat-card-subtitle *ngIf="2<=(order.providerId | providerMarksPipe) && (order.providerId | providerMarksPipe)<2.5">
                                         <i class="fa fa-star" aria-hidden="true"></i>
                                         <i class="fa fa-star" aria-hidden="true"></i>
                                         <i class="fa fa-star-o" aria-hidden="true"></i>
                                         <i class="fa fa-star-o" aria-hidden="true"></i>
                                         <i class="fa fa-star-o" aria-hidden="true"></i>
-                                    </md-card-subtitle>
-                                    <md-card-subtitle *ngIf="1.5<=(order.providerId | providerMarksPipe) && (order.providerId | providerMarksPipe)<2">
+                                    </mat-card-subtitle>
+                                    <mat-card-subtitle *ngIf="1.5<=(order.providerId | providerMarksPipe) && (order.providerId | providerMarksPipe)<2">
                                         <i class="fa fa-star" aria-hidden="true"></i>
                                         <i class="fa fa-star-half-o" aria-hidden="true"></i>
                                         <i class="fa fa-star-o" aria-hidden="true"></i>
                                         <i class="fa fa-star-o" aria-hidden="true"></i>
                                         <i class="fa fa-star-o" aria-hidden="true"></i>
-                                    </md-card-subtitle>
-                                    <md-card-subtitle *ngIf="1<=(order.providerId | providerMarksPipe) && (order.providerId | providerMarksPipe)<1.5">
+                                    </mat-card-subtitle>
+                                    <mat-card-subtitle *ngIf="1<=(order.providerId | providerMarksPipe) && (order.providerId | providerMarksPipe)<1.5">
                                         <i class="fa fa-star" aria-hidden="true"></i>
                                         <i class="fa fa-star-o" aria-hidden="true"></i>
                                         <i class="fa fa-star-o" aria-hidden="true"></i>
                                         <i class="fa fa-star-o" aria-hidden="true"></i>
                                         <i class="fa fa-star-o" aria-hidden="true"></i>
-                                    </md-card-subtitle>
-                                    <md-card-subtitle *ngIf="(order.providerId | providerMarksPipe)==0">
+                                    </mat-card-subtitle>
+                                    <mat-card-subtitle *ngIf="(order.providerId | providerMarksPipe)==0">
                                         <i class="fa fa-star-o" aria-hidden="true"></i>
                                         <i class="fa fa-star-o" aria-hidden="true"></i>
                                         <i class="fa fa-star-o" aria-hidden="true"></i>
                                         <i class="fa fa-star-o" aria-hidden="true"></i>
                                         <i class="fa fa-star-o" aria-hidden="true"></i>
-                                    </md-card-subtitle>
-                                    <button md-button color="warn" (click)="favoriteWorker(order.providerId)">
+                                    </mat-card-subtitle>
+                                    <button mat-button color="warn" (click)="favoriteWorker(order.providerId)">
                                         Add to favorites
                                     </button>
                                 </div>
-                            </md-card>
+                            </mat-card>
                         </div>
                     </div>
-                </md-tab>
-            </md-tab-group>
+                </mat-tab>
+            </mat-tab-group>
             <div *ngIf="!jobsList" fxLayout="row" fxLayoutAlign="center">
-                <button md-button (click)="shownProviders=2;jobsList=true;" class="backButton z_index">
+                <button mat-button (click)="shownProviders=2;jobsList=true;" class="backButton z_index">
                     <i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i> <span>Jobs</span>
                 </button>
                 <div fxLayout="column" fxFlex="90%" style="height:100%;">
                     <h2 fxLayoutAlign="center" class="font-normal aqua textCenter weight100">{{order_.parentName}}</h2>
                     <h4 fxLayoutAlign="center" class="font-normal grey textCenter margin0">{{order_.name}}</h4>
                     <h3 *ngIf="order_.status_!=='Counter-bidding'" fxLayoutAlign="center" class="font-normal">{{order_.choreSum}}</h3>
-                    <md-divider></md-divider>
+                    <mat-divider></mat-divider>
                     <h4 fxLayoutAlign="center" class="font-normal aqua textCenter">{{orderAddress}}</h4>
-                    <md-divider></md-divider>
+                    <mat-divider></mat-divider>
                     <h5 *ngIf="order_.status_=='Counter-bidding'" fxLayoutAlign="center" class="font-normal darkgrey textCenter">We noticed that your job may not be priced properly.<br>
                         We opened it up to receive counter-bids.<br>
                         Note that promo codes don't apply to counter-bid jobs.
                     </h5>
                     <h3 *ngIf="order_.status_=='Counter-bidding'" fxLayoutAlign="center" class="font-normal margin0">Original Price:&nbsp;<div style="text-decoration:line-through;">{{order_.choreSum}}</div></h3>
-                    <md-divider *ngIf="order_.status_=='Counter-bidding'"></md-divider>
+                    <mat-divider *ngIf="order_.status_=='Counter-bidding'"></mat-divider>
                     <h4 *ngIf="!order_.providers" fxLayoutAlign="center" class="font-normal darkgrey textCenter">No Providers Available</h4>
                     <h4 *ngIf="order_.status_=='Counter-bidding' && order_.providers" fxLayoutAlign="center" class="font-normal darkgrey textCenter">Your counter-bids:</h4>
                     <h4 *ngIf="order_.status_==' Provider en route'" fxLayoutAlign="center" class="font-normal grey">Provider en route</h4>
                     <h2 *ngIf="order_.status_==''"></h2>
-                    <md-card *ngIf="order_.status_==' Provider en route' || order_.status_==''" class="margin8" style="cursor:default;">
-                            <md-card-header fxLayoutAlign="center center" class="height99">
-                                <div md-card-avatar [ngStyle]="{'background-image':'url('+provider.photo+')'}" class="mat-card-avatar"></div>
-                                <md-card-title><h2 class="font-normal aqua margin0 uppercase">{{provider.firstName}}</h2></md-card-title>
-                                <md-card-subtitle *ngIf="(provider.marks | marksPipe)==5">
+                    <mat-card *ngIf="order_.status_==' Provider en route' || order_.status_==''" class="margin8" style="cursor:default;">
+                            <mat-card-header fxLayoutAlign="center center" class="height99">
+                                <div mat-card-avatar [ngStyle]="{'background-image':'url('+provider.photo+')'}" class="mat-card-avatar"></div>
+                                <mat-card-title><h2 class="font-normal aqua margin0 uppercase">{{provider.firstName}}</h2></mat-card-title>
+                                <mat-card-subtitle *ngIf="(provider.marks | marksPipe)==5">
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                     <i class="fa fa-star" aria-hidden="true"></i>
-                                </md-card-subtitle>
-                                <md-card-subtitle *ngIf="4.5<=(provider.marks | marksPipe) && (provider.marks | marksPipe)<5">
+                                </mat-card-subtitle>
+                                <mat-card-subtitle *ngIf="4.5<=(provider.marks | marksPipe) && (provider.marks | marksPipe)<5">
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                     <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                                </md-card-subtitle>
-                                <md-card-subtitle *ngIf="4<=(provider.marks | marksPipe) && (provider.marks | marksPipe)<4.5">
+                                </mat-card-subtitle>
+                                <mat-card-subtitle *ngIf="4<=(provider.marks | marksPipe) && (provider.marks | marksPipe)<4.5">
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                     <i class="fa fa-star-o" aria-hidden="true"></i>
-                                </md-card-subtitle>
-                                <md-card-subtitle *ngIf="3.5<=(provider.marks | marksPipe) && (provider.marks | marksPipe)<4">
+                                </mat-card-subtitle>
+                                <mat-card-subtitle *ngIf="3.5<=(provider.marks | marksPipe) && (provider.marks | marksPipe)<4">
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                     <i class="fa fa-star-half-o" aria-hidden="true"></i>
                                     <i class="fa fa-star-o" aria-hidden="true"></i>
-                                </md-card-subtitle>
-                                <md-card-subtitle *ngIf="3<=(provider.marks | marksPipe) && (provider.marks | marksPipe)<3.5">
+                                </mat-card-subtitle>
+                                <mat-card-subtitle *ngIf="3<=(provider.marks | marksPipe) && (provider.marks | marksPipe)<3.5">
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                     <i class="fa fa-star-o" aria-hidden="true"></i>
                                     <i class="fa fa-star-o" aria-hidden="true"></i>
-                                </md-card-subtitle>
-                                <md-card-subtitle *ngIf="2.5<=(provider.marks | marksPipe) && (provider.marks | marksPipe)<3">
+                                </mat-card-subtitle>
+                                <mat-card-subtitle *ngIf="2.5<=(provider.marks | marksPipe) && (provider.marks | marksPipe)<3">
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                     <i class="fa fa-star-half-o" aria-hidden="true"></i>
                                     <i class="fa fa-star-o" aria-hidden="true"></i>
                                     <i class="fa fa-star-o" aria-hidden="true"></i>
-                                </md-card-subtitle>
-                                <md-card-subtitle *ngIf="2<=(provider.marks | marksPipe) && (provider.marks | marksPipe)<2.5">
+                                </mat-card-subtitle>
+                                <mat-card-subtitle *ngIf="2<=(provider.marks | marksPipe) && (provider.marks | marksPipe)<2.5">
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                     <i class="fa fa-star-o" aria-hidden="true"></i>
                                     <i class="fa fa-star-o" aria-hidden="true"></i>
                                     <i class="fa fa-star-o" aria-hidden="true"></i>
-                                </md-card-subtitle>
-                                <md-card-subtitle *ngIf="1.5<=(provider.marks | marksPipe) && (provider.marks | marksPipe)<2">
+                                </mat-card-subtitle>
+                                <mat-card-subtitle *ngIf="1.5<=(provider.marks | marksPipe) && (provider.marks | marksPipe)<2">
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                     <i class="fa fa-star-half-o" aria-hidden="true"></i>
                                     <i class="fa fa-star-o" aria-hidden="true"></i>
                                     <i class="fa fa-star-o" aria-hidden="true"></i>
                                     <i class="fa fa-star-o" aria-hidden="true"></i>
-                                </md-card-subtitle>
-                                <md-card-subtitle *ngIf="1<=(provider.marks | marksPipe) && (provider.marks | marksPipe)<1.5">
+                                </mat-card-subtitle>
+                                <mat-card-subtitle *ngIf="1<=(provider.marks | marksPipe) && (provider.marks | marksPipe)<1.5">
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                     <i class="fa fa-star-o" aria-hidden="true"></i>
                                     <i class="fa fa-star-o" aria-hidden="true"></i>
                                     <i class="fa fa-star-o" aria-hidden="true"></i>
                                     <i class="fa fa-star-o" aria-hidden="true"></i>
-                                </md-card-subtitle>
-                                <md-card-subtitle *ngIf="(provider.marks | marksPipe)==0">
+                                </mat-card-subtitle>
+                                <mat-card-subtitle *ngIf="(provider.marks | marksPipe)==0">
                                     <i class="fa fa-star-o" aria-hidden="true"></i>
                                     <i class="fa fa-star-o" aria-hidden="true"></i>
                                     <i class="fa fa-star-o" aria-hidden="true"></i>
                                     <i class="fa fa-star-o" aria-hidden="true"></i>
                                     <i class="fa fa-star-o" aria-hidden="true"></i>
-                                </md-card-subtitle>
-                            </md-card-header>
-                            <md-card-content fxLayoutAlign="center">
+                                </mat-card-subtitle>
+                            </mat-card-header>
+                            <mat-card-content fxLayoutAlign="center">
                                 {{provider.bio}}
-                            </md-card-content>
-                    </md-card>
+                            </mat-card-content>
+                    </mat-card>
                     <div *ngIf="order_.status_==' Provider en route' || order_.status_==''" fxLayout="row" fxLayoutAlign="space-around" class="margin8">
                         <div fxLayout="column" fxLayoutAlign=" center">
                             <span class="fa-stack fa-5x specialColor pointer">
@@ -333,102 +333,102 @@
                             Text Provider
                         </div>
                     </div>
-                    <sebm-google-map *ngIf="order_.status_==' Provider en route'"
-                                    [latitude]="provider.location.lat"
-                                    [longitude]="provider.location.lng"
-                                    [zoom]="zoom"
-                                    [disableDefaultUI]="true"
-                                    [streetViewControl]="false"
-                                     [zoomControl]="false">
-                        <sebm-google-map-marker
-                                [latitude]="provider.location.lat"
-                                [longitude]="provider.location.lng"
-                                [iconUrl]="'img/Marker.png'">
-                        </sebm-google-map-marker>
-                    </sebm-google-map>
+                    <!--<sebm-google-map *ngIf="order_.status_==' Provider en route'"-->
+                                    <!--[latitude]="provider.location.lat"-->
+                                    <!--[longitude]="provider.location.lng"-->
+                                    <!--[zoom]="zoom"-->
+                                    <!--[disableDefaultUI]="true"-->
+                                    <!--[streetViewControl]="false"-->
+                                     <!--[zoomControl]="false">-->
+                        <!--<sebm-google-map-marker-->
+                                <!--[latitude]="provider.location.lat"-->
+                                <!--[longitude]="provider.location.lng"-->
+                                <!--[iconUrl]="'img/Marker.png'">-->
+                        <!--</sebm-google-map-marker>-->
+                    <!--</sebm-google-map>-->
                     <h2 *ngIf="order_.status_=='Providers Available'" fxLayoutAlign="center" class="font-normal grey">Choose a Provider Below</h2>
                     <div *ngIf="order_.status_=='Providers Available' || order_.status_=='Counter-bidding'">
-                        <md-card *ngFor="let provider of orderProviders | async;let i=index" class="margin8 pointer" (click)="showHideConfirm(provider._id)" [ngClass]="{'hidden':i>shownProviders}" style="padding:0;">
+                        <mat-card *ngFor="let provider of orderProviders | async;let i=index" class="margin8 pointer" (click)="showHideConfirm(provider._id)" [ngClass]="{'hidden':i>shownProviders}" style="padding:0;">
                             <div *ngIf="order_.status_=='Counter-bidding'" fxLayout="row">
                                 <div fxFlex="75%">
-                                    <md-card-header fxLayoutAlign="center center" class="height99">
-                                        <div md-card-avatar [ngStyle]="{'background-image':'url('+provider.photo+')'}" class="mat-card-avatar"></div>
-                                        <md-card-title><h2 class="font-normal aqua margin0 uppercase">{{provider.firstName}}</h2></md-card-title>
-                                        <md-card-subtitle *ngIf="(provider.marks | marksPipe)==5">
+                                    <mat-card-header fxLayoutAlign="center center" class="height99">
+                                        <div mat-card-avatar [ngStyle]="{'background-image':'url('+provider.photo+')'}" class="mat-card-avatar"></div>
+                                        <mat-card-title><h2 class="font-normal aqua margin0 uppercase">{{provider.firstName}}</h2></mat-card-title>
+                                        <mat-card-subtitle *ngIf="(provider.marks | marksPipe)==5">
                                             <i class="fa fa-star" aria-hidden="true"></i>
                                             <i class="fa fa-star" aria-hidden="true"></i>
                                             <i class="fa fa-star" aria-hidden="true"></i>
                                             <i class="fa fa-star" aria-hidden="true"></i>
                                             <i class="fa fa-star" aria-hidden="true"></i>
-                                        </md-card-subtitle>
-                                        <md-card-subtitle *ngIf="4.5<=(provider.marks | marksPipe) && (provider.marks | marksPipe)<5">
+                                        </mat-card-subtitle>
+                                        <mat-card-subtitle *ngIf="4.5<=(provider.marks | marksPipe) && (provider.marks | marksPipe)<5">
                                             <i class="fa fa-star" aria-hidden="true"></i>
                                             <i class="fa fa-star" aria-hidden="true"></i>
                                             <i class="fa fa-star" aria-hidden="true"></i>
                                             <i class="fa fa-star" aria-hidden="true"></i>
                                             <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                                        </md-card-subtitle>
-                                        <md-card-subtitle *ngIf="4<=(provider.marks | marksPipe) && (provider.marks | marksPipe)<4.5">
+                                        </mat-card-subtitle>
+                                        <mat-card-subtitle *ngIf="4<=(provider.marks | marksPipe) && (provider.marks | marksPipe)<4.5">
                                             <i class="fa fa-star" aria-hidden="true"></i>
                                             <i class="fa fa-star" aria-hidden="true"></i>
                                             <i class="fa fa-star" aria-hidden="true"></i>
                                             <i class="fa fa-star" aria-hidden="true"></i>
                                             <i class="fa fa-star-o" aria-hidden="true"></i>
-                                        </md-card-subtitle>
-                                        <md-card-subtitle *ngIf="3.5<=(provider.marks | marksPipe) && (provider.marks | marksPipe)<4">
+                                        </mat-card-subtitle>
+                                        <mat-card-subtitle *ngIf="3.5<=(provider.marks | marksPipe) && (provider.marks | marksPipe)<4">
                                             <i class="fa fa-star" aria-hidden="true"></i>
                                             <i class="fa fa-star" aria-hidden="true"></i>
                                             <i class="fa fa-star" aria-hidden="true"></i>
                                             <i class="fa fa-star-half-o" aria-hidden="true"></i>
                                             <i class="fa fa-star-o" aria-hidden="true"></i>
-                                        </md-card-subtitle>
-                                        <md-card-subtitle *ngIf="3<=(provider.marks | marksPipe) && (provider.marks | marksPipe)<3.5">
+                                        </mat-card-subtitle>
+                                        <mat-card-subtitle *ngIf="3<=(provider.marks | marksPipe) && (provider.marks | marksPipe)<3.5">
                                             <i class="fa fa-star" aria-hidden="true"></i>
                                             <i class="fa fa-star" aria-hidden="true"></i>
                                             <i class="fa fa-star" aria-hidden="true"></i>
                                             <i class="fa fa-star-o" aria-hidden="true"></i>
                                             <i class="fa fa-star-o" aria-hidden="true"></i>
-                                        </md-card-subtitle>
-                                        <md-card-subtitle *ngIf="2.5<=(provider.marks | marksPipe) && (provider.marks | marksPipe)<3">
+                                        </mat-card-subtitle>
+                                        <mat-card-subtitle *ngIf="2.5<=(provider.marks | marksPipe) && (provider.marks | marksPipe)<3">
                                             <i class="fa fa-star" aria-hidden="true"></i>
                                             <i class="fa fa-star" aria-hidden="true"></i>
                                             <i class="fa fa-star-half-o" aria-hidden="true"></i>
                                             <i class="fa fa-star-o" aria-hidden="true"></i>
                                             <i class="fa fa-star-o" aria-hidden="true"></i>
-                                        </md-card-subtitle>
-                                        <md-card-subtitle *ngIf="2<=(provider.marks | marksPipe) && (provider.marks | marksPipe)<2.5">
+                                        </mat-card-subtitle>
+                                        <mat-card-subtitle *ngIf="2<=(provider.marks | marksPipe) && (provider.marks | marksPipe)<2.5">
                                             <i class="fa fa-star" aria-hidden="true"></i>
                                             <i class="fa fa-star" aria-hidden="true"></i>
                                             <i class="fa fa-star-o" aria-hidden="true"></i>
                                             <i class="fa fa-star-o" aria-hidden="true"></i>
                                             <i class="fa fa-star-o" aria-hidden="true"></i>
-                                        </md-card-subtitle>
-                                        <md-card-subtitle *ngIf="1.5<=(provider.marks | marksPipe) && (provider.marks | marksPipe)<2">
+                                        </mat-card-subtitle>
+                                        <mat-card-subtitle *ngIf="1.5<=(provider.marks | marksPipe) && (provider.marks | marksPipe)<2">
                                             <i class="fa fa-star" aria-hidden="true"></i>
                                             <i class="fa fa-star-half-o" aria-hidden="true"></i>
                                             <i class="fa fa-star-o" aria-hidden="true"></i>
                                             <i class="fa fa-star-o" aria-hidden="true"></i>
                                             <i class="fa fa-star-o" aria-hidden="true"></i>
-                                        </md-card-subtitle>
-                                        <md-card-subtitle *ngIf="1<=(provider.marks | marksPipe) && (provider.marks | marksPipe)<1.5">
+                                        </mat-card-subtitle>
+                                        <mat-card-subtitle *ngIf="1<=(provider.marks | marksPipe) && (provider.marks | marksPipe)<1.5">
                                             <i class="fa fa-star" aria-hidden="true"></i>
                                             <i class="fa fa-star-o" aria-hidden="true"></i>
                                             <i class="fa fa-star-o" aria-hidden="true"></i>
                                             <i class="fa fa-star-o" aria-hidden="true"></i>
                                             <i class="fa fa-star-o" aria-hidden="true"></i>
-                                        </md-card-subtitle>
-                                        <md-card-subtitle *ngIf="(provider.marks | marksPipe)==0">
+                                        </mat-card-subtitle>
+                                        <mat-card-subtitle *ngIf="(provider.marks | marksPipe)==0">
                                             <i class="fa fa-star-o" aria-hidden="true"></i>
                                             <i class="fa fa-star-o" aria-hidden="true"></i>
                                             <i class="fa fa-star-o" aria-hidden="true"></i>
                                             <i class="fa fa-star-o" aria-hidden="true"></i>
                                             <i class="fa fa-star-o" aria-hidden="true"></i>
-                                        </md-card-subtitle>
-                                    </md-card-header>
-                                    <md-card-content fxLayout="column" fxLayoutAlign=" center">
+                                        </mat-card-subtitle>
+                                    </mat-card-header>
+                                    <mat-card-content fxLayout="column" fxLayoutAlign=" center">
                                         {{provider.bio}}
                                         <h4 class="font-normal aqua textCenter">{{provider.location | distance:order_.location}} miles away</h4>
-                                    </md-card-content>
+                                    </mat-card-content>
                                 </div>
                                 <div fxFlex="25%" fxLayout="column" fxLayoutAlign="center" style="background-color:lightgrey;">
                                     <h2 class="font-normal aqua textCenter marginBottom0">Bid:</h2>
@@ -437,105 +437,105 @@
                                     </div>
                                 </div>
                             </div>
-                            <md-card-header *ngIf="order_.status_!=='Counter-bidding'" fxLayoutAlign="center center" class="height99">
-                                <div md-card-avatar [ngStyle]="{'background-image':'url('+provider.photo+')'}" class="mat-card-avatar"></div>
-                                <md-card-title><h2 class="font-normal aqua margin0 uppercase">{{provider.firstName}}</h2></md-card-title>
-                                <md-card-subtitle *ngIf="(provider.marks | marksPipe)==5">
+                            <mat-card-header *ngIf="order_.status_!=='Counter-bidding'" fxLayoutAlign="center center" class="height99">
+                                <div mat-card-avatar [ngStyle]="{'background-image':'url('+provider.photo+')'}" class="mat-card-avatar"></div>
+                                <mat-card-title><h2 class="font-normal aqua margin0 uppercase">{{provider.firstName}}</h2></mat-card-title>
+                                <mat-card-subtitle *ngIf="(provider.marks | marksPipe)==5">
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                     <i class="fa fa-star" aria-hidden="true"></i>
-                                </md-card-subtitle>
-                                <md-card-subtitle *ngIf="4.5<=(provider.marks | marksPipe) && (provider.marks | marksPipe)<5">
+                                </mat-card-subtitle>
+                                <mat-card-subtitle *ngIf="4.5<=(provider.marks | marksPipe) && (provider.marks | marksPipe)<5">
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                     <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                                </md-card-subtitle>
-                                <md-card-subtitle *ngIf="4<=(provider.marks | marksPipe) && (provider.marks | marksPipe)<4.5">
+                                </mat-card-subtitle>
+                                <mat-card-subtitle *ngIf="4<=(provider.marks | marksPipe) && (provider.marks | marksPipe)<4.5">
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                     <i class="fa fa-star-o" aria-hidden="true"></i>
-                                </md-card-subtitle>
-                                <md-card-subtitle *ngIf="3.5<=(provider.marks | marksPipe) && (provider.marks | marksPipe)<4">
+                                </mat-card-subtitle>
+                                <mat-card-subtitle *ngIf="3.5<=(provider.marks | marksPipe) && (provider.marks | marksPipe)<4">
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                     <i class="fa fa-star-half-o" aria-hidden="true"></i>
                                     <i class="fa fa-star-o" aria-hidden="true"></i>
-                                </md-card-subtitle>
-                                <md-card-subtitle *ngIf="3<=(provider.marks | marksPipe) && (provider.marks | marksPipe)<3.5">
+                                </mat-card-subtitle>
+                                <mat-card-subtitle *ngIf="3<=(provider.marks | marksPipe) && (provider.marks | marksPipe)<3.5">
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                     <i class="fa fa-star-o" aria-hidden="true"></i>
                                     <i class="fa fa-star-o" aria-hidden="true"></i>
-                                </md-card-subtitle>
-                                <md-card-subtitle *ngIf="2.5<=(provider.marks | marksPipe) && (provider.marks | marksPipe)<3">
+                                </mat-card-subtitle>
+                                <mat-card-subtitle *ngIf="2.5<=(provider.marks | marksPipe) && (provider.marks | marksPipe)<3">
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                     <i class="fa fa-star-half-o" aria-hidden="true"></i>
                                     <i class="fa fa-star-o" aria-hidden="true"></i>
                                     <i class="fa fa-star-o" aria-hidden="true"></i>
-                                </md-card-subtitle>
-                                <md-card-subtitle *ngIf="2<=(provider.marks | marksPipe) && (provider.marks | marksPipe)<2.5">
+                                </mat-card-subtitle>
+                                <mat-card-subtitle *ngIf="2<=(provider.marks | marksPipe) && (provider.marks | marksPipe)<2.5">
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                     <i class="fa fa-star-o" aria-hidden="true"></i>
                                     <i class="fa fa-star-o" aria-hidden="true"></i>
                                     <i class="fa fa-star-o" aria-hidden="true"></i>
-                                </md-card-subtitle>
-                                <md-card-subtitle *ngIf="1.5<=(provider.marks | marksPipe) && (provider.marks | marksPipe)<2">
+                                </mat-card-subtitle>
+                                <mat-card-subtitle *ngIf="1.5<=(provider.marks | marksPipe) && (provider.marks | marksPipe)<2">
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                     <i class="fa fa-star-half-o" aria-hidden="true"></i>
                                     <i class="fa fa-star-o" aria-hidden="true"></i>
                                     <i class="fa fa-star-o" aria-hidden="true"></i>
                                     <i class="fa fa-star-o" aria-hidden="true"></i>
-                                </md-card-subtitle>
-                                <md-card-subtitle *ngIf="1<=(provider.marks | marksPipe) && (provider.marks | marksPipe)<1.5">
+                                </mat-card-subtitle>
+                                <mat-card-subtitle *ngIf="1<=(provider.marks | marksPipe) && (provider.marks | marksPipe)<1.5">
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                     <i class="fa fa-star-o" aria-hidden="true"></i>
                                     <i class="fa fa-star-o" aria-hidden="true"></i>
                                     <i class="fa fa-star-o" aria-hidden="true"></i>
                                     <i class="fa fa-star-o" aria-hidden="true"></i>
-                                </md-card-subtitle>
-                                <md-card-subtitle *ngIf="(provider.marks | marksPipe)==0">
+                                </mat-card-subtitle>
+                                <mat-card-subtitle *ngIf="(provider.marks | marksPipe)==0">
                                     <i class="fa fa-star-o" aria-hidden="true"></i>
                                     <i class="fa fa-star-o" aria-hidden="true"></i>
                                     <i class="fa fa-star-o" aria-hidden="true"></i>
                                     <i class="fa fa-star-o" aria-hidden="true"></i>
                                     <i class="fa fa-star-o" aria-hidden="true"></i>
-                                </md-card-subtitle>
-                            </md-card-header>
-                            <md-card-content *ngIf="order_.status_!=='Counter-bidding'" fxLayout="column" fxLayoutAlign=" center">
+                                </mat-card-subtitle>
+                            </mat-card-header>
+                            <mat-card-content *ngIf="order_.status_!=='Counter-bidding'" fxLayout="column" fxLayoutAlign=" center">
                                 {{provider.bio}}
                                 <h4 class="font-normal aqua textCenter">{{provider.location | distance:order_.location}} miles away</h4>
-                            </md-card-content>
-                            <md-card-actions *ngIf="showConfirm==provider._id" style="margin:0;padding:0;">
-                                <button md-raised-button aria-label="confirm_provider" color="primary" class="width100" (click)="confirmProvider(provider._id,provider.firstName)">
+                            </mat-card-content>
+                            <mat-card-actions *ngIf="showConfirm==provider._id" style="margin:0;padding:0;">
+                                <button mat-raised-button aria-label="confirm_provider" color="primary" class="width100" (click)="confirmProvider(provider._id,provider.firstName)">
                                     <h1>Confirm Provider</h1>
                                 </button>
-                            </md-card-actions>
-                        </md-card>
+                            </mat-card-actions>
+                        </mat-card>
                     </div>
-                    <button *ngIf="order_.status_=='Providers Available'" md-button aria-label="more_providers" class="margin8 aqua" (click)="shownProviders=shownProviders+3">Show More</button>
+                    <button *ngIf="order_.status_=='Providers Available'" mat-button aria-label="more_providers" class="margin8 aqua" (click)="shownProviders=shownProviders+3">Show More</button>
                     <div *ngIf="order_.status_==''" fxLayoutAlign="center center">
                         <div *ngFor="let img of order_.providerAfterImgs" class="photo">
                             <img [src]="img">
                         </div>
                     </div>
                     <h2 *ngIf="order_.status_==''" fxLayoutAlign="center" class="font-normal grey textCenter">Are you satisfied with the work completed?</h2>
-                    <button *ngIf="order_.status_==''" md-raised-button aria-label="accept_chore" color="primary" class="margin8" (click)="acceptChore_()"><h1>Accept</h1></button>
-                    <button md-raised-button aria-label="cancel_chore" color="warn" class="margin8"><h1 class="weight100">Cancel Chore</h1></button>
+                    <button *ngIf="order_.status_==''" mat-raised-button aria-label="accept_chore" color="primary" class="margin8" (click)="acceptChore_()"><h1>Accept</h1></button>
+                    <button mat-raised-button aria-label="cancel_chore" color="warn" class="margin8"><h1 class="weight100">Cancel Chore</h1></button>
                 </div>
             </div>
         </div>
-    </md-tab>
-    <md-tab>
+    </mat-tab>
+    <mat-tab>
         <address #addreSS [hidden]="!addressPage" (onBack)="addressPage=false;categoriesPage=true;" (onSubmit)="addressPage=false;submitParameters=$event;thanksPage=true;"></address>
         <div *ngIf="firstPage" [ngStyle]="{'height':height+'px'}" class="scroll">
             <div [hidden]="hideFixedBar" class="fixedTop z_index" style="top:0;">
@@ -544,115 +544,115 @@
             <div fxLayout="column" fxFlex="95%" class="marginAuto">
                 <h1 fxLayoutAlign="center" style="padding-top:50px;color:#1d4959;">TECHFUL</h1>
                 <div fxLayout="row" fxLayoutAlign="space-between" style="padding:10px;padding-bottom:0;border:1px solid lightgrey;background-color:white;">
-                    <md-input-container fxFlex="97%" dividerColor="primary">
-                        <input mdInput placeholder="HOW CAN WE HELP?" #searchtext>
-                    </md-input-container>
-                    <button md-mini-fab (click)="search(searchtext.value)" color="primary"><i class="fa fa-search fa-2x white" aria-hidden="true"></i></button>
+                    <mat-input-container fxFlex="97%" dividerColor="primary">
+                        <input matInput placeholder="HOW CAN WE HELP?" #searchtext>
+                    </mat-input-container>
+                    <button mat-mini-fab (click)="search(searchtext.value)" color="primary"><i class="fa fa-search fa-2x white" aria-hidden="true"></i></button>
                 </div>
                 <h3 class="relative darkgrey">FEATURED</h3>
                 <swiper *ngIf="swiper_ && customer.favoriteCategories" [config]="config" [ngStyle]="{'height':height/3+'px'}">
                     <div class="swiper-wrapper">
                         <div *ngFor="let fChore of customer.favoriteCategories" class="swiper-slide"
                              (click)="clear_();addreSS.parentParentCategory=fChore.parentParentCategory;addreSS.choosedPrice=fChore.choosedPrice;addreSS.choosedParentCategory=fChore.choosedParentCategory;addreSS.choosedCategory=fChore.choosedCategory;firstPage=false;addressPage=true;">
-                            <md-card style="padding-top:0;">
-                                <md-card-header fxLayoutAlign="center">
-                                    <md-card-title class="darkgrey"><h2 class="weight100">{{fChore.parentParentCategory}}</h2></md-card-title>
-                                </md-card-header>
-                                <!--<img md-card-image src="img/Screen Shot 2017-05-31 at 1.02.58 PM.png">-->
-                            </md-card>
+                            <mat-card style="padding-top:0;">
+                                <mat-card-header fxLayoutAlign="center">
+                                    <mat-card-title class="darkgrey"><h2 class="weight100">{{fChore.parentParentCategory}}</h2></mat-card-title>
+                                </mat-card-header>
+                                <!--<img mat-card-image src="img/Screen Shot 2017-05-31 at 1.02.58 PM.png">-->
+                            </mat-card>
                         </div>
                     </div>
                 </swiper>
-                <button md-raised-button color="primary" class="margin50"><h2 class="white">EARN TECHFUL CASH</h2></button>
-                <button md-raised-button style="margin-top:10px;" (click)="clear_();firstPage=false;categoriesPage=true"><h2 class="darkgrey">ALL CATEGORIES</h2></button>
+                <button mat-raised-button color="primary" class="margin50"><h2 class="white">EARN TECHFUL CASH</h2></button>
+                <button mat-raised-button style="margin-top:10px;" (click)="clear_();firstPage=false;categoriesPage=true"><h2 class="darkgrey">ALL CATEGORIES</h2></button>
                 <iframe *ngIf="showMap" [src]="map" style="width:100%;height:300px;"></iframe>
                 <br>
             </div>
         </div>
         <categories *ngIf="categoriesPage" (onBack)="categoriesPage=false;firstPage=true;onInterval();antibug()" (onSubmit)="categoriesPage=false;submitParameters=$event;thanksPage=true;"></categories>
-        <ng-template md-tab-label>
+        <ng-template mat-tab-label>
             <i class="fa fa-home fa-2x" aria-hidden="true" style="color:green;"><br><div class="font20">Home</div></i>
         </ng-template>
-    </md-tab>
-    <md-tab>
+    </mat-tab>
+    <mat-tab>
         <div [ngStyle]="{'height':height+'px'}" class="scroll">
             <h1 fxLayoutAlign="center">Share</h1>
         </div>
-        <ng-template md-tab-label>
+        <ng-template mat-tab-label>
             <i class="fa fa-share-alt fa-2x" aria-hidden="true" style="color:blue;"><br><div class="font20">Share</div></i>
         </ng-template>
-    </md-tab>
-    <md-tab>
+    </mat-tab>
+    <mat-tab>
         <div [ngStyle]="{'height':height+'px'}" class="scroll">
-            <md-toolbar *ngIf="!help" style="background-color:inherit;">
+            <mat-toolbar *ngIf="!help" style="background-color:inherit;">
                 <h3 class="font-normal grey weight100 pointer" (click)="help=true">Help</h3>
                 <span class="fill-remaining-space"></span>
                 <i class="fa fa-angle-right fa-lg grey pointer" aria-hidden="true" (click)="help=true"></i>
-                <md-toolbar-row [routerLink]="['/']">
+                <mat-toolbar-row [routerLink]="['/']">
                     <h3 class="font-normal grey weight100">Profile</h3>
                     <span class="fill-remaining-space"></span>
                     <i class="fa fa-angle-right fa-lg grey" aria-hidden="true"></i>
-                </md-toolbar-row>
-                <md-toolbar-row>
+                </mat-toolbar-row>
+                <mat-toolbar-row>
                     <h3 class="font-normal grey weight100">Payment</h3>
                     <span class="fill-remaining-space"></span>
                     <i class="fa fa-angle-right fa-lg grey" aria-hidden="true"></i>
-                </md-toolbar-row>
-                <md-toolbar-row>
+                </mat-toolbar-row>
+                <mat-toolbar-row>
                     <h3 class="font-normal grey weight100">Promo Code</h3>
                     <span class="fill-remaining-space"></span>
                     <i class="fa fa-angle-right fa-lg grey" aria-hidden="true"></i>
-                </md-toolbar-row>
-                <md-toolbar-row>
+                </mat-toolbar-row>
+                <mat-toolbar-row>
                     <h3 class="font-normal grey weight100">Saved Addresses</h3>
                     <span class="fill-remaining-space"></span>
                     <i class="fa fa-angle-right fa-lg grey" aria-hidden="true"></i>
-                </md-toolbar-row>
-                <md-toolbar-row>
+                </mat-toolbar-row>
+                <mat-toolbar-row>
                     <h3 class="font-normal grey weight100">Privacy Policy</h3>
                     <span class="fill-remaining-space"></span>
                     <i class="fa fa-angle-right fa-lg grey" aria-hidden="true"></i>
-                </md-toolbar-row>
-                <md-toolbar-row>
+                </mat-toolbar-row>
+                <mat-toolbar-row>
                     <h3 class="font-normal grey weight100">Terms of Use</h3>
                     <span class="fill-remaining-space"></span>
                     <i class="fa fa-angle-right fa-lg grey" aria-hidden="true"></i>
-                </md-toolbar-row>
-                <md-toolbar-row>
+                </mat-toolbar-row>
+                <mat-toolbar-row>
                     <h3 class="font-normal grey weight100">Suggest a Chore</h3>
                     <span class="fill-remaining-space"></span>
                     <i class="fa fa-angle-right fa-lg grey" aria-hidden="true"></i>
-                </md-toolbar-row>
-                <md-toolbar-row>
+                </mat-toolbar-row>
+                <mat-toolbar-row>
                     <h3 class="font-normal grey weight100">Sign Out</h3>
                     <span class="fill-remaining-space"></span>
                     <i class="fa fa-angle-right fa-lg grey" aria-hidden="true"></i>
-                </md-toolbar-row>
-            </md-toolbar>
+                </mat-toolbar-row>
+            </mat-toolbar>
             <div *ngIf="help" fxLayout="column" fxFlex="90%" class="marginAuto">
-                <button md-button (click)="help=false" class="backButton">
+                <button mat-button (click)="help=false" class="backButton">
                     <i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i> <b>Back</b>
                 </button>
                 <br>
-                <button md-raised-button color="primary"><h1>FAQ</h1></button>
+                <button mat-raised-button color="primary"><h1>FAQ</h1></button>
                 <br>
-                <button md-raised-button color="primary"><h1>Video Tutorial</h1></button>
+                <button mat-raised-button color="primary"><h1>Video Tutorial</h1></button>
                 <br>
-                <button md-raised-button color="primary"><h1>Live Chat</h1></button>
+                <button mat-raised-button color="primary"><h1>Live Chat</h1></button>
                 <br>
-                <button md-raised-button color="primary"><h1>Contact Us</h1></button>
+                <button mat-raised-button color="primary"><h1>Contact Us</h1></button>
                 <br>
-                <button md-raised-button color="primary"><h1>My Tickets</h1></button>
+                <button mat-raised-button color="primary"><h1>My Tickets</h1></button>
                 <br>
-                <button md-raised-button color="primary"><h1>Rate the App</h1></button>
+                <button mat-raised-button color="primary"><h1>Rate the App</h1></button>
                 <br>
             </div>
         </div>
-        <ng-template md-tab-label>
+        <ng-template mat-tab-label>
             <i class="fa fa-cogs fa-2x" aria-hidden="true" style="color:grey;"><br><div class="font20">Settings</div></i>
         </ng-template>
-    </md-tab>
-</md-tab-group>
+    </mat-tab>
+</mat-tab-group>
 <div *ngIf="thanksPage" fxLayout="row" fxLayoutAlign="center">
     <div fxLayout="column" fxFlex="90%">
         <i class="fa fa-times fa-3x closeButton closeButton2" aria-hidden="true" (click)="reload(1)"></i>
@@ -660,18 +660,18 @@
         <h3 fxLayoutAlign="center" class="font-normal grey textCenter">Your chore request has been received!</h3>
         <h3 *ngIf="submitParameters[1]!=='WHILE YOU`RE AT IT'" fxLayoutAlign="center" class="font-normal grey textCenter">We'll get back to you soon with a selection of providers!</h3>
         <h3 *ngIf="submitParameters[1]=='WHILE YOU`RE AT IT'" fxLayoutAlign="center" class="font-normal grey textCenter">{{provider.firstName}} has been notified.</h3>
-        <md-card>
+        <mat-card>
             <h1 fxLayoutAlign="center" class="font-normal aqua textCenter">{{submitParameters[1]}}</h1>
             <h3 fxLayoutAlign="center" class="font-normal grey textCenter">{{submitParameters[2]}}</h3>
             <h2 fxLayoutAlign="center" class="font-normal">{{submitParameters[3]}}</h2>
             <h4 fxLayoutAlign="center" class="font-normal darkgrey">A 8% service fee is added to every job</h4>
-            <md-divider></md-divider>
+            <mat-divider></mat-divider>
             <h3 fxLayoutAlign="center" class="font-normal aqua textCenter">{{submitParameters[4]}}</h3>
-            <md-divider></md-divider>
+            <mat-divider></mat-divider>
             <h3 fxLayoutAlign="center" class="font-normal aqua">Credit card ending with {{submitParameters[0]}}</h3>
-        </md-card>
+        </mat-card>
         <h1 fxLayoutAlign="center" class="font-normal grey">THANK YOU</h1>
-        <button md-raised-button aria-label="new_chore" color="primary" (click)="reload(2)"><h1>Add Another Chore</h1></button>
+        <button mat-raised-button aria-label="new_chore" color="primary" (click)="reload(2)"><h1>Add Another Chore</h1></button>
         <br>
     </div>
 </div>
@@ -727,58 +727,58 @@
         </div>
         <br>
         <div fxLayout="row" fxLayoutAlign="center">
-            <md-button-toggle-group #group="mdButtonToggleGroup" (change)="togglegroup(group.value)">
-                <md-button-toggle value="0">
+            <mat-button-toggle-group #group="matButtonToggleGroup" (change)="togglegroup(group.value)">
+                <mat-button-toggle value="0">
                     No tip
-                </md-button-toggle>
-                <md-button-toggle value="1">
+                </mat-button-toggle>
+                <mat-button-toggle value="1">
                     $1
-                </md-button-toggle>
-                <md-button-toggle value="2">
+                </mat-button-toggle>
+                <mat-button-toggle value="2">
                     $2
-                </md-button-toggle>
-                <md-button-toggle value="5">
+                </mat-button-toggle>
+                <mat-button-toggle value="5">
                     $5
-                </md-button-toggle>
-                <md-button-toggle value="0">
+                </mat-button-toggle>
+                <mat-button-toggle value="0">
                     Other
-                </md-button-toggle>
-            </md-button-toggle-group>
+                </mat-button-toggle>
+            </mat-button-toggle-group>
         </div>
         <br>
         <div fxLayout="row" fxLayoutAlign="center">
-            <md-button-toggle-group>
-                <md-button-toggle disabled>
+            <mat-button-toggle-group>
+                <mat-button-toggle disabled>
                     <i class="fa fa-credit-card" aria-hidden="true"></i><span> Payment</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <span class="lightgrey" style="font-size:0.67em;">PERSONAL *{{customer.last4Numbers}}</span> <i class="fa fa-angle-right" aria-hidden="true"></i>
-                </md-button-toggle>
-            </md-button-toggle-group>
+                </mat-button-toggle>
+            </mat-button-toggle-group>
         </div>
-        <md-toolbar *ngIf="priceInfo" class="backgroundInherit">
+        <mat-toolbar *ngIf="priceInfo" class="backgroundInherit">
             <h3 class="font-normal aqua weight100 margin8">Job fee</h3>
             <span class="fill-remaining-space"></span>
             <h3 class="font-normal aqua weight100 margin8">{{order_.choreSum}}.00</h3>
-            <md-toolbar-row class="noBorder">
+            <mat-toolbar-row class="noBorder">
                 <h3 class="font-normal aqua weight100">Disposal fee</h3>
                 <span class="fill-remaining-space"></span>
                 <h3 class="font-normal aqua weight100">$0.00</h3>
-            </md-toolbar-row>
-            <md-toolbar-row class="noBorder">
+            </mat-toolbar-row>
+            <mat-toolbar-row class="noBorder">
                 <h3 class="font-normal aqua weight100">Service fee</h3>
                 <span class="fill-remaining-space"></span>
                 <h3 class="font-normal aqua weight100">${{serviceFee}}</h3>
-            </md-toolbar-row>
-            <md-toolbar-row class="noBorder">
+            </mat-toolbar-row>
+            <mat-toolbar-row class="noBorder">
                 <h3 class="font-normal aqua weight100">Tip</h3>
                 <span class="fill-remaining-space"></span>
                 <h3 *ngIf="tip" class="font-normal aqua weight100">${{tip}}.00</h3>
                 <h3 *ngIf="!tip" class="font-normal aqua weight100">$0.00</h3>
-            </md-toolbar-row>
-        </md-toolbar>
+            </mat-toolbar-row>
+        </mat-toolbar>
         <h1 class="textCenter marginBottom0 weight100">${{totalSum}}</h1>
         <h6 class="aqua textCenter pointer" (click)="priceInfo ? priceInfo=false : priceInfo=true">Price info</h6>
         <br><br>
-        <button md-raised-button aria-label="submit" (click)="submitChore()" style="background-color:aqua;"><h1 class="weight100" style="color:white;">Next</h1></button>
+        <button mat-raised-button aria-label="submit" (click)="submitChore()" style="background-color:aqua;"><h1 class="weight100" style="color:white;">Next</h1></button>
         <br>
     </div>
 </div>
@@ -788,9 +788,9 @@
         <h1 class="aqua textCenter">THANK YOU!</h1>
         <h2 class="aqua textCenter weight100">Need anything else right now?</h2>
         <h3 class="grey textCenter">Would you like to request any additional work while {{this.provider.firstName}} is here?</h3>
-        <button md-raised-button aria-label="yes" color="primary" (click)="thankYou=false;atIt=true"><h1>Yes</h1></button>
+        <button mat-raised-button aria-label="yes" color="primary" (click)="thankYou=false;atIt=true"><h1>Yes</h1></button>
         <br>
-        <button md-raised-button aria-label="no" color="warn" (click)="reload(2)"><h1>No</h1></button>
+        <button mat-raised-button aria-label="no" color="warn" (click)="reload(2)"><h1>No</h1></button>
     </div>
 </div>
 <div *ngIf="atIt" fxLayout="row" fxLayoutAlign="center">
@@ -798,13 +798,13 @@
         <i class="fa fa-times fa-3x closeButton closeButton2" aria-hidden="true" (click)="submitAtIt(describeAtIt,priceAtIt)"></i>
         <br><br><br>
         <h1 class="aqua textCenter">WHILE YOU'RE AT IT</h1>
-        <md-input-container>
-            <input mdInput placeholder="Describe your job" #describeAtIt>
-        </md-input-container>
-        <md-input-container>
-            <span mdPrefix>$</span>
-            <input mdInput type="number" autocomplete="off" placeholder="Price your job" #priceAtIt>
-        </md-input-container>
+        <mat-input-container>
+            <input matInput placeholder="Describe your job" #describeAtIt>
+        </mat-input-container>
+        <mat-input-container>
+            <span matPrefix>$</span>
+            <input matInput type="number" autocomplete="off" placeholder="Price your job" #priceAtIt>
+        </mat-input-container>
         <h5 class="textCenter margin0">A 8% service fee is added to every job</h5>
         <br>
         <swiper [config]="config" class="height135">
@@ -821,6 +821,6 @@
         </swiper>
         <h4 fxLayoutAlign="center" class="font-normal grey textCenter">We suggest you take one or two detailed photos of the job.</h4>
         <br>
-        <button md-raised-button aria-label="submit_job" color="primary" (click)="submitAtIt(describeAtIt,priceAtIt)"><h1>Submit Job</h1></button>
+        <button mat-raised-button aria-label="submit_job" color="primary" (click)="submitAtIt(describeAtIt,priceAtIt)"><h1>Submit Job</h1></button>
     </div>
 </div>

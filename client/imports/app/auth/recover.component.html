@@ -1,24 +1,24 @@
 <br fxShow="true" fxShow.xs="false">
 <div class="flex-container" fxLayout="row" fxLayoutAlign="center">
-    <md-card>
-        <md-card-header>
-            <md-card-title>Recover Your Password</md-card-title>
-        </md-card-header>
-        <md-card-content>
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Recover Your Password</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
             <form [formGroup]="recoverForm" #f="ngForm" (ngSubmit)="recover()">
-                <md-input-container>
-                    <input mdInput formControlName="email" type="email" placeholder="Email">
-                </md-input-container>
-                <button md-raised-button type="submit" aria-label="Recover">Recover</button>
+                <mat-input-container>
+                    <input matInput formControlName="email" type="email" placeholder="Email">
+                </mat-input-container>
+                <button mat-raised-button type="submit" aria-label="Recover">Recover</button>
             </form>
             <div [hidden]="error==''">
-                <md-toolbar [hidden]="error==''">
+                <mat-toolbar [hidden]="error==''">
                     <p>{{error}}</p>
-                </md-toolbar>
+                </mat-toolbar>
             </div>
-        </md-card-content>
-        <md-card-actions>
-            <a md-button [routerLink]="['/login']">Remember your password?</a>
-        </md-card-actions>
-    </md-card>
+        </mat-card-content>
+        <mat-card-actions>
+            <a mat-button [routerLink]="['/login']">Remember your password?</a>
+        </mat-card-actions>
+    </mat-card>
 </div>

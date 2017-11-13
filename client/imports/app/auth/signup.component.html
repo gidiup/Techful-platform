@@ -1,28 +1,28 @@
 <br fxShow="true" fxShow.xs="false">
 <div class="flex-container" fxLayout="row" fxLayoutAlign="center">
-    <md-card>
-        <md-card-header>
-            <md-card-title>Sign up</md-card-title>
-        </md-card-header>
-        <md-card-content>
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Sign up</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
             <form [formGroup]="signupForm" #f="ngForm" (ngSubmit)="signup()">
-                <md-input-container>
-                    <input mdInput formControlName="email" type="email" placeholder="Email">
-                </md-input-container>
-                <md-input-container>
-                    <input mdInput formControlName="password" type="password" placeholder="Password">
-                </md-input-container>
+                <mat-input-container>
+                    <input matInput formControlName="email" type="email" placeholder="Email">
+                </mat-input-container>
+                <mat-input-container>
+                    <input matInput formControlName="password" type="password" placeholder="Password">
+                </mat-input-container>
                 <br fxShow="false" fxShow.xs="true">
-                <button md-raised-button type="submit" aria-label="login">Sign Up</button>
+                <button mat-raised-button type="submit" aria-label="login">Sign Up</button>
             </form>
             <div [hidden]="error==''">
-                <md-toolbar [hidden]="error==''">
+                <mat-toolbar [hidden]="error==''">
                     <p>{{error}}</p>
-                </md-toolbar>
+                </mat-toolbar>
             </div>
-        </md-card-content>
-        <md-card-actions>
-            <a md-button [routerLink]="['/login']">Already a user?</a>
-        </md-card-actions>
-    </md-card>
+        </mat-card-content>
+        <mat-card-actions>
+            <a mat-button [routerLink]="['/login']">Already a user?</a>
+        </mat-card-actions>
+    </mat-card>
 </div>

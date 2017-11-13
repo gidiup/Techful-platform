@@ -2,7 +2,7 @@ import {Component,OnInit,OnDestroy,NgZone} from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
 import {MeteorObservable} from 'meteor-rxjs';
 import {Observable,Subject} from "rxjs";
-import {MdSnackBar} from '@angular/material';
+// import {MatSnackBar} from '@angular/material';
 import {upload} from '../../../../both/methods/images.methods';
 import {Customers} from '../../../../both/collections/customers.collection';
 import {Customer} from '../../../../both/models/customer.model';
@@ -80,7 +80,7 @@ export class MainComponent implements OnInit,OnDestroy{
   interval:any;
   notificationSub:Subscription;
   notifications:string[]=[];
-  constructor(public snackBar:MdSnackBar,private zone:NgZone){
+  constructor(public snackBar:NgZone,private zone:NgZone){
     this.zone.runOutsideAngular(()=>{
       let oldGeo_;
       this.interval=setInterval(()=>{
@@ -372,7 +372,7 @@ export class MainComponent implements OnInit,OnDestroy{
         })
       }
     }else{
-      this.snackBar.open("Waiting on the technician.","ok",{duration:9999});
+      // this.snackBar.open("Waiting on the technician.","ok",{duration:9999});
     }
   }
   showHideConfirm(param){
@@ -477,21 +477,21 @@ export class MainComponent implements OnInit,OnDestroy{
     this.fourStars=false;
     this.fiveStars=false;
     if(mark==0){
-      this.snackBar.open("You must live the"," mark",{duration:9999});
+      // this.snackBar.open("You must live the"," mark",{duration:9999});
     }else{
       if(this.stripeSubscription){
         this.stripeSubscription.unsubscribe();
       }
-      this.snackBar.open("Starting the operation","",{duration:999});
+      // this.snackBar.open("Starting the operation","",{duration:999});
       this.stripeSubscription=MeteorObservable.subscribe('stripeCustomerId',this.order_._id).subscribe(()=>{
         this.stripe=Stripes.findOne({orderId:this.order_._id});
-        this.snackBar.open(" Credentials found","",{duration:999});
+        // this.snackBar.open(" Credentials found","",{duration:999});
         if(this.stripe.usePrevious){
           MeteorObservable.call('retrieveStripeCustomer',this.stripe.customer).subscribe((response_)=>{
             if(response_.id){
-              this.snackBar.open(" Old data retrieved!","",{duration:999});
+              // this.snackBar.open(" Old data retrieved!","",{duration:999});
               MeteorObservable.call('stripeCharge',response_.id,this.totalSum*100).subscribe((response)=>{
-                this.snackBar.open("Success", "OK", {duration: 9999});
+                // this.snackBar.open("Success", "OK", {duration: 9999});
                 Orders.update(this.order_._id,{
                   $set:{
                     disposalFee:0,
@@ -508,17 +508,17 @@ export class MainComponent implements OnInit,OnDestroy{
                 this.acceptChore = false;
                 this.thankYou = true;
               },(err)=>{
-                this.snackBar.open(err,"OK");
+                // this.snackBar.open(err,"OK");
                 this.acceptChore = false;
               })
             }
           },(err)=>{
-            this.snackBar.open(err,"OK");
+            // this.snackBar.open(err,"OK");
             this.acceptChore=false;
           })
         }else{
           MeteorObservable.call('stripeCharge',this.stripe.customer,this.totalSum*100).subscribe((response)=>{
-            this.snackBar.open("Success","OK",{duration:9999});
+            // this.snackBar.open("Success","OK",{duration:9999});
             Orders.update(this.order_._id,{
               $set:{
                 disposalFee:0,
@@ -535,7 +535,7 @@ export class MainComponent implements OnInit,OnDestroy{
             this.acceptChore=false;
             this.thankYou=true;
           },(err)=>{
-            this.snackBar.open(err,"OK");
+            // this.snackBar.open(err,"OK");
             this.acceptChore=false;
           })
         }
@@ -554,7 +554,7 @@ export class MainComponent implements OnInit,OnDestroy{
   submitAtIt(describeAtIt,priceAtIt){
     let price=Number(priceAtIt.value);
     if(describeAtIt.value=="" || price==0){
-      this.snackBar.open("Empty!","ok",{duration:9999});
+      // this.snackBar.open("Empty!","ok",{duration:9999});
     }else{
       let temporaryProviders=[];
       temporaryProviders.push(this.provider._id);

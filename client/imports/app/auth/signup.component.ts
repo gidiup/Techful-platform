@@ -2,7 +2,7 @@ import {Component, OnInit, NgZone} from '@angular/core';
 import {FormBuilder,FormGroup,Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {Accounts} from 'meteor/accounts-base';
-import {MdSnackBar} from '@angular/material';
+// import {MatSnackBar} from '@angular/material';
 import template from './signup.component.html';
 @Component({
   selector:'signup',
@@ -11,7 +11,7 @@ import template from './signup.component.html';
 export class SignupComponent implements OnInit{
   signupForm: FormGroup;
   error: string;
-  constructor(private router:Router,private zone:NgZone,private formBuilder:FormBuilder,public snackBar:MdSnackBar){}
+  constructor(private router:Router,private zone:NgZone,private formBuilder:FormBuilder,public snackBar:FormBuilder){}
   ngOnInit() {
     this.signupForm = this.formBuilder.group({
       email: ['',Validators.pattern('[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}')],
@@ -28,12 +28,12 @@ export class SignupComponent implements OnInit{
         if(err){
           this.error=err;
         }else{
-          this.snackBar.open("Loged in","OK",{duration:9999});
+          // this.snackBar.open("Loged in","OK",{duration:9999});
         }
       })
     }else{
       this.signupForm.reset();
-      this.snackBar.open("Empty password or invalid email.","Try again.");
+      // this.snackBar.open("Empty password or invalid email.","Try again.");
     }
   }
 }

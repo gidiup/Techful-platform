@@ -1,0 +1,90 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add @angular/animations@5.0.0
+
+PATH: 
+  C:\Users\igor90007\.windows-build-tools\python27\;C:\Users\igor90007\.windows-build-tools\python27\Scripts;c:\program files\graphicsmagick-1.3.24-q16;c:\program files\graphicsmagick-1.3.24-q8;C:\Program Files\ImageMagick-7.0.2-Q16;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Heroku\bin;C:\Program Files (x86)\git\cmd;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\ProgramData\chocolatey\bin;C:\Program Files\Git\cmd;C:\Program Files (x86)\Google\Cloud SDK\google-cloud-sdk\bin;C:\Program Files\Amazon\AWSCLI\;C:\Program Files (x86)\Juju;C:\Program Files (x86)\OpenSSH\bin;C:\Users\igor90007\AppData\Local\Programs\Python\Python35-32\Scripts\;C:\Users\igor90007\AppData\Local\Programs\Python\Python35-32\;C:\Ruby21-x64\bin;C:\Ruby22-x64\bin;C:\Users\igor90007\AppData\Local\.meteor\;C:\Users\igor90;C:\Program Files\OpenSSH\bin;C:\Program Files\nodejs\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files (x86)\Yarn\bin;C:\Users\igor90007\AppData\Local\Microsoft\WindowsApps;C:\Program Files (x86)\GNU\GnuPG;C:\Users\igor90007\;C:\Program Files\Docker Toolbox;C:\Users\igor90007\AppData\Roaming\npm;C:\Users\igor90007\AppData\Local\Yarn\bin;C:\Program Files\Java\jre1.8.0_141\bin;C:\Program Files (x86)\GnuWin32\bin;C:\Users\igor90007\xxd;C:\Program Files (x86)\Android\android-sdk\platform-tools;C:\Gradle\gradle-4.1\bin
+
+Yarn version: 
+  0.24.6
+
+Node version: 
+  6.10.0
+
+Platform: 
+  win32 x64
+
+npm manifest: 
+  {
+    "name": "techfulCustomer",
+    "private": true,
+    "scripts": {
+      "start": "meteor run --settings private/settings.json",
+      "start:prod": "meteor run --production",
+      "build": "meteor build ./build/",
+      "clear": "meteor reset",
+      "meteor:update": "meteor update --all-packages",
+      "test": "meteor test --driver-package practicalmeteor:mocha",
+      "test:ci": "meteor test --once --driver-package dispatch:mocha-phantomjs"
+    },
+    "devDependencies": {
+      "@types/chai": "3.4.34",
+      "@types/meteor": "^1.3.31",
+      "@types/meteor-accounts-phone": "0.0.5",
+      "@types/mocha": "2.2.34",
+      "chai": "3.5.0",
+      "chai-spies": "0.7.1",
+      "meteor-node-stubs": "0.2.4",
+      "crypto": "^1.0.1"
+    },
+    "dependencies": {
+      "@angular/animations": "^4.0.1",
+      "@angular/cdk": "^2.0.0-beta.8",
+      "@angular/common": "^4.0.1",
+      "@angular/compiler": "^4.0.1",
+      "@angular/compiler-cli": "^4.0.1",
+      "@angular/core": "^4.0.1",
+      "@angular/flex-layout": "^2.0.0-beta.7",
+      "@angular/forms": "^4.0.1",
+      "@angular/http": "^4.0.1",
+      "@angular/material": "^2.0.0-beta.6",
+      "@angular/platform-browser": "^4.0.1",
+      "@angular/platform-browser-dynamic": "^4.0.1",
+      "@angular/platform-server": "^4.0.1",
+      "@angular/router": "^4.0.1",
+      "@types/node": "^7.0.4",
+      "angular2-file-drop": "0.0.5",
+      "angular2-google-maps": "^0.17.0",
+      "angular2-meteor": "0.7.1",
+      "angular2-meteor-accounts-ui": "^1.0.0",
+      "angular2-meteor-polyfills": "0.1.1",
+      "angular2-meteor-tests-polyfills": "0.0.2",
+      "angular2-useful-swiper": "^3.0.0",
+      "babel-runtime": "^6.18.0",
+      "bcrypt": "^1.0.2",
+      "gm": "^1.23.0",
+      "is-property": "^1.0.2",
+      "meteor-rxjs": "0.4.7",
+      "meteor-typings": "^1.3.1",
+      "node-sass": "^3.8.0",
+      "node-uber": "^1.0.0",
+      "reflect-metadata": "0.1.9",
+      "rxjs": "5.0.2",
+      "spawn-sync": "^1.0.15",
+      "stripe": "^4.18.0",
+      "try-thread-sleep": "^1.0.0",
+      "twilio": "^3.0.0",
+      "typescript": "^2.2.2",
+      "zone.js": "0.7.4"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: 101057795:error:1408F119:SSL routines:SSL3_GET_RECORD:decryption failed or bad record mac:openssl\ssl\s3_pkt.c:535:
+  
+      at Error (native)

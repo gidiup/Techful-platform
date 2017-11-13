@@ -1,55 +1,55 @@
-<md-sidenav-container class="example-container" [ngStyle]="{'height':height}" style="background:#f6f6f6;">
-    <md-sidenav #sidenav>
-        <md-list>
-            <h6 md-subheader>open menu:</h6>
-            <md-list-item class="item" (click)="hideStep1=false;hideStep2=true;hideStep3=true;hideStep4=true;hideStep5=true;hideStep6=true;sidenav.close()">
-                <i md-list-avatar fxLayoutAlign="center" class="fa fa-user-circle-o fa-4x" aria-hidden="true"></i>
-                <h3 md-line>BASIC INFO</h3>
-            </md-list-item>
+<mat-sidenav-container class="example-container" [ngStyle]="{'height':height}" style="background:#f6f6f6;">
+    <mat-sidenav #sidenav>
+        <mat-list>
+            <h6 mat-subheader>open menu:</h6>
+            <mat-list-item class="item" (click)="hideStep1=false;hideStep2=true;hideStep3=true;hideStep4=true;hideStep5=true;hideStep6=true;sidenav.close()">
+                <i mat-list-avatar fxLayoutAlign="center" class="fa fa-user-circle-o fa-4x" aria-hidden="true"></i>
+                <h3 mat-line>BASIC INFO</h3>
+            </mat-list-item>
             <div *ngIf="customer">
-                <md-list-item class="item" (click)="hideStep2=false;hideStep1=true;hideStep3=true;hideStep4=true;hideStep5=true;hideStep6=true;sidenav.close()">
-                    <i md-list-avatar fxLayoutAlign="center" class="fa fa-book fa-4x" aria-hidden="true"></i>
-                    <h3 md-line>ORIENTATION</h3>
-                </md-list-item>
-                <md-divider></md-divider>
-                <h6 md-subheader>disabled:</h6>
-                <md-list-item class="item disabled">
-                    <i md-list-avatar fxLayoutAlign="center" class="fa fa-file-text fa-4x" aria-hidden="true"></i>
-                    <h3 md-line>DOCUMENT UPLOAD</h3>
-                </md-list-item>
-                <md-list-item class="item disabled">
-                    <i md-list-avatar fxLayoutAlign="center" class="fa fa-credit-card-alt fa-4x" aria-hidden="true"></i>
-                    <h3 md-line>PAYMENT INFO</h3>
-                </md-list-item>
-                <md-list-item class="item disabled">
-                    <i md-list-avatar fxLayoutAlign="center" class="fa fa-lock fa-4x" aria-hidden="true"></i>
-                    <h3 md-line>BACKGROUND CHECK</h3>
-                </md-list-item>
+                <mat-list-item class="item" (click)="hideStep2=false;hideStep1=true;hideStep3=true;hideStep4=true;hideStep5=true;hideStep6=true;sidenav.close()">
+                    <i mat-list-avatar fxLayoutAlign="center" class="fa fa-book fa-4x" aria-hidden="true"></i>
+                    <h3 mat-line>ORIENTATION</h3>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <h6 mat-subheader>disabled:</h6>
+                <mat-list-item class="item disabled">
+                    <i mat-list-avatar fxLayoutAlign="center" class="fa fa-file-text fa-4x" aria-hidden="true"></i>
+                    <h3 mat-line>DOCUMENT UPLOAD</h3>
+                </mat-list-item>
+                <mat-list-item class="item disabled">
+                    <i mat-list-avatar fxLayoutAlign="center" class="fa fa-credit-card-alt fa-4x" aria-hidden="true"></i>
+                    <h3 mat-line>PAYMENT INFO</h3>
+                </mat-list-item>
+                <mat-list-item class="item disabled">
+                    <i mat-list-avatar fxLayoutAlign="center" class="fa fa-lock fa-4x" aria-hidden="true"></i>
+                    <h3 mat-line>BACKGROUND CHECK</h3>
+                </mat-list-item>
             </div>
             <div *ngIf="!customer">
-                <md-divider></md-divider>
-                <h6 md-subheader>disabled:</h6>
-                <md-list-item class="item disabled">
-                    <i md-list-avatar fxLayoutAlign="center" class="fa fa-book fa-4x" aria-hidden="true"></i>
-                    <h3 md-line>ORIENTATION</h3>
-                </md-list-item>
-                <md-list-item class="item disabled">
-                    <i md-list-avatar fxLayoutAlign="center" class="fa fa-file-text fa-4x" aria-hidden="true"></i>
-                    <h3 md-line>DOCUMENT UPLOAD</h3>
-                </md-list-item>
-                <md-list-item class="item disabled">
-                    <i md-list-avatar fxLayoutAlign="center" class="fa fa-credit-card-alt fa-4x" aria-hidden="true"></i>
-                    <h3 md-line>PAYMENT INFO</h3>
-                </md-list-item>
-                <md-list-item class="item disabled">
-                    <i md-list-avatar fxLayoutAlign="center" class="fa fa-lock fa-4x" aria-hidden="true"></i>
-                    <h3 md-line>BACKGROUND CHECK</h3>
-                </md-list-item>
+                <mat-divider></mat-divider>
+                <h6 mat-subheader>disabled:</h6>
+                <mat-list-item class="item disabled">
+                    <i mat-list-avatar fxLayoutAlign="center" class="fa fa-book fa-4x" aria-hidden="true"></i>
+                    <h3 mat-line>ORIENTATION</h3>
+                </mat-list-item>
+                <mat-list-item class="item disabled">
+                    <i mat-list-avatar fxLayoutAlign="center" class="fa fa-file-text fa-4x" aria-hidden="true"></i>
+                    <h3 mat-line>DOCUMENT UPLOAD</h3>
+                </mat-list-item>
+                <mat-list-item class="item disabled">
+                    <i mat-list-avatar fxLayoutAlign="center" class="fa fa-credit-card-alt fa-4x" aria-hidden="true"></i>
+                    <h3 mat-line>PAYMENT INFO</h3>
+                </mat-list-item>
+                <mat-list-item class="item disabled">
+                    <i mat-list-avatar fxLayoutAlign="center" class="fa fa-lock fa-4x" aria-hidden="true"></i>
+                    <h3 mat-line>BACKGROUND CHECK</h3>
+                </mat-list-item>
             </div>
-        </md-list>
-    </md-sidenav>
+        </mat-list>
+    </mat-sidenav>
     <div fxLayout="row">
-        <button md-button (click)="sidenav.open()">
+        <button mat-button (click)="sidenav.open()">
             <i class="fa fa-bars fa-5x" aria-hidden="true"></i>
         </button>
         <h1 [hidden]="hideStep1">Step 1. Customer Information</h1>
@@ -74,196 +74,196 @@
                     </div>
                 </div>
                 <br>
-                <md-input-container>
-                    <input mdInput placeholder="* Email" type="email" formControlName="email">
-                </md-input-container>
+                <mat-input-container>
+                    <input matInput placeholder="* Email" type="email" formControlName="email">
+                </mat-input-container>
                 <div fxLayout="row" fxLayoutAlign="space-between">
-                    <md-input-container>
-                        <input mdInput formControlName="firstName" placeholder="* Legal First Name">
-                    </md-input-container>
-                    <md-input-container>
-                        <input mdInput formControlName="middleName" placeholder="Middle Name">
-                    </md-input-container>
-                    <md-input-container>
-                        <input mdInput formControlName="lastName" placeholder="* Last Name">
-                    </md-input-container>
+                    <mat-input-container>
+                        <input matInput formControlName="firstName" placeholder="* Legal First Name">
+                    </mat-input-container>
+                    <mat-input-container>
+                        <input matInput formControlName="middleName" placeholder="Middle Name">
+                    </mat-input-container>
+                    <mat-input-container>
+                        <input matInput formControlName="lastName" placeholder="* Last Name">
+                    </mat-input-container>
                 </div>
                 <br><br>
                 <div fxLayout="row" fxLayoutAlign="space-between">
-                    <md-select formControlName="monthDate" placeholder="* DATE OF BIRTH">
-                        <md-option value="1">Jan</md-option>
-                        <md-option value="2">Feb</md-option>
-                        <md-option value="3">Mar</md-option>
-                        <md-option value="4">Apr</md-option>
-                        <md-option value="5">May</md-option>
-                        <md-option value="6">Jun</md-option>
-                        <md-option value="7">Jul</md-option>
-                        <md-option value="8">Aug</md-option>
-                        <md-option value="9">Sep</md-option>
-                        <md-option value="10">Oct</md-option>
-                        <md-option value="11">Nov</md-option>
-                        <md-option value="12">Dec</md-option>
-                    </md-select>
-                    <md-select formControlName="dayDate">
-                        <md-option value="1">1</md-option>
-                        <md-option value="2">2</md-option>
-                        <md-option value="3">3</md-option>
-                        <md-option value="4">4</md-option>
-                        <md-option value="5">5</md-option>
-                        <md-option value="6">6</md-option>
-                        <md-option value="7">7</md-option>
-                        <md-option value="8">8</md-option>
-                        <md-option value="9">9</md-option>
-                        <md-option value="10">10</md-option>
-                        <md-option value="11">11</md-option>
-                        <md-option value="12">12</md-option>
-                        <md-option value="13">13</md-option>
-                        <md-option value="14">14</md-option>
-                        <md-option value="15">15</md-option>
-                        <md-option value="16">16</md-option>
-                        <md-option value="17">17</md-option>
-                        <md-option value="18">18</md-option>
-                        <md-option value="19">19</md-option>
-                        <md-option value="20">20</md-option>
-                        <md-option value="21">21</md-option>
-                        <md-option value="22">22</md-option>
-                        <md-option value="23">23</md-option>
-                        <md-option value="24">24</md-option>
-                        <md-option value="25">25</md-option>
-                        <md-option value="26">26</md-option>
-                        <md-option value="27">27</md-option>
-                        <md-option value="28">28</md-option>
-                        <md-option value="29">29</md-option>
-                        <md-option value="30">30</md-option>
-                        <md-option value="31">31</md-option>
-                    </md-select>
-                    <md-select formControlName="yearDate">
-                        <md-option value="1">1999</md-option>
-                        <md-option value="2">1998</md-option>
-                        <md-option value="3">1997</md-option>
-                        <md-option value="4">1996</md-option>
-                        <md-option value="5">1995</md-option>
-                        <md-option value="6">1994</md-option>
-                        <md-option value="7">1993</md-option>
-                        <md-option value="8">1992</md-option>
-                        <md-option value="9">1991</md-option>
-                        <md-option value="10">1990</md-option>
-                        <md-option value="11">1989</md-option>
-                        <md-option value="12">1988</md-option>
-                        <md-option value="13">1987</md-option>
-                        <md-option value="14">1986</md-option>
-                        <md-option value="15">1985</md-option>
-                        <md-option value="16">1984</md-option>
-                        <md-option value="17">1983</md-option>
-                        <md-option value="18">1982</md-option>
-                        <md-option value="19">1981</md-option>
-                        <md-option value="20">1980</md-option>
-                        <md-option value="21">1979</md-option>
-                        <md-option value="22">1978</md-option>
-                        <md-option value="23">1977</md-option>
-                        <md-option value="24">1976</md-option>
-                        <md-option value="25">1975</md-option>
-                        <md-option value="26">1974</md-option>
-                        <md-option value="27">1973</md-option>
-                        <md-option value="28">1972</md-option>
-                        <md-option value="29">1971</md-option>
-                        <md-option value="30">1970</md-option>
-                        <md-option value="31">1969</md-option>
-                        <md-option value="32">1968</md-option>
-                        <md-option value="33">1967</md-option>
-                        <md-option value="34">1966</md-option>
-                        <md-option value="35">1965</md-option>
-                        <md-option value="36">1964</md-option>
-                        <md-option value="37">1963</md-option>
-                        <md-option value="38">1962</md-option>
-                        <md-option value="39">1961</md-option>
-                        <md-option value="40">1960</md-option>
-                    </md-select>
+                    <mat-select formControlName="monthDate" placeholder="* DATE OF BIRTH">
+                        <mat-option value="1">Jan</mat-option>
+                        <mat-option value="2">Feb</mat-option>
+                        <mat-option value="3">Mar</mat-option>
+                        <mat-option value="4">Apr</mat-option>
+                        <mat-option value="5">May</mat-option>
+                        <mat-option value="6">Jun</mat-option>
+                        <mat-option value="7">Jul</mat-option>
+                        <mat-option value="8">Aug</mat-option>
+                        <mat-option value="9">Sep</mat-option>
+                        <mat-option value="10">Oct</mat-option>
+                        <mat-option value="11">Nov</mat-option>
+                        <mat-option value="12">Dec</mat-option>
+                    </mat-select>
+                    <mat-select formControlName="dayDate">
+                        <mat-option value="1">1</mat-option>
+                        <mat-option value="2">2</mat-option>
+                        <mat-option value="3">3</mat-option>
+                        <mat-option value="4">4</mat-option>
+                        <mat-option value="5">5</mat-option>
+                        <mat-option value="6">6</mat-option>
+                        <mat-option value="7">7</mat-option>
+                        <mat-option value="8">8</mat-option>
+                        <mat-option value="9">9</mat-option>
+                        <mat-option value="10">10</mat-option>
+                        <mat-option value="11">11</mat-option>
+                        <mat-option value="12">12</mat-option>
+                        <mat-option value="13">13</mat-option>
+                        <mat-option value="14">14</mat-option>
+                        <mat-option value="15">15</mat-option>
+                        <mat-option value="16">16</mat-option>
+                        <mat-option value="17">17</mat-option>
+                        <mat-option value="18">18</mat-option>
+                        <mat-option value="19">19</mat-option>
+                        <mat-option value="20">20</mat-option>
+                        <mat-option value="21">21</mat-option>
+                        <mat-option value="22">22</mat-option>
+                        <mat-option value="23">23</mat-option>
+                        <mat-option value="24">24</mat-option>
+                        <mat-option value="25">25</mat-option>
+                        <mat-option value="26">26</mat-option>
+                        <mat-option value="27">27</mat-option>
+                        <mat-option value="28">28</mat-option>
+                        <mat-option value="29">29</mat-option>
+                        <mat-option value="30">30</mat-option>
+                        <mat-option value="31">31</mat-option>
+                    </mat-select>
+                    <mat-select formControlName="yearDate">
+                        <mat-option value="1">1999</mat-option>
+                        <mat-option value="2">1998</mat-option>
+                        <mat-option value="3">1997</mat-option>
+                        <mat-option value="4">1996</mat-option>
+                        <mat-option value="5">1995</mat-option>
+                        <mat-option value="6">1994</mat-option>
+                        <mat-option value="7">1993</mat-option>
+                        <mat-option value="8">1992</mat-option>
+                        <mat-option value="9">1991</mat-option>
+                        <mat-option value="10">1990</mat-option>
+                        <mat-option value="11">1989</mat-option>
+                        <mat-option value="12">1988</mat-option>
+                        <mat-option value="13">1987</mat-option>
+                        <mat-option value="14">1986</mat-option>
+                        <mat-option value="15">1985</mat-option>
+                        <mat-option value="16">1984</mat-option>
+                        <mat-option value="17">1983</mat-option>
+                        <mat-option value="18">1982</mat-option>
+                        <mat-option value="19">1981</mat-option>
+                        <mat-option value="20">1980</mat-option>
+                        <mat-option value="21">1979</mat-option>
+                        <mat-option value="22">1978</mat-option>
+                        <mat-option value="23">1977</mat-option>
+                        <mat-option value="24">1976</mat-option>
+                        <mat-option value="25">1975</mat-option>
+                        <mat-option value="26">1974</mat-option>
+                        <mat-option value="27">1973</mat-option>
+                        <mat-option value="28">1972</mat-option>
+                        <mat-option value="29">1971</mat-option>
+                        <mat-option value="30">1970</mat-option>
+                        <mat-option value="31">1969</mat-option>
+                        <mat-option value="32">1968</mat-option>
+                        <mat-option value="33">1967</mat-option>
+                        <mat-option value="34">1966</mat-option>
+                        <mat-option value="35">1965</mat-option>
+                        <mat-option value="36">1964</mat-option>
+                        <mat-option value="37">1963</mat-option>
+                        <mat-option value="38">1962</mat-option>
+                        <mat-option value="39">1961</mat-option>
+                        <mat-option value="40">1960</mat-option>
+                    </mat-select>
                 </div>
                 <br>
-                <md-input-container>
-                    <input mdInput formControlName="address1" placeholder="* Address 1">
-                </md-input-container>
-                <md-input-container>
-                    <input mdInput formControlName="address2" placeholder="Address 2">
-                </md-input-container>
+                <mat-input-container>
+                    <input matInput formControlName="address1" placeholder="* Address 1">
+                </mat-input-container>
+                <mat-input-container>
+                    <input matInput formControlName="address2" placeholder="Address 2">
+                </mat-input-container>
                 <div fxLayout="row" fxLayoutAlign="space-between">
-                    <md-input-container>
-                        <input mdInput formControlName="city" placeholder="* City">
-                    </md-input-container>
-                    <md-select formControlName="state" placeholder="* State" style="margin-top:9px;">
-                        <md-option value="AL">Alabama</md-option>
-                        <md-option value="AK">Alaska</md-option>
-                        <md-option value="AR">Arkansas</md-option>
-                        <md-option value="AS">American Samoa</md-option>
-                        <md-option value="AZ">Arizona</md-option>
-                        <md-option value="CA">California</md-option>
-                        <md-option value="CO">Colorado</md-option>
-                        <md-option value="CT">Connecticut</md-option>
-                        <md-option value="DC">District of Columbia</md-option>
-                        <md-option value="DE">Delaware</md-option>
-                        <md-option value="FL">Florida</md-option>
-                        <md-option value="GA">Georgia</md-option>
-                        <md-option value="GU">Guam</md-option>
-                        <md-option value="HI">Hawaii</md-option>
-                        <md-option value="IA">Iowa</md-option>
-                        <md-option value="ID">Idaho</md-option>
-                        <md-option value="IL">Illinois</md-option>
-                        <md-option value="IN">Indiana</md-option>
-                        <md-option value="KS">Kansas</md-option>
-                        <md-option value="KY">Kentucky</md-option>
-                        <md-option value="LA">Louisiana</md-option>
-                        <md-option value="MA">Massachusetts</md-option>
-                        <md-option value="MD">Maryland</md-option>
-                        <md-option value="ME">Maine</md-option>
-                        <md-option value="MI">Michigan</md-option>
-                        <md-option value="MN">Minnesota</md-option>
-                        <md-option value="MO">Missouri</md-option>
-                        <md-option value="MS">Mississippi</md-option>
-                        <md-option value="MT">Montana</md-option>
-                        <md-option value="NC">North Carolina</md-option>
-                        <md-option value="ND">North Dakota</md-option>
-                        <md-option value="NE">Nebraska</md-option>
-                        <md-option value="NH">New Hampshire</md-option>
-                        <md-option value="NJ">New Jersey</md-option>
-                        <md-option value="NM">New Mexico</md-option>
-                        <md-option value="NV">Nevada</md-option>
-                        <md-option value="NY">New York</md-option>
-                        <md-option value="OH">Ohio</md-option>
-                        <md-option value="OK">Oklahoma</md-option>
-                        <md-option value="OR">Oregon</md-option>
-                        <md-option value="PA">Pennsylvania</md-option>
-                        <md-option value="PR">Puerto Rico</md-option>
-                        <md-option value="RI">Rhode Island</md-option>
-                        <md-option value="SC">South Carolina</md-option>
-                        <md-option value="SD">South Dakota</md-option>
-                        <md-option value="TN">Tennessee</md-option>
-                        <md-option value="TX">Texas</md-option>
-                        <md-option value="UT">Utah</md-option>
-                        <md-option value="VA">Virginia</md-option>
-                        <md-option value="VI">Virgin Islands</md-option>
-                        <md-option value="VT">Vermont</md-option>
-                        <md-option value="WA">Washington</md-option>
-                        <md-option value="WI">Wisconsin</md-option>
-                        <md-option value="WV">West Virginia</md-option>
-                        <md-option value="WY">Wyoming</md-option>
-                    </md-select>
-                    <md-input-container>
-                        <input mdInput formControlName="zipCode" type="number" placeholder="* Zip Code">
-                    </md-input-container>
+                    <mat-input-container>
+                        <input matInput formControlName="city" placeholder="* City">
+                    </mat-input-container>
+                    <mat-select formControlName="state" placeholder="* State" style="margin-top:9px;">
+                        <mat-option value="AL">Alabama</mat-option>
+                        <mat-option value="AK">Alaska</mat-option>
+                        <mat-option value="AR">Arkansas</mat-option>
+                        <mat-option value="AS">American Samoa</mat-option>
+                        <mat-option value="AZ">Arizona</mat-option>
+                        <mat-option value="CA">California</mat-option>
+                        <mat-option value="CO">Colorado</mat-option>
+                        <mat-option value="CT">Connecticut</mat-option>
+                        <mat-option value="DC">District of Columbia</mat-option>
+                        <mat-option value="DE">Delaware</mat-option>
+                        <mat-option value="FL">Florida</mat-option>
+                        <mat-option value="GA">Georgia</mat-option>
+                        <mat-option value="GU">Guam</mat-option>
+                        <mat-option value="HI">Hawaii</mat-option>
+                        <mat-option value="IA">Iowa</mat-option>
+                        <mat-option value="ID">Idaho</mat-option>
+                        <mat-option value="IL">Illinois</mat-option>
+                        <mat-option value="IN">Indiana</mat-option>
+                        <mat-option value="KS">Kansas</mat-option>
+                        <mat-option value="KY">Kentucky</mat-option>
+                        <mat-option value="LA">Louisiana</mat-option>
+                        <mat-option value="MA">Massachusetts</mat-option>
+                        <mat-option value="MD">Maryland</mat-option>
+                        <mat-option value="ME">Maine</mat-option>
+                        <mat-option value="MI">Michigan</mat-option>
+                        <mat-option value="MN">Minnesota</mat-option>
+                        <mat-option value="MO">Missouri</mat-option>
+                        <mat-option value="MS">Mississippi</mat-option>
+                        <mat-option value="MT">Montana</mat-option>
+                        <mat-option value="NC">North Carolina</mat-option>
+                        <mat-option value="ND">North Dakota</mat-option>
+                        <mat-option value="NE">Nebraska</mat-option>
+                        <mat-option value="NH">New Hampshire</mat-option>
+                        <mat-option value="NJ">New Jersey</mat-option>
+                        <mat-option value="NM">New Mexico</mat-option>
+                        <mat-option value="NV">Nevada</mat-option>
+                        <mat-option value="NY">New York</mat-option>
+                        <mat-option value="OH">Ohio</mat-option>
+                        <mat-option value="OK">Oklahoma</mat-option>
+                        <mat-option value="OR">Oregon</mat-option>
+                        <mat-option value="PA">Pennsylvania</mat-option>
+                        <mat-option value="PR">Puerto Rico</mat-option>
+                        <mat-option value="RI">Rhode Island</mat-option>
+                        <mat-option value="SC">South Carolina</mat-option>
+                        <mat-option value="SD">South Dakota</mat-option>
+                        <mat-option value="TN">Tennessee</mat-option>
+                        <mat-option value="TX">Texas</mat-option>
+                        <mat-option value="UT">Utah</mat-option>
+                        <mat-option value="VA">Virginia</mat-option>
+                        <mat-option value="VI">Virgin Islands</mat-option>
+                        <mat-option value="VT">Vermont</mat-option>
+                        <mat-option value="WA">Washington</mat-option>
+                        <mat-option value="WI">Wisconsin</mat-option>
+                        <mat-option value="WV">West Virginia</mat-option>
+                        <mat-option value="WY">Wyoming</mat-option>
+                    </mat-select>
+                    <mat-input-container>
+                        <input matInput formControlName="zipCode" type="number" placeholder="* Zip Code">
+                    </mat-input-container>
                 </div>
-                <md-input-container>
-                    <textarea md-autosize formControlName="bio" maxRows="9" minRows="9" mdInput placeholder="Bio"></textarea>
-                </md-input-container>
+                <mat-input-container>
+                    <textarea mat-autosize formControlName="bio" maxRows="9" minRows="9" matInput placeholder="Bio"></textarea>
+                </mat-input-container>
                 <br>
-                <md-divider style="border-top-color:black;"></md-divider>
+                <mat-divider style="border-top-color:black;"></mat-divider>
                 <br>
                 <h1 class="darkgrey">Mobile Verification</h1>
                 <h4>Please verify your number with your unique Techful access code.</h4>
-                <md-input-container>
-                    <input mdInput formControlName="phone" placeholder="* Phone Number">
-                </md-input-container>
-                <button md-raised-button aria-label="next" color="primary" style="width:250px;" type="submit"><h2 style="color:white !important;">NEXT</h2></button>
+                <mat-input-container>
+                    <input matInput formControlName="phone" placeholder="* Phone Number">
+                </mat-input-container>
+                <button mat-raised-button aria-label="next" color="primary" style="width:250px;" type="submit"><h2 style="color:white !important;">NEXT</h2></button>
                 <br>
             </form>
         </div>
@@ -272,6 +272,6 @@
         <h3 class="left15" style="color:#1d4959 !important;"><i class="fa fa-exclamation-circle fa-2x" aria-hidden="true" style="margin-top:-9px;color:#f4c500;"></i> <span style="vertical-align:top;">Status: Incomplete.</span></h3>
         <h4 class="left15"><i>To ensure providers</i> feel comfortable with the app and working with their customers, we require all providers attend an online orientation.
             This orientation will give you an overview of the app and some tips on how to get that 5 star rating.</h4>
-        <button md-raised-button aria-label="onlineCourse" color="primary" class="left15" style="width:325px;" (click)="route()"><h2 style="color:white !important;">VIEW ONLINE COURSE</h2></button>
+        <button mat-raised-button aria-label="onlineCourse" color="primary" class="left15" style="width:325px;" (click)="route()"><h2 style="color:white !important;">VIEW ONLINE COURSE</h2></button>
     </div>
-</md-sidenav-container>
+</mat-sidenav-container>

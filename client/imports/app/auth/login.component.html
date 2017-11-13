@@ -1,31 +1,31 @@
 <br fxShow="true" fxShow.xs="false">
 <div fxLayout="row" fxLayoutAlign="center">
-        <md-card>
-            <md-card-header>
-                <md-card-title>Sign in</md-card-title>
-                <md-card-subtitle>Sign in with your email</md-card-subtitle>
-            </md-card-header>
-            <md-card-content>
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>Sign in</mat-card-title>
+                <mat-card-subtitle>Sign in with your email</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
                 <br>
                 <form [formGroup]="loginForm" #f="ngForm" (ngSubmit)="login()">
-                    <md-input-container>
-                        <input mdInput formControlName="email" type="email" placeholder="Email">
-                    </md-input-container>
-                    <md-input-container>
-                        <input mdInput formControlName="password" type="password" placeholder="Password">
-                    </md-input-container>
+                    <mat-input-container>
+                        <input matInput formControlName="email" type="email" placeholder="Email">
+                    </mat-input-container>
+                    <mat-input-container>
+                        <input matInput formControlName="password" type="password" placeholder="Password">
+                    </mat-input-container>
                     <br fxShow="false" fxShow.xs="true">
-                    <button md-raised-button type="submit" aria-label="login">Sign In</button>
+                    <button mat-raised-button type="submit" aria-label="login">Sign In</button>
                 </form>
                 <div [hidden]="error==''">
-                    <md-toolbar [hidden]="error==''">
+                    <mat-toolbar [hidden]="error==''">
                         <p>{{error}}</p>
-                    </md-toolbar>
+                    </mat-toolbar>
                 </div>
-            </md-card-content>
-            <md-card-actions>
-                <a md-button [routerLink]="['/signup']">Need an account?</a>
-                <a md-button [routerLink]="['/recover']">Forgot password?</a>
-            </md-card-actions>
-        </md-card>
+            </mat-card-content>
+            <mat-card-actions>
+                <a mat-button [routerLink]="['/signup']">Need an account?</a>
+                <a mat-button [routerLink]="['/recover']">Forgot password?</a>
+            </mat-card-actions>
+        </mat-card>
 </div>
