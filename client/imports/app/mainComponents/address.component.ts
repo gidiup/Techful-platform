@@ -1,6 +1,6 @@
 import {Component,OnInit,OnDestroy,EventEmitter,Output,Inject,Optional} from '@angular/core';
 import {FormBuilder,FormGroup,Validators} from '@angular/forms';
-import {MatDialog,MatDialogRef,MAT_DIALOG_DATA} from '@angular/material';
+import {MatDialog,MatDialogRef,MAT_DIALOG_DATA,MatSnackBar} from '@angular/material';
 import {Customers} from '../../../../both/collections/customers.collection';
 import {Customer} from '../../../../both/models/customer.model';
 import {Order} from '../../../../both/models/order.model';
@@ -71,7 +71,7 @@ export class AddressComponent implements OnInit,OnDestroy{
   stripeCustomer:string="";
   @Output() onBack:EventEmitter<any>=new EventEmitter();
   @Output() onSubmit:EventEmitter<string[]>=new EventEmitter<string[]>();
-  constructor(private formBuilder:FormBuilder,public dialog:MatDialog,public snackBar:MatDialog){}
+  constructor(private formBuilder:FormBuilder,public dialog:MatDialog,public snackBar:MatSnackBar){}
   ngOnInit(){
     if(window.innerWidth>666){
       this.height=window.innerHeight-125;
@@ -178,7 +178,7 @@ export class AddressComponent implements OnInit,OnDestroy{
         }
       }
     }else{
-      // this.snackBar.open("Empty filds!","OK.",{duration:9999});
+      this.snackBar.open("Empty filds!","OK.",{duration:9999});
     }
   }
   nextPay(){
@@ -200,7 +200,7 @@ export class AddressComponent implements OnInit,OnDestroy{
             exp_year:this.payForm.value.date
         },(status,response)=>{
             if(response.error){
-              // this.snackBar.open(response.error.message,"",{duration:9999});
+              this.snackBar.open(response.error.message,"",{duration:9999});
             }else{
               this.stripeCustomer=response.id
               Customers.update(Meteor.userId(),{
@@ -211,10 +211,10 @@ export class AddressComponent implements OnInit,OnDestroy{
             }
         })
       }else{
-        // this.snackBar.open("You typed wrong card or date/month number","",{duration:9999});
+        this.snackBar.open("You typed wrong card or date/month number","",{duration:9999});
       }
     }else{
-      // this.snackBar.open("You typed wrong data.","OK!",{duration:9999});
+      this.snackBar.open("You typed wrong data.","OK!",{duration:9999});
     }
   }
   openDialog(secondPopup){
@@ -411,7 +411,7 @@ export class AddressComponent implements OnInit,OnDestroy{
         this.pay=true;
       }
     }else{
-      // this.snackBar.open("Please add the","description",{duration:9999});
+      this.snackBar.open("Please add the","description",{duration:9999});
     }
   }
   ngOnDestroy(){

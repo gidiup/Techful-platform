@@ -1,5 +1,6 @@
 import { Accounts } from 'meteor/accounts-base';
 import { HTTP } from 'meteor/http';
+import { OAuth } from 'meteor/oauth';
 const crypto = Npm.require('crypto');
 const whitelistedFields = [
     'id',
@@ -25,9 +26,8 @@ const getIdentity = (accessToken, fields) => {
         return HTTP.get('https://graph.facebook.com/v2.8/me', {
             params: {
                 access_token: accessToken,
-                appsecret_proof: hmac.digest('hex'),
-                fields: fields.join(','),
-            },
+                fields: fields.join(',')
+            }
         }).data;
     } catch (err) {
         throw _.extend(

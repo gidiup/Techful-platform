@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {Router} from '@angular/router';
 import {MeteorObservable} from 'meteor-rxjs';
 import {Subscription} from 'rxjs/Subscription';
-// import {MatSnackBar} from '@angular/material'
+import {MatSnackBar} from '@angular/material'
 import {Customers} from '../../../both/collections/customers.collection';
 import {Customer} from '../../../both/models/customer.model';
 import style from './app.component.scss';
@@ -17,7 +17,7 @@ import {InjectUser} from "angular2-meteor-accounts-ui";
 export class AppComponent{
   customerSub:Subscription;
   customer:Customer;
-  constructor(private router:Router,public snackBar:Router){
+  constructor(private router:Router,public snackBar:MatSnackBar){
     MeteorObservable.autorun().subscribe(()=>{
       if(Meteor.userId()){
         if(this.customerSub){
@@ -63,9 +63,9 @@ export class AppComponent{
       requestPermissions:['public_profile','email']
     },(err)=>{
       if(err){
-        // this.snackBar.open(err.message || err,"OK")
+        this.snackBar.open(err.message || err,"OK")
       }else{
-        // this.snackBar.open("Facebook loged in","OK",{duration:9999})
+        this.snackBar.open("Facebook loged in","OK",{duration:9999})
       }
     })
   }
@@ -74,9 +74,9 @@ export class AppComponent{
       requestPermissions:['profile','email']
     },(err)=>{
       if(err){
-        // this.snackBar.open(err.message || err,"OK")
+        this.snackBar.open(err.message || err,"OK")
       }else{
-        // this.snackBar.open("Google loged in","OK",{duration:9999})
+        this.snackBar.open("Google loged in","OK",{duration:9999})
       }
     })
   }

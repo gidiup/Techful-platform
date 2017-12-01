@@ -2,7 +2,7 @@ import {Component, OnInit, NgZone} from '@angular/core';
 import {FormBuilder,FormGroup,Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {Accounts} from 'meteor/accounts-base';
-// import {MatSnackBar} from '@angular/material';
+import {MatSnackBar} from '@angular/material';
 import template from './recover.component.html';
 @Component({
   selector: 'recover',
@@ -11,7 +11,7 @@ import template from './recover.component.html';
 export class RecoverComponent implements OnInit{
   recoverForm: FormGroup;
   error: string;
-  constructor(private router:Router,private zone:NgZone,private formBuilder:FormBuilder,public snackBar:FormBuilder){}
+  constructor(private router:Router,private zone:NgZone,private formBuilder:FormBuilder,public snackBar:MatSnackBar){}
   ngOnInit() {
     this.recoverForm=this.formBuilder.group({
       email:['',Validators.pattern('[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}')]
@@ -33,7 +33,7 @@ export class RecoverComponent implements OnInit{
       });
     }else{
       this.recoverForm.reset();
-      // this.snackBar.open("Invalid email!","Try again.");
+      this.snackBar.open("Invalid email!","Try again.");
     }
   }
 }

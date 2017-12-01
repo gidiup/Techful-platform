@@ -4,35 +4,31 @@
     "baseUrl": ".",
     "declaration": false,
     "emitDecoratorMetadata": true,
+    "importHelpers": true,
     "experimentalDecorators": true,
     "lib": [
       "dom",
-      "es2015",
-      "es7"
+      "es2015"
     ],
     "module": "commonjs",
     "moduleResolution": "node",
     "sourceMap": true,
-    "target": "es5",
+    "target": "es2015",
     "skipLibCheck": true,
     "stripInternal": true,
-    "noImplicitAny": false,
-    "types": [
-      "meteor-typings",
-      "@types/underscore",
-      "@types/meteor-accounts-phone"
-    ]
+    "noImplicitAny": false
   },
   "include": [
+    "imports/**/*.ts",
     "client/**/*.ts",
-    "server/**/*.ts",
-    "imports/**/*.ts"
+    "server/**/*.ts"
   ],
   "exclude": [
     "node_modules"
   ],
-  "files": [
-    "typings.d.ts"
+  "types": [
+    "@types/meteor",
+    "@types/node"
   ],
   "compileOnSave": false,
   "atom": {
