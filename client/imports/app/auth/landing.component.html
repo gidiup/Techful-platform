@@ -1,0 +1,240 @@
+<div fxLayout="column" fxLayoutAlign=" center">
+    <img src="./img/cup-2884023_1920.png" class="img">
+    <div fxLayout="row" fxLayoutAlign="space-between" class="firstRow">
+        <a [routerLink]="['/']" class="techful-title">TECHFUL<i class="fa fa-registered" aria-hidden="true"></i></a>
+        <div>
+            <a mat-button [routerLink]="['/signup']" class="signup">Sign Up As A Pro</a>
+            <a mat-button [routerLink]="['/login']" class="login">Login</a>
+        </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-between" class="secondRow">
+        <div fxLayout="column" fxFlex="70">
+            <h1 class="findService">Find local service professionals for whatever you need.</h1>
+            <a mat-button class="getIt">Get It On</a>
+            <div class="appMarkets">
+                <img src="./img/apple-badge-new.png" style="cursor:pointer;padding-right:1%">
+                <img src="./img/google-badge-new.png" style="cursor:pointer">
+            </div>
+        </div>
+        <div fxLayout="column" fxLayoutAlign=" center" class="find">
+            <h3 class="findTech">Find the right Tech Pro</h3>
+            <div class="underline"></div>
+            <h4 class="whatService">What service do you need?</h4>
+            <mat-input-container style="width:71%;">
+                <input matInput placeholder=" eg. UX Designers, Developers">
+            </mat-input-container>
+            <h4 class="whatService2">Where do you need it?</h4>
+            <mat-input-container style="width:71%;">
+                <input matInput placeholder=" Enter Postcode" type="number">
+            </mat-input-container>
+            <a mat-button class="continue">Continue</a>
+        </div>
+    </div>
+    <h1 class="howItWorks">How it works</h1>
+    <div class="underline2"></div>
+    <h5 class="techfulIs"><span class="bluePointer">Techful</span> is the easy way to find local service professionals and get quotes fast</h5>
+    <br>
+    <div fxLayout="row" style="width:100%" fxLayoutAlign="center">
+        <div fxFlex='970px' fxFlex.gt-lg='51' style="width:70%;">
+            <!--style="width:51%;"-->
+            <div fxLayout="row" fxLayoutAlign="space-between">
+                <div fxLayout="column" fxLayoutAlign=" center" class="howCard">
+                    <br><img src="./img/Vector Smart Object.png">
+                    <h4 class="cardTitle">Tell us what you need</h4>
+                    <p class="cardText">Whether you're looking for Designer in Pimlico, Developers in Dartford or SEO Experts in Cardiff take a moment to tell us and share a few details - then your work is done!</p>
+                </div>
+                <div fxLayout="column" fxLayoutAlign=" center" class="howCard">
+                    <br><img src="./img/Vector Smart Object1.png">
+                    <h4 class="cardTitle">We'll find Tech Pro to help</h4>
+                    <p class="cardText">We do all the running around so that you don't have to! Contacting local pro- fessionals is very time consuming, so we do it for you saving you hours of time.</p>
+                </div>
+                <div fxLayout="column" fxLayoutAlign=" center" class="howCard">
+                    <br><img src="./img/Vector Smart Object2.png">
+                    <h4 class="cardTitle">Choose the best Pro for your job</h4>
+                    <p class="cardText">We do all the running around so that you don't have to! Contacting local pro- fessionals is very time consuming, so we do it for you saving you hours of time.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h1 class="howItWorks">Customer Stories</h1>
+    <div class="underline2"></div>
+    <h5 class="techfulIs">We have helped thousands of customers find what they need</h5>
+    <br>
+    <div fxLayout="row" style="width:100%" fxLayoutAlign="center">
+        <div fxFlex='970px' fxFlex.gt-lg='51' style="width:70%;">
+            <mat-horizontal-stepper>
+                <mat-step [stepControl]="true">
+                    <ng-template matStepLabel><span (click)="opacity1=1;opacity2=0.5;opacity3=0.5;" class="bluePointer" style="font-weight:900;" [ngStyle]="{'opacity':opacity1}">o</span></ng-template>
+                    <div fxLayout="row" fxLayoutAlign="space-between" style="margin-bottom:20px;">
+                        <div fxLayout="column" fxLayoutAlign=" center" class="storiesCard" style="margin-left:5px;">
+                            <br><h4 class="cardTitle">Quick Service</h4><br>
+                            <p class="cardText">"Greate service - it saved me so much time. Quick, easy, hassle free - I found my perfect professional!"</p>
+                            <p class="cardText bluePointer">James Boyd, Exeter</p>
+                        </div>
+                        <div fxLayout="column" fxLayoutAlign=" center" class="storiesCard">
+                            <br><h4 class="cardTitle">Amazing Communication</h4><br>
+                            <p class="cardText">"I had no idea where to find designer. But I just announced it on <span class="bluePointer">techful.com</span>, and received several greate quotes."</p>
+                            <p class="cardText bluePointer">Trisha Jones, Manchester</p>
+                        </div>
+                        <div fxLayout="column" fxLayoutAlign=" center" class="storiesCard" style="margin-right:5px;">
+                            <br><h4 class="cardTitle">Trusted Marketplace</h4><br>
+                            <p class="cardText">"I spent ages looking for a developer before trying Techful. I wish we'd used Techful from the start."</p>
+                            <p class="cardText bluePointer">Jane Rees, Cardiff</p>
+                        </div>
+                    </div>
+                </mat-step>
+                <mat-step [stepControl]="true">
+                    <ng-template matStepLabel><span (click)="opacity2=1;opacity1=0.5;opacity3=0.5;" class="bluePointer" style="font-weight:900;" [ngStyle]="{'opacity':opacity2}">o</span></ng-template>
+                    <div fxLayout="row" fxLayoutAlign="space-between" style="margin-bottom:20px;">
+                        <div fxLayout="column" fxLayoutAlign=" center" class="storiesCard" style="margin-left:5px;">
+                            <br><h4 class="cardTitle">Amazing Communication</h4><br>
+                            <p class="cardText">"I had no idea where to find designer. But I just announced it on <span class="bluePointer">techful.com</span>, and received several greate quotes."</p>
+                            <p class="cardText bluePointer">Trisha Jones, Manchester</p>
+                        </div>
+                        <div fxLayout="column" fxLayoutAlign=" center" class="storiesCard">
+                            <br><h4 class="cardTitle">Trusted Marketplace</h4><br>
+                            <p class="cardText">"I spent ages looking for a developer before trying Techful. I wish we'd used Techful from the start."</p>
+                            <p class="cardText bluePointer">Jane Rees, Cardiff</p>
+                        </div>
+                        <div fxLayout="column" fxLayoutAlign=" center" class="storiesCard" style="margin-right:5px;">
+                            <br><h4 class="cardTitle">Quick Service</h4><br>
+                            <p class="cardText">"Greate service - it saved me so much time. Quick, easy, hassle free - I found my perfect professional!"</p>
+                            <p class="cardText bluePointer">James Boyd, Exeter</p>
+                        </div>
+                    </div>
+                </mat-step>
+                <mat-step [stepControl]="true">
+                    <ng-template matStepLabel><span (click)="opacity3=1;opacity2=0.5;opacity1=0.5;" class="bluePointer" style="font-weight:900;" [ngStyle]="{'opacity':opacity3}">o</span></ng-template>
+                    <div fxLayout="row" fxLayoutAlign="space-between" style="margin-bottom:20px;">
+                        <div fxLayout="column" fxLayoutAlign=" center" class="storiesCard" style="margin-left:5px;">
+                            <br><h4 class="cardTitle">Amazing Communication</h4><br>
+                            <p class="cardText">"I had no idea where to find designer. But I just announced it on <span class="bluePointer">techful.com</span>, and received several greate quotes."</p>
+                            <p class="cardText bluePointer">Trisha Jones, Manchester</p>
+                        </div>
+                        <div fxLayout="column" fxLayoutAlign=" center" class="storiesCard">
+                            <br><h4 class="cardTitle">Quick Service</h4><br>
+                            <p class="cardText">"Greate service - it saved me so much time. Quick, easy, hassle free - I found my perfect professional!"</p>
+                            <p class="cardText bluePointer">James Boyd, Exeter</p>
+                        </div>
+                        <div fxLayout="column" fxLayoutAlign=" center" class="storiesCard" style="margin-right:5px;">
+                            <br><h4 class="cardTitle">Trusted Marketplace</h4><br>
+                            <p class="cardText">"I spent ages looking for a developer before trying Techful. I wish we'd used Techful from the start."</p>
+                            <p class="cardText bluePointer">Jane Rees, Cardiff</p>
+                        </div>
+                    </div>
+                </mat-step>
+            </mat-horizontal-stepper>
+        </div>
+    </div>
+    <h1 class="howItWorks"><span class="bluePointer">Techful</span> is better</h1>
+    <div class="underline2"></div>
+    <h5 class="techfulIs">We'll help you find the perfect professional for the job</h5>
+    <br><br>
+    <div fxLayout="row" style="width:100%" fxLayoutAlign="center">
+        <div fxFlex='970px' fxFlex.gt-lg='51' style="width:70%;">
+            <div fxLayout="row" fxLayoutAlign="space-between">
+                <div fxLayout="column" style="width:42%;">
+                    <div fxLayout="row">
+                        <img src="./img/Layer 1.png" height="51" style="margin-right:20px;">
+                        <h3 class="betterHeader">Avoid wasting time on search engines & directories</h3>
+                    </div>
+                    <h5 class="betterText">
+                        We've all been there. Searching Google for hours, contacting people, leaving messages and getting no replies. It's so frustrating!<br>
+                        <span class="bluePointer">Techful</span> is better. We do all the asking for you. The pros who reply are the ones who are genuinely interested and want to help you!
+                    </h5>
+                </div>
+                <div fxLayout="column" style="width:42%;">
+                    <div fxLayout="row">
+                        <img src="./img/Capa 1.png" height="46" style="margin-right:20px;">
+                        <h3 class="betterHeader">Better than so called 'Trusted Marketplaces'</h3>
+                    </div>
+                    <h5 class="betterText">
+                        Beware of Internet services and business directories that make a fortune by selling your requirements to a narrow group of the same old "trusted" traders.<br>
+                        <span class="bluePointer">Techful</span> is different. We contact every pro we can - not just the ones signed up to <span class="bluePointer">Techful</span>. That way, you get the widest and best choice possible.
+                    </h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><br><br>
+    <div fxLayout="row" style="width:100%" fxLayoutAlign="center">
+        <div fxFlex='970px' fxFlex.gt-lg='51' style="width:70%;">
+            <div fxLayout="row" fxLayoutAlign="space-between">
+                <div fxLayout="column" style="width:42%;">
+                    <div fxLayout="row">
+                        <img src="./img/Capa 11.png" height="49" style="margin-right:20px;">
+                        <h3 class="betterHeader">Stay organised and keep your conversations in one place</h3>
+                    </div>
+                    <h5 class="betterText">
+                        Sometimes it's easy to lose people's estimates and contact details. But <span class="bluePointer">Techful</span> keeps everything safe in your inbox. Simple!
+                        When professionals contact you on <span class="bluePointer">Techful</span>, we keep it all organised in the <span class="bluePointer">Techful</span> messenger with their messages,
+                        estimates and all their contact details.
+                    </h5>
+                </div>
+                <div fxLayout="column" style="width:42%;">
+                    <div fxLayout="row">
+                        <img src="./img/Capa 12.png" height="47" style="margin-right:20px;">
+                        <h3 class="betterHeader">Smart people & technology who<br>put you first</h3>
+                    </div>
+                    <h5 class="betterText">
+                        <span class="bluePointer">Techful</span> is a success story - with a team of bright people that care about great customer service. After all, we use <span class="bluePointer">Techful</span> ourselves too!
+                        <br>We're here to revolutionise how people find and sell local ser- vices online. Our mission is to make finding local professionals as easy as possible.
+                    </h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div fxLayout="row" style="width:100%" fxLayoutAlign="center">
+        <div fxFlex='1230px' fxFlex.gt-lg='65' class="someColumn">
+            <img src="./img/Group 13.png" class="phone">
+            <h2 class="makeMoney">Make money on your own schedule with Techful</h2>
+            <a mat-button class="signUp" href="https://murmuring-harbor-70757.herokuapp.com">Sign Up as a PRO</a>
+            <div class="appMarkets" style="padding-bottom:40px;">
+                <img src="./img/apple-badge-new.png" style="cursor:pointer;padding-right:1%">
+                <img src="./img/google-badge-new.png" style="cursor:pointer">
+            </div>
+        </div>
+    </div>
+    <div fxLayout="row" style="width:100%" fxLayoutAlign="center">
+        <div fxFlex='1050px' fxFlex.gt-lg='55' style="width:75%;">
+            <div fxLayout="row" fxLayoutAlign="space-between" class="footer">
+                <div fxLayout="column">
+                    <a [routerLink]="['/']" class="techful-title" style="color:#248ddd;">TECHFUL<i class="fa fa-registered" aria-hidden="true"></i></a>
+                    <p class="loremIpsum">Lorem ipsum dolor sit amet, consec-<br>tetur adipisicing elit...</p>
+                    <br>
+                    <div fxLayout="row" style="color:#1280d8;">
+                        <i class="fa fa-facebook fa-lg" aria-hidden="true" style="margin-right:25px;"></i>
+                        <i class="fa fa-twitter fa-lg" aria-hidden="true" style="margin-right:25px;"></i>
+                        <i class="fa fa-instagram fa-lg" aria-hidden="true"></i>
+                    </div>
+                    <h5 class="copyright"><i class="fa fa-copyright" aria-hidden="true"></i> 2017, techful.com. All Rights Reserved</h5>
+                </div>
+                <div fxLayout="column" style="color:#3e3e3e;">
+                    <h4 class="marginPointer" style="margin-top:-9px;">Techful</h4>
+                    <p class="marginPointer" style="font-size:14px;">About</p>
+                    <p class="marginPointer" style="font-size:14px;">Team</p>
+                    <p class="marginPointer" style="font-size:14px;">Careers</p>
+                    <p class="marginPointer" style="font-size:14px;">Blog</p>
+                    <p class="marginPointer" style="font-size:14px;">Affiliates</p>
+                </div>
+                <div fxLayout="column" style="color:#3e3e3e;">
+                    <h4  class="marginPointer" style="margin-top:-9px;">For Buyers</h4>
+                    <p class="marginPointer" style="font-size:14px;" [routerLink]="['/login']">Login</p>
+                    <p class="marginPointer" style="font-size:14px;">Buyers' Guides</p>
+                    <p class="marginPointer" style="font-size:14px;">Terms</p>
+                    <p class="marginPointer" style="font-size:14px;">Privacy</p>
+                </div>
+                <div fxLayout="column" style="color:#3e3e3e;">
+                    <h4  class="marginPointer" style="margin-top:-9px;">For Pros</h4>
+                    <p class="marginPointer" style="font-size:14px;">Pro Centre</p>
+                    <p class="marginPointer" style="font-size:14px;">How it works</p>
+                    <p class="marginPointer" style="font-size:14px;">Success Stories</p>
+                    <p class="marginPointer" style="font-size:14px;">Pricing</p>
+                    <p class="marginPointer" style="font-size:14px;" (click)="techie()">Login</p>
+                    <p class="marginPointer" style="font-size:14px;" (click)="techie()">Sign Up</p>
+                </div>
+                <div fxLayout="column"></div>
+            </div>
+        </div>
+    </div>
+</div>

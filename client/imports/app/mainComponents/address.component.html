@@ -111,19 +111,22 @@
                     </div>
                     <button mat-raised-button type="submit" aria-label="next" color="primary"><h1>Next</h1></button>
                 </form>
-                <form *ngIf="submitPay" fxLayout="column"
-                      (ngSubmit)="successfulSubmit()">
-                    <mat-select placeholder="Choose Promo Code" [(ngModel)]="selectedPromo" name="promo" class="aquaBorder">
-                        <mat-option *ngFor="let promo of promoCodes" [value]="promo.value">
-                            {{promo.viewValue}}
-                        </mat-option>
-                    </mat-select>
+                <form *ngIf="submitPay" fxLayout="column" (ngSubmit)="successfulSubmit()">
+                    <mat-form-field>
+                        <mat-select [placeholder]="'Choose Promo Code'" [(ngModel)]="selectedPromo" name="promo" class="aquaBorder">
+                            <mat-option *ngFor="let promo of promoCodes" [value]="promo.value">
+                                {{promo.viewValue}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
                     <br>
                     <br>
                     <mat-toolbar class="backgroundInherit">
-                        <h1 class="font-normal aqua weight100">Job fee</h1>
-                        <span class="fill-remaining-space"></span>
-                        <h1 class="font-normal aqua">{{choosedPrice}}</h1>
+                        <mat-toolbar-row>
+                            <h1 class="font-normal aqua weight100">Job fee</h1>
+                            <span class="fill-remaining-space"></span>
+                            <h1 class="font-normal aqua">{{choosedPrice}}</h1>
+                        </mat-toolbar-row>
                         <mat-toolbar-row>
                             <span class="font-normal aqua" style="font-size:2.1em;font-weight:600;padding-top:30px;">SUBTOTAL {{choosedPrice}}</span>
                         </mat-toolbar-row>

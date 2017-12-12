@@ -53,7 +53,7 @@ export class AppComponent{
         })
         return;
       }else{
-        this.router.navigate(['/login']);
+        this.router.navigate(['/landing']);
         return;
       }
     })

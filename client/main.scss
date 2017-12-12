@@ -71,7 +71,7 @@ body.web {
   background-color:white;
   box-shadow:0px 2px 4px -1px rgba(0, 0, 0, 0.2),0px 4px 5px 0px rgba(0, 0, 0, 0.14),0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 }
-md-divider{
+mat-divider{
   display:block;
   border-top-style:solid;
   border-top-width:1px;
@@ -90,6 +90,7 @@ md-divider{
 }
 .scroll{
   overflow-y:auto;
+  overflow-x:hidden;
 }
 .file-uploading{
   opacity:0.3;
@@ -106,7 +107,7 @@ md-divider{
 .aqua{
   color:#26c6da !important;
 }
-md-tab-header{
+mat-tab-header{
   height:60px;
   background-color:lightgrey;
 }
@@ -256,5 +257,31 @@ md-tab-header{
   color:white !important;
 }
 .mat-list-item-content{//don't remove!
-  padding-top:15px !important;
+  //padding-top:15px !important;
+}
+.mat-horizontal-stepper-header-container{
+  position:absolute;
+  margin-top:280px;
+  margin-left:460px;
+}
+.mat-step-icon,.mat-step-icon-not-touched,.mat-stepper-horizontal-line{
+  display:none !important;
+}
+.mat-step-header-ripple{
+  background-color:white;
+}
+.mat-step-label{
+  z-index:1;
+}
+mat-step-header{
+  width:9px;
+  height:10px !important;
+  padding:0 !important;
+  margin:4px;
+}
+.mat-horizontal-content-container{
+  padding:0 !important;
+}
+.mat-horizontal-stepper-content{
+  background-color:#f6f6f6;
 }

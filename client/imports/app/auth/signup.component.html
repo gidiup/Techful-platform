@@ -1,3 +1,16 @@
+<mat-toolbar color="accent">
+    <span class="fill-remaining-space"></span>
+    <div>
+        <button mat-icon-button matTooltip="Facebook login" (click)="facebook();">
+            <i class="fa fa-facebook fa-2x" aria-hidden="true"></i>
+        </button>
+        <button mat-icon-button matTooltip="Google login" (click)="google();">
+            <i class="fa fa-google fa-2x" aria-hidden="true"></i>
+        </button>
+        <a mat-button [routerLink]="['/login']">Login</a>
+        <a mat-button [routerLink]="['/signup']">Sign up</a>
+    </div>
+</mat-toolbar>
 <br fxShow="true" fxShow.xs="false">
 <div class="flex-container" fxLayout="row" fxLayoutAlign="center">
     <mat-card>
@@ -22,7 +35,7 @@
             </div>
         </mat-card-content>
         <mat-card-actions>
-            <a mat-button [routerLink]="['/login']">Already a user?</a>
+            <a mat-button [routerLink]="['/login2']">Already a user?</a>
         </mat-card-actions>
     </mat-card>
 </div>

@@ -423,27 +423,10 @@ export class AddressComponent implements OnInit,OnDestroy{
 }
 @Component({
   selector:'dialog-overview-example-dialog',
-  template:`
-    <div *ngIf="!data" fxLayout="column">
-        <h2 fxLayoutAlign="center" class="font-normal">Are You Sure?</h2>
-        <p class="textCenter">When you select a provider for this job, you must have any necessary supplies ready and be prepared for them to arrive at your location in about an hour of being chosen.</p>
-        <div fxLayout="row">
-            <button md-raised-button fxFlex="50%" aria-label="no" (click)="answer(false)" class="aqua">No</button>
-            <button md-raised-button fxFlex="50%" aria-label="yes" (click)="answer(true)" class="aqua">Yes</button>
-        </div>
-    </div>
-    <div *ngIf="data" fxLayout="column">
-        <h2 fxLayoutAlign="center" class="font-normal">Do you want to use the credit/debit card (...{{data}}) from your last chore?</h2>
-        <p class="textCenter">If you wish to try a new pay card press 'No'</p>
-        <div fxLayout="row">
-            <button md-raised-button fxFlex="50%" aria-label="no" (click)="answer(false)" class="aqua">No</button>
-            <button md-raised-button fxFlex="50%" aria-label="yes" (click)="answer(true)" class="aqua">Yes</button>
-        </div>
-    </div>
-  `
+  template:`<div *ngIf="!data" fxLayout="column"><h2 fxLayoutAlign="center" class="font-normal">Are You Sure?</h2><p class="textCenter">When you select a provider for this job, you must have any necessary supplies ready and be prepared for them to arrive at your location in about an hour of being chosen.</p><div fxLayout="row"><button mat-raised-button fxFlex="50%" aria-label="no" (click)="answer(false)" class="aqua">No</button><button mat-raised-button fxFlex="50%" aria-label="yes" (click)="answer(true)" class="aqua">Yes</button></div></div><div *ngIf="data" fxLayout="column"><h2 fxLayoutAlign="center" class="font-normal">Do you want to use the credit/debit card (...{{data}}) from your last chore?</h2><p class="textCenter">If you wish to try a new pay card press 'No'</p><div fxLayout="row"><button mat-raised-button fxFlex="50%" aria-label="no" (click)="answer(false)" class="aqua">No</button><button mat-raised-button fxFlex="50%" aria-label="yes" (click)="answer(true)" class="aqua">Yes</button></div></div>`
 })
 export class areYouSurePopup{
-  constructor(public dialogRef:MatDialogRef<areYouSurePopup>,@Optional() @Inject(MAT_DIALOG_DATA) public data:any){}
+  constructor(public dialogRef:MatDialogRef<areYouSurePopup>,@Inject(MAT_DIALOG_DATA) public data:any){}
   answer(answr){
     this.dialogRef.close(answr)
   }

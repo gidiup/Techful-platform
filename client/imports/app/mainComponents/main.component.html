@@ -1,6 +1,9 @@
 <button mat-fab *ngIf="notifications.length>0" color="primary" style="position:fixed;right:9px;bottom:50px;opacity:0.9;color:white;z-index:9;"><h1>{{notifications.length}}</h1></button>
-<mat-tab-group *ngIf="!thanksPage && !acceptChore && !thankYou && !atIt" [selectedIndex]="tabIndex" headerPosition="below">
+<mat-tab-group *ngIf="!thanksPage && !acceptChore && !thankYou && !atIt" [selectedIndex]="tabIndex" headerPosition="below" style="overflow-x:hidden">
     <mat-tab>
+        <ng-template mat-tab-label>
+            <i class="fa fa-heart-o fa-2x themeColor" aria-hidden="true"><br><div class="font20">Favorites</div></i>
+        </ng-template>
         <div [ngStyle]="{'height':height+'px'}" class="scroll">
             <div *ngIf="showPast" fxLayout="column" fxFlex="90%" class="marginAuto">
                 <br>
@@ -82,9 +85,6 @@
                 </mat-card>
             </div>
         </div>
-        <ng-template mat-tab-label>
-            <i class="fa fa-heart-o fa-2x themeColor" aria-hidden="true"><br><div class="font20">Favorites</div></i>
-        </ng-template>
     </mat-tab>
     <mat-tab>
         <ng-template mat-tab-label>
@@ -536,9 +536,12 @@
         </div>
     </mat-tab>
     <mat-tab>
+        <ng-template mat-tab-label>
+            <i class="fa fa-home fa-2x" aria-hidden="true" style="color:green;"><br><div class="font20">Home</div></i>
+        </ng-template>
         <address #addreSS [hidden]="!addressPage" (onBack)="addressPage=false;categoriesPage=true;" (onSubmit)="addressPage=false;submitParameters=$event;thanksPage=true;"></address>
         <div *ngIf="firstPage" [ngStyle]="{'height':height+'px'}" class="scroll">
-            <div [hidden]="hideFixedBar" class="fixedTop z_index" style="top:0;">
+            <div [hidden]="hideFixedBar" class="fixedTop z_index" style="top:65px;">
                 <h3 fxLayoutAlign="center" style="color:#26c6da;">Greater {{customer.city}} Area &nbsp;<i class="fa fa-times-circle fa-lg" aria-hidden="true" (click)="hideFixedBar=true;"></i></h3>
             </div>
             <div fxLayout="column" fxFlex="95%" class="marginAuto">
@@ -570,24 +573,26 @@
             </div>
         </div>
         <categories *ngIf="categoriesPage" (onBack)="categoriesPage=false;firstPage=true;onInterval();antibug()" (onSubmit)="categoriesPage=false;submitParameters=$event;thanksPage=true;"></categories>
-        <ng-template mat-tab-label>
-            <i class="fa fa-home fa-2x" aria-hidden="true" style="color:green;"><br><div class="font20">Home</div></i>
-        </ng-template>
     </mat-tab>
     <mat-tab>
-        <div [ngStyle]="{'height':height+'px'}" class="scroll">
-            <h1 fxLayoutAlign="center">Share</h1>
-        </div>
         <ng-template mat-tab-label>
             <i class="fa fa-share-alt fa-2x" aria-hidden="true" style="color:blue;"><br><div class="font20">Share</div></i>
         </ng-template>
+        <div [ngStyle]="{'height':height+'px'}" class="scroll">
+            <h1 fxLayoutAlign="center">Share</h1>
+        </div>
     </mat-tab>
     <mat-tab>
+        <ng-template mat-tab-label>
+            <i class="fa fa-cogs fa-2x" aria-hidden="true" style="color:grey;"><br><div class="font20">Settings</div></i>
+        </ng-template>
         <div [ngStyle]="{'height':height+'px'}" class="scroll">
             <mat-toolbar *ngIf="!help" style="background-color:inherit;">
-                <h3 class="font-normal grey weight100 pointer" (click)="help=true">Help</h3>
-                <span class="fill-remaining-space"></span>
-                <i class="fa fa-angle-right fa-lg grey pointer" aria-hidden="true" (click)="help=true"></i>
+                <mat-toolbar-row>
+                    <h3 class="font-normal grey weight100 pointer" (click)="help=true">Help</h3>
+                    <span class="fill-remaining-space"></span>
+                    <i class="fa fa-angle-right fa-lg grey pointer" aria-hidden="true" (click)="help=true"></i>
+                </mat-toolbar-row>
                 <mat-toolbar-row [routerLink]="['/']">
                     <h3 class="font-normal grey weight100">Profile</h3>
                     <span class="fill-remaining-space"></span>
@@ -648,9 +653,6 @@
                 <br>
             </div>
         </div>
-        <ng-template mat-tab-label>
-            <i class="fa fa-cogs fa-2x" aria-hidden="true" style="color:grey;"><br><div class="font20">Settings</div></i>
-        </ng-template>
     </mat-tab>
 </mat-tab-group>
 <div *ngIf="thanksPage" fxLayout="row" fxLayoutAlign="center">

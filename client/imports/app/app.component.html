@@ -1,18 +1,8 @@
-<mat-toolbar color="accent">
-    <a *ngIf="!user" fxShow="true" fxShow.xs="false" [routerLink]="['/']" class="toolbar-title"><b><i>TECHFUL</i></b></a>
-    <a *ngIf="user" fxShow="true" fxShow.xs="false" [routerLink]="['/app']" class="toolbar-title"><b><i>TECHFUL</i></b></a>
+<mat-toolbar *ngIf="user" color="accent">
+    <!--<a *ngIf="!user" fxShow="true" fxShow.xs="false" [routerLink]="['/']" class="toolbar-title"><b><i>TECHFUL</i></b></a>-->
+    <a fxShow="true" fxShow.xs="false" [routerLink]="['/app']" class="toolbar-title"><b><i>TECHFUL</i></b></a>
     <span class="fill-remaining-space"></span>
-    <div [hidden]="user">
-      <button mat-icon-button matTooltip="Facebook login" (click)="facebook();">
-          <i class="fa fa-facebook fa-2x" aria-hidden="true"></i>
-      </button>
-      <button mat-icon-button matTooltip="Google login" (click)="google();">
-          <i class="fa fa-google fa-2x" aria-hidden="true"></i>
-      </button>
-      <a mat-button [routerLink]="['/login']">Login</a>
-      <a mat-button [routerLink]="['/signup']">Sign up</a>
-    </div>
-    <div [hidden]="!user">
+    <div>
       <i class="fa fa-user" aria-hidden="true" [matTooltip]="user | displayName"></i>
       <button mat-button (click)="logout()">Logout</button>
     </div>

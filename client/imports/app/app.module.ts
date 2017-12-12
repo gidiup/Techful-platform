@@ -11,7 +11,7 @@ import {MAIN_DECLARATIONS} from './mainComponents';
 import {SHARED_DECLARATIONS} from './shared';
 import {APP_DECLARATIONS} from './appComponents';
 import {MatSnackBarModule,MatDialogModule,MatTooltipModule,MatTabsModule,MatInputModule,MatToolbarModule,MatButtonToggleModule,MatDatepickerModule,MatSelectModule,
-    MatSlideToggleModule,MatButtonModule,MatCardModule,MatSidenavModule,MatChipsModule,MatListModule} from "@angular/material";
+    MatSlideToggleModule,MatButtonModule,MatCardModule,MatSidenavModule,MatChipsModule,MatListModule,MatNativeDateModule,MatStepperModule} from "@angular/material";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {AUTH_DECLARATIONS} from "./auth/index";
 import {areYouSurePopup} from "./mainComponents/address.component";
@@ -36,6 +36,8 @@ moduleDefinition={
         MatToolbarModule,
         MatButtonToggleModule,
         MatDatepickerModule,
+        MatNativeDateModule,
+        MatStepperModule,
         MatSelectModule,
         MatSlideToggleModule,
         MatSnackBarModule,
@@ -49,17 +51,18 @@ moduleDefinition={
 	    SwiperModule
     ],
     declarations:[
-      AppComponent,
-      ...MAIN_DECLARATIONS,
-      ...APP_DECLARATIONS,
-      ...SHARED_DECLARATIONS,
-      ...AUTH_DECLARATIONS
+        areYouSurePopup,
+        AppComponent,
+        ...MAIN_DECLARATIONS,
+        ...APP_DECLARATIONS,
+        ...SHARED_DECLARATIONS,
+        ...AUTH_DECLARATIONS
     ],
     providers:[
         checkUser
     ],
     bootstrap:[
-      AppComponent
+        AppComponent
     ],
     entryComponents:[
         areYouSurePopup

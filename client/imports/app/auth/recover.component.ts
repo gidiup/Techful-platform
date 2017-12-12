@@ -36,4 +36,26 @@ export class RecoverComponent implements OnInit{
       this.snackBar.open("Invalid email!","Try again.");
     }
   }
+  facebook(){
+    Meteor.loginWithFacebook({
+      requestPermissions:['public_profile','email']
+    },(err)=>{
+      if(err){
+        this.snackBar.open(err.message || err,"OK")
+      }else{
+        this.snackBar.open("Facebook loged in","OK",{duration:9999})
+      }
+    })
+  }
+  google(){
+    Meteor.loginWithGoogle({
+      requestPermissions:['profile','email']
+    },(err)=>{
+      if(err){
+        this.snackBar.open(err.message || err,"OK")
+      }else{
+        this.snackBar.open("Google loged in","OK",{duration:9999})
+      }
+    })
+  }
 }

@@ -133,7 +133,7 @@ export class MainComponent implements OnInit,OnDestroy{
     },999)
     let correctingWidth=0;
     if(window.innerWidth>666){
-      correctingWidth=48;
+      correctingWidth=96;
       this.height=window.innerHeight-125;
     }else{
       this.height=window.innerHeight-117;
@@ -236,9 +236,14 @@ export class MainComponent implements OnInit,OnDestroy{
     this.notificationSub=MeteorObservable.subscribe('notifications',Meteor.userId()).subscribe(()=>{
       MeteorObservable.autorun().subscribe(()=>{
         let notifications=Notifications.find().fetch()
+        let orders=Orders.find().fetch()
         this.notifications=[]
-        notifications.forEach((NN)=>{
-          this.notifications.push(NN.orderId)
+        orders.forEach((order)=>{
+          notifications.forEach((NN)=>{
+            if(order._id==NN.orderId){
+              this.notifications.push(NN.orderId)
+            }
+          })
         })
       })
     })

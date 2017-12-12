@@ -90,95 +90,101 @@
                 </div>
                 <br><br>
                 <div fxLayout="row" fxLayoutAlign="space-between">
-                    <mat-select formControlName="monthDate" placeholder="* DATE OF BIRTH">
-                        <mat-option value="1">Jan</mat-option>
-                        <mat-option value="2">Feb</mat-option>
-                        <mat-option value="3">Mar</mat-option>
-                        <mat-option value="4">Apr</mat-option>
-                        <mat-option value="5">May</mat-option>
-                        <mat-option value="6">Jun</mat-option>
-                        <mat-option value="7">Jul</mat-option>
-                        <mat-option value="8">Aug</mat-option>
-                        <mat-option value="9">Sep</mat-option>
-                        <mat-option value="10">Oct</mat-option>
-                        <mat-option value="11">Nov</mat-option>
-                        <mat-option value="12">Dec</mat-option>
-                    </mat-select>
-                    <mat-select formControlName="dayDate">
-                        <mat-option value="1">1</mat-option>
-                        <mat-option value="2">2</mat-option>
-                        <mat-option value="3">3</mat-option>
-                        <mat-option value="4">4</mat-option>
-                        <mat-option value="5">5</mat-option>
-                        <mat-option value="6">6</mat-option>
-                        <mat-option value="7">7</mat-option>
-                        <mat-option value="8">8</mat-option>
-                        <mat-option value="9">9</mat-option>
-                        <mat-option value="10">10</mat-option>
-                        <mat-option value="11">11</mat-option>
-                        <mat-option value="12">12</mat-option>
-                        <mat-option value="13">13</mat-option>
-                        <mat-option value="14">14</mat-option>
-                        <mat-option value="15">15</mat-option>
-                        <mat-option value="16">16</mat-option>
-                        <mat-option value="17">17</mat-option>
-                        <mat-option value="18">18</mat-option>
-                        <mat-option value="19">19</mat-option>
-                        <mat-option value="20">20</mat-option>
-                        <mat-option value="21">21</mat-option>
-                        <mat-option value="22">22</mat-option>
-                        <mat-option value="23">23</mat-option>
-                        <mat-option value="24">24</mat-option>
-                        <mat-option value="25">25</mat-option>
-                        <mat-option value="26">26</mat-option>
-                        <mat-option value="27">27</mat-option>
-                        <mat-option value="28">28</mat-option>
-                        <mat-option value="29">29</mat-option>
-                        <mat-option value="30">30</mat-option>
-                        <mat-option value="31">31</mat-option>
-                    </mat-select>
-                    <mat-select formControlName="yearDate">
-                        <mat-option value="1">1999</mat-option>
-                        <mat-option value="2">1998</mat-option>
-                        <mat-option value="3">1997</mat-option>
-                        <mat-option value="4">1996</mat-option>
-                        <mat-option value="5">1995</mat-option>
-                        <mat-option value="6">1994</mat-option>
-                        <mat-option value="7">1993</mat-option>
-                        <mat-option value="8">1992</mat-option>
-                        <mat-option value="9">1991</mat-option>
-                        <mat-option value="10">1990</mat-option>
-                        <mat-option value="11">1989</mat-option>
-                        <mat-option value="12">1988</mat-option>
-                        <mat-option value="13">1987</mat-option>
-                        <mat-option value="14">1986</mat-option>
-                        <mat-option value="15">1985</mat-option>
-                        <mat-option value="16">1984</mat-option>
-                        <mat-option value="17">1983</mat-option>
-                        <mat-option value="18">1982</mat-option>
-                        <mat-option value="19">1981</mat-option>
-                        <mat-option value="20">1980</mat-option>
-                        <mat-option value="21">1979</mat-option>
-                        <mat-option value="22">1978</mat-option>
-                        <mat-option value="23">1977</mat-option>
-                        <mat-option value="24">1976</mat-option>
-                        <mat-option value="25">1975</mat-option>
-                        <mat-option value="26">1974</mat-option>
-                        <mat-option value="27">1973</mat-option>
-                        <mat-option value="28">1972</mat-option>
-                        <mat-option value="29">1971</mat-option>
-                        <mat-option value="30">1970</mat-option>
-                        <mat-option value="31">1969</mat-option>
-                        <mat-option value="32">1968</mat-option>
-                        <mat-option value="33">1967</mat-option>
-                        <mat-option value="34">1966</mat-option>
-                        <mat-option value="35">1965</mat-option>
-                        <mat-option value="36">1964</mat-option>
-                        <mat-option value="37">1963</mat-option>
-                        <mat-option value="38">1962</mat-option>
-                        <mat-option value="39">1961</mat-option>
-                        <mat-option value="40">1960</mat-option>
-                    </mat-select>
+                    <mat-form-field>
+                        <mat-select class="underline" formControlName="monthDate" [placeholder]="'* DATE OF BIRTH'">
+                            <mat-option value="1">Jan</mat-option>
+                            <mat-option value="2">Feb</mat-option>
+                            <mat-option value="3">Mar</mat-option>
+                            <mat-option value="4">Apr</mat-option>
+                            <mat-option value="5">May</mat-option>
+                            <mat-option value="6">Jun</mat-option>
+                            <mat-option value="7">Jul</mat-option>
+                            <mat-option value="8">Aug</mat-option>
+                            <mat-option value="9">Sep</mat-option>
+                            <mat-option value="10">Oct</mat-option>
+                            <mat-option value="11">Nov</mat-option>
+                            <mat-option value="12">Dec</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-select class="underline" formControlName="dayDate">
+                            <mat-option value="1">1</mat-option>
+                            <mat-option value="2">2</mat-option>
+                            <mat-option value="3">3</mat-option>
+                            <mat-option value="4">4</mat-option>
+                            <mat-option value="5">5</mat-option>
+                            <mat-option value="6">6</mat-option>
+                            <mat-option value="7">7</mat-option>
+                            <mat-option value="8">8</mat-option>
+                            <mat-option value="9">9</mat-option>
+                            <mat-option value="10">10</mat-option>
+                            <mat-option value="11">11</mat-option>
+                            <mat-option value="12">12</mat-option>
+                            <mat-option value="13">13</mat-option>
+                            <mat-option value="14">14</mat-option>
+                            <mat-option value="15">15</mat-option>
+                            <mat-option value="16">16</mat-option>
+                            <mat-option value="17">17</mat-option>
+                            <mat-option value="18">18</mat-option>
+                            <mat-option value="19">19</mat-option>
+                            <mat-option value="20">20</mat-option>
+                            <mat-option value="21">21</mat-option>
+                            <mat-option value="22">22</mat-option>
+                            <mat-option value="23">23</mat-option>
+                            <mat-option value="24">24</mat-option>
+                            <mat-option value="25">25</mat-option>
+                            <mat-option value="26">26</mat-option>
+                            <mat-option value="27">27</mat-option>
+                            <mat-option value="28">28</mat-option>
+                            <mat-option value="29">29</mat-option>
+                            <mat-option value="30">30</mat-option>
+                            <mat-option value="31">31</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-select class="underline" formControlName="yearDate">
+                            <mat-option value="1">1999</mat-option>
+                            <mat-option value="2">1998</mat-option>
+                            <mat-option value="3">1997</mat-option>
+                            <mat-option value="4">1996</mat-option>
+                            <mat-option value="5">1995</mat-option>
+                            <mat-option value="6">1994</mat-option>
+                            <mat-option value="7">1993</mat-option>
+                            <mat-option value="8">1992</mat-option>
+                            <mat-option value="9">1991</mat-option>
+                            <mat-option value="10">1990</mat-option>
+                            <mat-option value="11">1989</mat-option>
+                            <mat-option value="12">1988</mat-option>
+                            <mat-option value="13">1987</mat-option>
+                            <mat-option value="14">1986</mat-option>
+                            <mat-option value="15">1985</mat-option>
+                            <mat-option value="16">1984</mat-option>
+                            <mat-option value="17">1983</mat-option>
+                            <mat-option value="18">1982</mat-option>
+                            <mat-option value="19">1981</mat-option>
+                            <mat-option value="20">1980</mat-option>
+                            <mat-option value="21">1979</mat-option>
+                            <mat-option value="22">1978</mat-option>
+                            <mat-option value="23">1977</mat-option>
+                            <mat-option value="24">1976</mat-option>
+                            <mat-option value="25">1975</mat-option>
+                            <mat-option value="26">1974</mat-option>
+                            <mat-option value="27">1973</mat-option>
+                            <mat-option value="28">1972</mat-option>
+                            <mat-option value="29">1971</mat-option>
+                            <mat-option value="30">1970</mat-option>
+                            <mat-option value="31">1969</mat-option>
+                            <mat-option value="32">1968</mat-option>
+                            <mat-option value="33">1967</mat-option>
+                            <mat-option value="34">1966</mat-option>
+                            <mat-option value="35">1965</mat-option>
+                            <mat-option value="36">1964</mat-option>
+                            <mat-option value="37">1963</mat-option>
+                            <mat-option value="38">1962</mat-option>
+                            <mat-option value="39">1961</mat-option>
+                            <mat-option value="40">1960</mat-option>
+                        </mat-select>
+                    </mat-form-field>
                 </div>
                 <br>
                 <mat-input-container>
@@ -188,69 +194,71 @@
                     <input matInput formControlName="address2" placeholder="Address 2">
                 </mat-input-container>
                 <div fxLayout="row" fxLayoutAlign="space-between">
-                    <mat-input-container>
-                        <input matInput formControlName="city" placeholder="* City">
-                    </mat-input-container>
-                    <mat-select formControlName="state" placeholder="* State" style="margin-top:9px;">
-                        <mat-option value="AL">Alabama</mat-option>
-                        <mat-option value="AK">Alaska</mat-option>
-                        <mat-option value="AR">Arkansas</mat-option>
-                        <mat-option value="AS">American Samoa</mat-option>
-                        <mat-option value="AZ">Arizona</mat-option>
-                        <mat-option value="CA">California</mat-option>
-                        <mat-option value="CO">Colorado</mat-option>
-                        <mat-option value="CT">Connecticut</mat-option>
-                        <mat-option value="DC">District of Columbia</mat-option>
-                        <mat-option value="DE">Delaware</mat-option>
-                        <mat-option value="FL">Florida</mat-option>
-                        <mat-option value="GA">Georgia</mat-option>
-                        <mat-option value="GU">Guam</mat-option>
-                        <mat-option value="HI">Hawaii</mat-option>
-                        <mat-option value="IA">Iowa</mat-option>
-                        <mat-option value="ID">Idaho</mat-option>
-                        <mat-option value="IL">Illinois</mat-option>
-                        <mat-option value="IN">Indiana</mat-option>
-                        <mat-option value="KS">Kansas</mat-option>
-                        <mat-option value="KY">Kentucky</mat-option>
-                        <mat-option value="LA">Louisiana</mat-option>
-                        <mat-option value="MA">Massachusetts</mat-option>
-                        <mat-option value="MD">Maryland</mat-option>
-                        <mat-option value="ME">Maine</mat-option>
-                        <mat-option value="MI">Michigan</mat-option>
-                        <mat-option value="MN">Minnesota</mat-option>
-                        <mat-option value="MO">Missouri</mat-option>
-                        <mat-option value="MS">Mississippi</mat-option>
-                        <mat-option value="MT">Montana</mat-option>
-                        <mat-option value="NC">North Carolina</mat-option>
-                        <mat-option value="ND">North Dakota</mat-option>
-                        <mat-option value="NE">Nebraska</mat-option>
-                        <mat-option value="NH">New Hampshire</mat-option>
-                        <mat-option value="NJ">New Jersey</mat-option>
-                        <mat-option value="NM">New Mexico</mat-option>
-                        <mat-option value="NV">Nevada</mat-option>
-                        <mat-option value="NY">New York</mat-option>
-                        <mat-option value="OH">Ohio</mat-option>
-                        <mat-option value="OK">Oklahoma</mat-option>
-                        <mat-option value="OR">Oregon</mat-option>
-                        <mat-option value="PA">Pennsylvania</mat-option>
-                        <mat-option value="PR">Puerto Rico</mat-option>
-                        <mat-option value="RI">Rhode Island</mat-option>
-                        <mat-option value="SC">South Carolina</mat-option>
-                        <mat-option value="SD">South Dakota</mat-option>
-                        <mat-option value="TN">Tennessee</mat-option>
-                        <mat-option value="TX">Texas</mat-option>
-                        <mat-option value="UT">Utah</mat-option>
-                        <mat-option value="VA">Virginia</mat-option>
-                        <mat-option value="VI">Virgin Islands</mat-option>
-                        <mat-option value="VT">Vermont</mat-option>
-                        <mat-option value="WA">Washington</mat-option>
-                        <mat-option value="WI">Wisconsin</mat-option>
-                        <mat-option value="WV">West Virginia</mat-option>
-                        <mat-option value="WY">Wyoming</mat-option>
-                    </mat-select>
-                    <mat-input-container>
-                        <input matInput formControlName="zipCode" type="number" placeholder="* Zip Code">
-                    </mat-input-container>
+                        <mat-input-container style="margin-right:1%">
+                            <input matInput formControlName="city" placeholder="* City">
+                        </mat-input-container>
+                        <mat-form-field>
+                            <mat-select formControlName="state" [placeholder]="'* State'">
+                                <mat-option value="AL">Alabama</mat-option>
+                                <mat-option value="AK">Alaska</mat-option>
+                                <mat-option value="AR">Arkansas</mat-option>
+                                <mat-option value="AS">American Samoa</mat-option>
+                                <mat-option value="AZ">Arizona</mat-option>
+                                <mat-option value="CA">California</mat-option>
+                                <mat-option value="CO">Colorado</mat-option>
+                                <mat-option value="CT">Connecticut</mat-option>
+                                <mat-option value="DC">District of Columbia</mat-option>
+                                <mat-option value="DE">Delaware</mat-option>
+                                <mat-option value="FL">Florida</mat-option>
+                                <mat-option value="GA">Georgia</mat-option>
+                                <mat-option value="GU">Guam</mat-option>
+                                <mat-option value="HI">Hawaii</mat-option>
+                                <mat-option value="IA">Iowa</mat-option>
+                                <mat-option value="ID">Idaho</mat-option>
+                                <mat-option value="IL">Illinois</mat-option>
+                                <mat-option value="IN">Indiana</mat-option>
+                                <mat-option value="KS">Kansas</mat-option>
+                                <mat-option value="KY">Kentucky</mat-option>
+                                <mat-option value="LA">Louisiana</mat-option>
+                                <mat-option value="MA">Massachusetts</mat-option>
+                                <mat-option value="MD">Maryland</mat-option>
+                                <mat-option value="ME">Maine</mat-option>
+                                <mat-option value="MI">Michigan</mat-option>
+                                <mat-option value="MN">Minnesota</mat-option>
+                                <mat-option value="MO">Missouri</mat-option>
+                                <mat-option value="MS">Mississippi</mat-option>
+                                <mat-option value="MT">Montana</mat-option>
+                                <mat-option value="NC">North Carolina</mat-option>
+                                <mat-option value="ND">North Dakota</mat-option>
+                                <mat-option value="NE">Nebraska</mat-option>
+                                <mat-option value="NH">New Hampshire</mat-option>
+                                <mat-option value="NJ">New Jersey</mat-option>
+                                <mat-option value="NM">New Mexico</mat-option>
+                                <mat-option value="NV">Nevada</mat-option>
+                                <mat-option value="NY">New York</mat-option>
+                                <mat-option value="OH">Ohio</mat-option>
+                                <mat-option value="OK">Oklahoma</mat-option>
+                                <mat-option value="OR">Oregon</mat-option>
+                                <mat-option value="PA">Pennsylvania</mat-option>
+                                <mat-option value="PR">Puerto Rico</mat-option>
+                                <mat-option value="RI">Rhode Island</mat-option>
+                                <mat-option value="SC">South Carolina</mat-option>
+                                <mat-option value="SD">South Dakota</mat-option>
+                                <mat-option value="TN">Tennessee</mat-option>
+                                <mat-option value="TX">Texas</mat-option>
+                                <mat-option value="UT">Utah</mat-option>
+                                <mat-option value="VA">Virginia</mat-option>
+                                <mat-option value="VI">Virgin Islands</mat-option>
+                                <mat-option value="VT">Vermont</mat-option>
+                                <mat-option value="WA">Washington</mat-option>
+                                <mat-option value="WI">Wisconsin</mat-option>
+                                <mat-option value="WV">West Virginia</mat-option>
+                                <mat-option value="WY">Wyoming</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-input-container>
+                            <input matInput formControlName="zipCode" type="number" placeholder="* Zip Code">
+                        </mat-input-container>
                 </div>
                 <mat-input-container>
                     <textarea mat-autosize formControlName="bio" maxRows="9" minRows="9" matInput placeholder="Bio"></textarea>
